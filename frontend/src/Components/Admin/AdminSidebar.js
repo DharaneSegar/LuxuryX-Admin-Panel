@@ -21,7 +21,7 @@ function AdminSideBar(){
                             </a>
                             <div className="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav className="sb-sidenav-menu-nested nav">
-                                    <a className="nav-link" href="" >Add Orders</a>
+                                    <a className="nav-link" href="" >Add Order</a>
                                     <a className="nav-link" href="">View Order</a>
                                 </nav>
                             </div>
