@@ -5,6 +5,7 @@ import Footer from "../Common/Footer";
 
 export default function AddSalary(){
 
+    const [type,setType] = useState("");
     const[eid,setEid] = useState("");
     const[basicsalary,setBasicSalary] = useState("");
     const[othrs,setOTHrs] = useState("");
@@ -16,7 +17,7 @@ export default function AddSalary(){
     const[data,setData] = useState("");
     console.log(search);
 
-    useEffect(()=>{
+    /*useEffect(()=>{
         function getSE(){
             axios.get(`http://localhost:8070/salesexecutive/getSid/${search}`).then((res) => {
             console.log(res.data.se);
@@ -27,13 +28,14 @@ export default function AddSalary(){
     }
 
     getSE();
-},[])
+},[])*/
 
 
      async function sendData(e){
         e.preventDefault();
 
-        await axios.post("http://localhost:8070/salary/addsal",{eid,
+        await axios.post("http://localhost:8070/salary/addsal",{type,
+        eid,
         basicsalary,
         othrs,
         otrate,
@@ -43,7 +45,11 @@ export default function AddSalary(){
             if(res.data === "Success" ){
                 alert("Inserted new salary transaction ");
                 //window.location.replace("/alldd");
-            }else{
+            }else if(res.data === "No id"){
+                alert("Couldn't find Employee id")
+            }
+            
+            else{
                 alert("Error in inserting");
            
 
@@ -55,8 +61,11 @@ export default function AddSalary(){
      }
 
      function Calculation(){
-        var val = otrate * basicsalary;
-        netsalary = basicsalary + (othrs*val);
+        const r = Number(otrate);
+        const b = Number(basicsalary);
+        const h = Number(othrs);
+        var val = (r/100) * b;
+        netsalary = b + (h*val);
         setNetSalary(netsalary);
 
      }
@@ -74,7 +83,7 @@ export default function AddSalary(){
                             <div className="col-lg-5" >
                                 <br/><br/><br/>
                                 
-                                <form className="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                                {/*<form className="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                                 
                 <div className="input-group">
                     
@@ -91,20 +100,30 @@ export default function AddSalary(){
                 </div>
                         
 
-            </form>
+            </form>*/}
                                 <div className="card shadow-lg border-0 rounded-lg mt-5">
                                     <div className="card-header"><h3 className="text-center font-weight-light my-4">Add Salary</h3></div>
                                     <div className="card-body">
-                                        <form method="post">
+                                        <form>
+                                            <br/>
+
+                                        <div >
+                                        &nbsp;&nbsp;<label>Employee type : &nbsp;&nbsp;&nbsp;</label>
+                                                <input type="radio" id="s" name="type" value="Sales Executive" onChange={(e)=> {setType(e.target.value);}} required></input>
+                                                <label htmlFor="m"> &nbsp;&nbsp;Sales Executive &nbsp;&nbsp;&nbsp;</label>
+                                                <input type="radio" id="d" name="type" value="Delivery Driver" onChange={(e)=> {setType(e.target.value);}} required></input>
+                                                <label htmlFor="f"> &nbsp;&nbsp;Delivery Driver</label><br/>
+                                            </div>
+
                                         <div className="form-floating mb-3">
                                                 <label>Employee Id :</label><br/><br/>
-                                                <input className="form-control"  type="text"  pattern="[S/D][0-9][0-9][0-9]" onChange={(e) => {setEid(e.target.value)}}/>
+                                                <input className="form-control"  type="text" onChange={(e) => {setEid(e.target.value)}}/>
                                                
                                             </div>
 
                                             <div className="form-floating mb-3">
                                                 <label>Basic Salary :</label><br/><br/>
-                                                <input className="form-control"  type="text" value = {basicsalary}/>
+                                                <input className="form-control"  type="text" onChange={(e) => {setBasicSalary(e.target.value)}}/>
                                                
                                             </div>
                                             <div className="form-floating mb-3">
@@ -137,10 +156,12 @@ export default function AddSalary(){
                                                     <button className="btn btn-primary btn-block"  onClick={Calculation}>Calculate Salary</button><br/>
                                                     
                                                 </div>
+                                                <form>
                                                 <div className="d-grid">
                                                     <button className="btn btn-primary btn-block" type="submit" onClick={sendData}>Add transaction</button><br/>
                                                     
                                                 </div>
+                                                </form>
                                            
                                         </form>
                                     </div>

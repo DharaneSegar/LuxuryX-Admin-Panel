@@ -3,6 +3,9 @@ const Schema = mongoose.Schema;
 
 const SalarySchema = new Schema(
     {
+        type:{
+            type:String
+        },
         eid:{
             type:String
         },

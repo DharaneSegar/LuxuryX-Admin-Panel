@@ -20,6 +20,7 @@ import AllLeave from './Components/Admin/AllLeaves';
 import AddSalary from './Components/Admin/AddSalary';
 import UpdateLeave from './Components/Admin/UpdateLeaveApplication';
 import UpdateLeave1 from './Components/Admin/EditStatus';
+import Allleave1 from './Components/Admin/test';
 
 
 function App() {
@@ -49,6 +50,7 @@ function App() {
         <Route exact path = '/addsalary' element = {<AddSalary/>}/>
         <Route exact path = '/updatela/:id' element = {<UpdateLeave/>}/> 
         <Route exact path = '/update/:id' element = {<UpdateLeave1/>}/> 
+        <Route exact path = '/test' element = {<Allleave1/>}/>
         </Routes>
         
   </Router>
