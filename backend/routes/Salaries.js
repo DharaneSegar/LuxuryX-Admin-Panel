@@ -68,5 +68,23 @@ router.post("/addsal",async(req,res)=>{
     }
 })
 
+router.route("/getsalary").get((req,res)=>{
+    Salary.find().then((leaves) => {
+        res.json(leaves)
+    }).catch((err)=>{
+        console.log(err)
+    })
+})
+
+router.route("/deletet/:id").delete(async(req,res) => {
+    let Id = req.params.id;
+    await Salary.findByIdAndDelete(Id).then(()=>{
+        res.status(200).json("success");
+    }).catch((err) => {
+        res.status(500).json("error");
+
+    })
+})
+
 
 module.exports = router;
