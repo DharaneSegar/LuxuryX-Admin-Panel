@@ -110,7 +110,7 @@ function AdminSideBar(){
                                     <a className="nav-link" href="/alldd">View Delivery Driver</a>
                                     <a className="nav-link" href="/allleave">View Leave Applications</a>
                                     <a className="nav-link" href="/addsalary">Add salary transaction</a>
-                                    <a className="nav-link" href="">View Salary transaction</a>
+                                    <a className="nav-link" href="allsalary">View Salary transaction</a>
      
                                     <div class="collapse" id="pagesCollapseError" aria-labelledby="headingFour" data-bs-parent="#sidenavAccordionPages">
                                         

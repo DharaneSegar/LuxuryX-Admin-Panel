@@ -8,7 +8,7 @@ import { NavLink } from 'react-router-dom';
 
 
 
-export default function AllLeave(){
+export default function AllSalary(){
 
     const [transaction,setTransaction] = useState([]);
     
@@ -63,13 +63,13 @@ export default function AllLeave(){
                                     <td>{t.netsalary}</td>
                                     <td>{t.paydate}</td>
                                     <td className='d-flex justify-content-between'>
-                                    <NavLink to  ={`/updatela/${l.Id}`}><button className='btn btn-primary' ><CreateIcon/></button></NavLink>
+                                    <NavLink to  ={`/updatet/${t.Id}`}><button className='btn btn-primary' ><CreateIcon/></button></NavLink>
                                         <button className='btn btn-danger' onClick={() =>{
                                              axios.delete(`http://localhost:8070/salary/deletet/${t._id}`)
                                             .then((res) => {
                                                 if(res.data === "success"){
                                                     alert("Transaction deleted successfully")
-                                                    window.location.replace("/allleave");
+                                                    window.location.replace("/allsalary");
                                                 }else if(res.data === "error"){
                                                     alert("Error in deleting transaction")
                                                 }

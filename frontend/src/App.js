@@ -19,6 +19,13 @@ import DDHome from './Components/DeliveryDriver/Home';
 import AllLeave from './Components/Admin/AllLeaves';
 import AddSalary from './Components/Admin/AddSalary';
 import UpdateLeave from './Components/Admin/UpdateLeaveApplication';
+import AllSalary from './Components/Admin/AllTransactions';
+import UpdateSalary from './Components/Admin/UpdateTransaction';
+
+
+
+
+
 import UpdateLeave1 from './Components/Admin/EditStatus';
 import Allleave1 from './Components/Admin/test';
 
@@ -49,6 +56,11 @@ function App() {
         <Route exact path = '/allleave' element = {<AllLeave/>}/>
         <Route exact path = '/addsalary' element = {<AddSalary/>}/>
         <Route exact path = '/updatela/:id' element = {<UpdateLeave/>}/> 
+        <Route exact path = '/updatet/:id' element = {<UpdateSalary/>}/>
+        <Route exact path = '/allsalary' element = {<AllSalary/>}/>
+
+
+
         <Route exact path = '/update/:id' element = {<UpdateLeave1/>}/> 
         <Route exact path = '/test' element = {<Allleave1/>}/>
         </Routes>

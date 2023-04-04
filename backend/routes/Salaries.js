@@ -69,8 +69,8 @@ router.post("/addsal",async(req,res)=>{
 })
 
 router.route("/getsalary").get((req,res)=>{
-    Salary.find().then((leaves) => {
-        res.json(leaves)
+    Salary.find().then((salary) => {
+        res.json(salary)
     }).catch((err)=>{
         console.log(err)
     })
@@ -86,5 +86,38 @@ router.route("/deletet/:id").delete(async(req,res) => {
     })
 })
 
+router.route("/get/:id").get(async(req,res) => {
+    let Id = req.params.id;
+
+    const user = await Salary.findById(Id).then((user) => {
+        res.json("Success");
+        console.log(user)
+    }).catch((err) => {
+        console.log(err.message);
+        res.json("Failed");
+    })
+})
+
+router.route("/updatet/:id").put(async(req,res) => {
+    let id = req.params.id;
+    const{othrs,otrate,paydate,netsalary} = req.body;
+
+    const updateTransaction = {
+        othrs,
+        otrate,
+        paydate,
+        netsalary
+    }
+
+    const update = await Salary.findOneAndUpdate(id,updateTransaction).then(() => {
+        res.status(200).json("Success")
+
+        //user:update-pass the updated value to the front end
+
+    }).catch((err) => {
+        console.log(err);
+        res.status(500).json("Failed");
+    })
+})
 
 module.exports = router;
