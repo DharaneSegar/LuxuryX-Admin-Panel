@@ -17,6 +17,10 @@ export default function AllSalary(){
             axios.get("http://localhost:8070/salary/getsalary").then((res) => {
             console.log(res.data);
             setTransaction(res.data);
+            var myDate = new Date(paydate),
+        month = myDate.getMonth(),
+        date = myDate.getDate(),
+        year = myDate.getFullYear();
         }).catch((err) => {
             alert(err.message);
         })
@@ -24,6 +28,9 @@ export default function AllSalary(){
 
     get();
 },[])
+
+
+
 
     return(
         <>
@@ -63,7 +70,7 @@ export default function AllSalary(){
                                     <td>{t.netsalary}</td>
                                     <td>{t.paydate}</td>
                                     <td className='d-flex justify-content-between'>
-                                    <NavLink to  ={`/updatet/${t.Id}`}><button className='btn btn-primary' ><CreateIcon/></button></NavLink>
+                                    <NavLink to  ={`/updatet/${t.id}`}><button className='btn btn-primary' ><CreateIcon/></button></NavLink>
                                         <button className='btn btn-danger' onClick={() =>{
                                              axios.delete(`http://localhost:8070/salary/deletet/${t._id}`)
                                             .then((res) => {
