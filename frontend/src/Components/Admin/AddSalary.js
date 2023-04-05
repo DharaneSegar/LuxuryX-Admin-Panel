@@ -69,16 +69,6 @@ export default function AddSalary(){
         setNetSalary(netsalary);
 
         e.preventDefault();
-        //var d = document.getElementById("pdate").value;
-
-        /*var date = paydate.getDate();
-        var month = paydate.getMonth();
-        var year = paydate.getFullYear();
-
-        setPaydate(date + "/"+ month + "/" + year)
-        console.log(paydate)*/
-        
-    
         await axios.post("http://localhost:8070/salary/addsal",{type,
         eid,
         basicsalary,

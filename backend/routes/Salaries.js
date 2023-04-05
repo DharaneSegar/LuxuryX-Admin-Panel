@@ -2,6 +2,7 @@ const router = require("express").Router();
 const Salary = require("../models/salary");
 const SE = require('../models/salesexecutive')
 const DD = require('../models/deliverydriver')
+const C = require('../models/c')
 
 router.post("/addsal",async(req,res)=>{
     // console.log(req.body);
@@ -13,68 +14,94 @@ router.post("/addsal",async(req,res)=>{
     var paydate = req.body.paydate;
     const netsalary =  Number(req.body.netsalary);
 
-    const d = paydate.getDate();
-    const m = paydate.getMonth();
-    const y = paydate.getFullYear();
-    paydate = d + "/" + m + "/" + y
-
-    console.log(paydate);
-
 
     if(type == "Sales Executive"){
-        SE.findOne({sid: `${eid}`}, function(err, doc) {
-            if (err) {
-              console.error(err);  
+        SE.findOne({sid:`${eid}`},function(err,doc){
+            if(err){
+                console.error(err);
             }else{
-                const hasMatch = Boolean(doc); // convert to boolean value
-              console.log(hasMatch); // will log 'true' if a matching document was found, otherwise 'false'
-              if(hasMatch == true ){
-                const newSalary = new Salary({
-                    type,eid,basicsalary,othrs,otrate,paydate,netsalary  
-                })
-    
-                newSalary.save().then(()=>{
-                    res.json("Success")
-                    }).catch((err) => {
-                    res.json("Failed");
-                    console.log(err);
-                    })     
-              }else{
-                res.json("No id")
-              }
-    
+                const hasMatch = Boolean(doc);
+                if(hasMatch == true){
+                    C.findOneAndUpdate(
+                        {id:"autoval"},
+                        {"$inc" : {"seq":1}},
+                        {new:true},(err,cd)=>{
+                            let seqId;
+                            if(cd == null){
+                                const newval = new C({id:"autoval",seq:1})
+                                newval.save()
+                                seqId = 1
+                            }else{
+                                seqid = cd.seq;
+                            }
+
+                            const Id = seqId;
+
+                                const newSalary = new Salary({
+                                    Id,type,eid,basicsalary,othrs,otrate,paydate,netsalary  
+                                })
+
+                                newSalary.save().then(()=>{
+                                    res.json("Success")
+                                    }).catch((err) => {
+                                    res.json("Failed");
+                                    console.log(err);
+                                    })
+                            
+                        }
+                    )
+                }
+                else{
+                    res.json("No id")
+                }
             }
-    
-    })
+        })
     }
 
     else if(type == "Delivery Driver"){
-        DD.findOne({did: `${eid}`}, function(err, doc) {
-            if (err) {
-              console.error(err);  
+        DD.findOne({did:`${eid}`},function(err,doc){
+            if(err){
+                console.error(err);
             }else{
-                const hasMatch = Boolean(doc); // convert to boolean value
-              console.log(hasMatch); // will log 'true' if a matching document was found, otherwise 'false'
-              if(hasMatch == true ){
-                const newSalary = new Salary({
-                    type,eid,basicsalary,othrs,otrate,paydate,netsalary  
-                })
-    
-                newSalary.save().then(()=>{
-                    res.json("Success")
-                    }).catch((err) => {
-                    res.json("Failed");
-                    console.log(err);
-                    })     
-              }else{
-                res.json("No id")
-              }
-    
+                const hasMatch = Boolean(doc);
+                if(hasMatch == true){
+                    C.findOneAndUpdate(
+                        {id:"autoval"},
+                        {"$inc" : {"seq":1}},
+                        {new:true},(err,cd)=>{
+                            let seqId;
+                            if(cd == null){
+                                const newval = new C({id:"autoval",seq:1})
+                                newval.save()
+                                seqId = 1
+                            }else{
+                                seqId = cd.seq;
+                            }
+                            const Id = seqId;
+
+                                const newSalary = new Salary({
+                                    Id,type,eid,basicsalary,othrs,otrate,paydate,netsalary  
+                                })
+
+                                newSalary.save().then(()=>{
+                                    res.json("Success")
+                                    }).catch((err) => {
+                                    res.json("Failed");
+                                    console.log(err);
+                                    })
+                            
+                        }
+                    )
+                }
+                else{
+                    res.json("No id")
+                }
             }
-    
-    })
+        })
     }
+
 })
+
 
 router.route("/getsalary").get((req,res)=>{
     Salary.find().then((salary) => {
@@ -94,20 +121,9 @@ router.route("/deletet/:id").delete(async(req,res) => {
     })
 })
 
-router.route("/get/:id").get(async(req,res) => {
+
+router.route("/update/:id").put(async(req,res) => {
     let Id = req.params.id;
-
-    const user = await Salary.findById(Id).then((user) => {
-        res.json("Success");
-        console.log(user)
-    }).catch((err) => {
-        console.log(err.message);
-        res.json("Failed");
-    })
-})
-
-router.route("/updatet/:id").put(async(req,res) => {
-    let id = req.params.id;
     const{othrs,otrate,paydate,netsalary} = req.body;
 
     const updateTransaction = {
@@ -117,14 +133,25 @@ router.route("/updatet/:id").put(async(req,res) => {
         netsalary
     }
 
-    const update = await Salary.findOneAndUpdate(id,updateTransaction).then(() => {
-        res.status(200).json("Success")
+    await Salary.findByIdAndUpdate(Id,updateTransaction);
 
-        //user:update-pass the updated value to the front end
-
-    }).catch((err) => {
+     
+        res.status(200).send("Done")
+    }).patch((err) => {
         console.log(err);
         res.status(500).json("Failed");
+    })
+
+
+router.route("/getId/:id").get(async(req,res) => {
+    let id = req.params.id;
+
+    await Salary.findOne({"Id" : `${id}`}).then((t) => {
+        res.status(200).send({status : "Details fetched", t})
+    }).catch((err) => {
+        console.log(err.message);
+
+        res.status(500).send({status : "Error with fetching details",error : err.message});
     })
 })
 

@@ -17,10 +17,6 @@ export default function AllSalary(){
             axios.get("http://localhost:8070/salary/getsalary").then((res) => {
             console.log(res.data);
             setTransaction(res.data);
-            var myDate = new Date(paydate),
-        month = myDate.getMonth(),
-        date = myDate.getDate(),
-        year = myDate.getFullYear();
         }).catch((err) => {
             alert(err.message);
         })
@@ -46,6 +42,7 @@ export default function AllSalary(){
                     <table className="table">
                         <thead>
                             <tr className="table-dark">
+                                <th scope="col">Transaction Id</th>
                                 <th scope="col">Eid</th>
                                 <th scope="col">Employee type</th>
                                 <th scope="col">Basic Salary</th>
@@ -62,15 +59,16 @@ export default function AllSalary(){
                         <tbody>
                         
                                     <tr> 
-                                    <th scope='row'>{t.eid}</th>
-                                    <th>{t.type}</th>
+                                    <th scope='row'>{t.Id}</th>
+                                    <td>{t.eid}</td>
+                                    <td>{t.type}</td>
                                     <td>{t.basicsalary}</td>
                                     <td>{t.othrs}</td>
                                     <td>{t.otrate}</td>
                                     <td>{t.netsalary}</td>
                                     <td>{t.paydate}</td>
                                     <td className='d-flex justify-content-between'>
-                                    <NavLink to  ={`/updatet/${t.id}`}><button className='btn btn-primary' ><CreateIcon/></button></NavLink>
+                                    <NavLink to  ={`/updatet/${t.Id}`}><button className='btn btn-primary' ><CreateIcon/></button></NavLink>
                                         <button className='btn btn-danger' onClick={() =>{
                                              axios.delete(`http://localhost:8070/salary/deletet/${t._id}`)
                                             .then((res) => {

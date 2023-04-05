@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 
 export default function UpdateSalary(){
 
-    const [Id,setId] = useState("");
+    const [Id,setId] = useState();
     const [type,setType] = useState("");
     const[eid,setEid] = useState("");
     const[basicsalary,setBasicSalary] = useState("");
@@ -19,9 +19,10 @@ export default function UpdateSalary(){
 
     useEffect(()=>{
         function GET(){
-            axios.get(`http://localhost:8070/salary/get/${id}`).then((res) => {
+            axios.get(`http://localhost:8070/salary/getId/${id}`).then((res) => {
             setId(res.data.t._id)
             setEid(res.data.t.eid)
+            setType(res.data.t.type)
             setBasicSalary(res.data.t.basicsalary);
             setOTHrs(res.data.t.othrs)
             setOTRate(res.data.t.otrate)
@@ -39,7 +40,14 @@ export default function UpdateSalary(){
      async function updateData(e){
         e.preventDefault();
 
-        await axios.put(`http://localhost:8070/salary/updatet/${Id}`,{
+        const r = Number(otrate);
+        const b = Number(basicsalary);
+        const h = Number(othrs);
+        var val = (r/100) * b;
+        netsalary = b + (h*val);
+        setNetSalary(netsalary);
+
+        await axios.put(`http://localhost:8070/salary/update/${Id}`,{
         othrs,
         otrate,
         paydate,
@@ -47,10 +55,10 @@ export default function UpdateSalary(){
         }).then((res)=>{
             if(res.data === "Done" ){
                 alert("Transaction updated successfully ");
-                window.location.replace("/allse");
+                window.location.replace("/allsalary");
             }else{
                 alert("Couldn't update transaction");
-            window.location.replace("/allse");
+            window.location.replace("/allsalary");
 
             }
             
@@ -59,17 +67,6 @@ export default function UpdateSalary(){
         })
      }
 
-     function Calculation(){
-        const r = Number(otrate);
-        const b = Number(basicsalary);
-        const h = Number(othrs);
-        var val = (r/100) * b;
-        netsalary = b + (h*val);
-        setNetSalary(netsalary);
-
-     }
-    
-    
     return(
         <>
         <div> 
@@ -88,38 +85,38 @@ export default function UpdateSalary(){
                                         <form>
                                             <br/>
 
-                                        <div >
-                                        &nbsp;&nbsp;<label>Employee type : &nbsp;&nbsp;&nbsp;</label>
-                                        <input className="form-control"  type="text" />
+                                        <div className="form-floating mb-3" >
+                                        <label>Employee type : </label><br/><br/>
+                                        <input className="form-control"  type="text" value={type}/>
                                                 
                                             </div>
 
                                         <div className="form-floating mb-3">
                                                 <label>Employee Id :</label><br/><br/>
-                                                <input className="form-control"  type="text" />
+                                                <input className="form-control"  type="text" value = {eid}/>
                                                
                                             </div>
 
                                             <div className="form-floating mb-3">
                                                 <label>Basic Salary :</label><br/><br/>
-                                                <input className="form-control"  type="text" />
+                                                <input className="form-control"  type="text" value = {basicsalary}/>
                                                
                                             </div>
                                             <div className="form-floating mb-3">
                                                 <label>OT Hrs :</label><br/><br/>
-                                                <input className="form-control"  type="text" onChange={(e) => {setOTHrs(e.target.value)}} />
+                                                <input className="form-control"  type="text" value = {othrs} onChange={(e) => {setOTHrs(e.target.value)}} />
                                                
                                             </div>
 
                                             <div className="form-floating mb-3">
                                                 <label>OT Rate :</label><br/><br/>
-                                                <input type="text"  className="form-control" onChange={(e) => {setOTRate(e.target.value)}}/>
+                                                <input type="text"  className="form-control" value = {otrate}onChange={(e) => {setOTRate(e.target.value)}}/>
         
                                             </div>
 
                                             <div className="form-floating mb-3">
                                                 <label>Payment Date:</label><br/><br/>
-                                                <input className="form-control"  type="date" onChange={(e) => {setPaydate(e.target.value)}}/>
+                                                <input className="form-control"  type="date" value = {paydate} onChange={(e) => {setPaydate(e.target.value)}}/>
                                     
                                             </div>
 
@@ -128,16 +125,9 @@ export default function UpdateSalary(){
                                                 <input className="form-control"  type="text" value = {netsalary}/>
                                     
                                             </div>
-
-                                            
-                                        
-                                                <div className="d-grid">
-                                                    <button className="btn btn-primary btn-block"  onClick={Calculation}>Calculate Salary</button><br/>
-                                                    
-                                                </div>
                                                 <form>
                                                 <div className="d-grid">
-                                                    <button className="btn btn-primary btn-block" type="submit" onClick={updateData}>Add transaction</button><br/>
+                                                    <button className="btn btn-primary btn-block" type="submit" onClick={updateData}>Update transaction</button><br/>
                                                     
                                                 </div>
                                                 </form>

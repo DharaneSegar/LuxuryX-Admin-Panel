@@ -126,24 +126,7 @@ router.route("/deletela/:id").delete(async(req,res) => {
     })
 })
 
-router.route("/updatela/:id").put(async(req,res) => {
-    let id = req.params.id;
-    const{status} = req.body;
 
-    const updateStatus = {
-        status  
-    }
-
-    const update = await LeaveApplication.findOneAndUpdate(id,updateStatus).then(() => {
-        res.status(200).json("Success")
-
-        //user:update-pass the updated value to the front end
-
-    }).catch((err) => {
-        console.log(err);
-        res.status(500).json("Failed");
-    })
-})
 
 router.route("/getId/:id").get(async(req,res) => {
     let id = req.params.id;

@@ -58,7 +58,7 @@ export default function AllLeave(){
                         
                                     <tr> 
                                     <th scope='row'>{l.Id}</th>
-                                    <th>{l.eid}</th>
+                                    <td>{l.eid}</td>
                                     <td>{l.fullname}</td>
                                     <td>{l.title}</td>
                                     <td>{l.days}</td>
