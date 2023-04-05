@@ -10,8 +10,16 @@ router.post("/addsal",async(req,res)=>{
     const basicsalary = Number(req.body.basicsalary);
     const othrs = Number(req.body.othrs);
     const otrate = Number(req.body.otrate);
-    const paydate = req.body.paydate;
-    const netsalary =  Number(req.body.netsalary)
+    var paydate = req.body.paydate;
+    const netsalary =  Number(req.body.netsalary);
+
+    const d = paydate.getDate();
+    const m = paydate.getMonth();
+    const y = paydate.getFullYear();
+    paydate = d + "/" + m + "/" + y
+
+    console.log(paydate);
+
 
     if(type == "Sales Executive"){
         SE.findOne({sid: `${eid}`}, function(err, doc) {
@@ -40,7 +48,7 @@ router.post("/addsal",async(req,res)=>{
     })
     }
 
-    if(type == "Delivery Driver"){
+    else if(type == "Delivery Driver"){
         DD.findOne({did: `${eid}`}, function(err, doc) {
             if (err) {
               console.error(err);  

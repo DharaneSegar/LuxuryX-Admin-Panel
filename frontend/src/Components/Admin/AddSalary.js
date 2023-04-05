@@ -10,12 +10,12 @@ export default function AddSalary(){
     const[basicsalary,setBasicSalary] = useState("");
     const[othrs,setOTHrs] = useState("");
     const[otrate,setOTRate] = useState("");
-    const [paydate,setPaydate] = useState("");
+    var[paydate,setPaydate] = useState("");
     var[netsalary,setNetSalary] = useState("");
 
-    const[search,setSearch]= useState("");
+    /*const[search,setSearch]= useState("");
     const[data,setData] = useState("");
-    console.log(search);
+    console.log(search);*/
 
     /*useEffect(()=>{
         function getSE(){
@@ -31,7 +31,7 @@ export default function AddSalary(){
 },[])*/
 
 
-     async function sendData(e){
+     /*async function sendData(e){
         e.preventDefault();
 
         await axios.post("http://localhost:8070/salary/addsal",{type,
@@ -58,15 +58,51 @@ export default function AddSalary(){
         }).catch((msg)=>{
             alert(msg);
         })
-     }
+     }*/
 
-     function Calculation(){
+     async function Calculation(e){
         const r = Number(otrate);
         const b = Number(basicsalary);
         const h = Number(othrs);
         var val = (r/100) * b;
         netsalary = b + (h*val);
         setNetSalary(netsalary);
+
+        e.preventDefault();
+        //var d = document.getElementById("pdate").value;
+
+        /*var date = paydate.getDate();
+        var month = paydate.getMonth();
+        var year = paydate.getFullYear();
+
+        setPaydate(date + "/"+ month + "/" + year)
+        console.log(paydate)*/
+        
+    
+        await axios.post("http://localhost:8070/salary/addsal",{type,
+        eid,
+        basicsalary,
+        othrs,
+        otrate,
+        paydate,
+        netsalary
+        }).then((res)=>{
+            if(res.data === "Success" ){
+                alert("Inserted new salary transaction ");
+                window.location.replace("/allsalary");
+            }else if(res.data === "No id"){
+                alert("Couldn't find Employee id")
+            }
+            
+            else{
+                alert("Error in inserting");
+           
+
+            }
+            
+        }).catch((msg)=>{
+            alert(msg);
+        })
 
      }
     
@@ -140,7 +176,7 @@ export default function AddSalary(){
 
                                             <div className="form-floating mb-3">
                                                 <label>Payment Date:</label><br/><br/>
-                                                <input className="form-control"  type="date" onChange={(e) => {setPaydate(e.target.value)}}/>
+                                                <input className="form-control"  id = "pdate" type="date" onChange={(e) => {setPaydate(e.target.value)}}/>
                                     
                                             </div>
 
@@ -153,15 +189,10 @@ export default function AddSalary(){
                                             
                                         
                                                 <div className="d-grid">
-                                                    <button className="btn btn-primary btn-block"  onClick={Calculation}>Calculate Salary</button><br/>
+                                                    <button className="btn btn-primary btn-block"  type = 'submit' onClick={Calculation}>Add transaction</button><br/>
                                                     
                                                 </div>
-                                                <form>
-                                                <div className="d-grid">
-                                                    <button className="btn btn-primary btn-block" type="submit" onClick={sendData}>Add transaction</button><br/>
-                                                    
-                                                </div>
-                                                </form>
+                                               
                                            
                                         </form>
                                     </div>

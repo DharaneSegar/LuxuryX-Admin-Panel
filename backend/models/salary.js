@@ -19,7 +19,8 @@ const SalarySchema = new Schema(
             type : Number
         },
         paydate:{
-            type : Date
+            type : String
+            
         },
         netsalary:{
             type : Number
