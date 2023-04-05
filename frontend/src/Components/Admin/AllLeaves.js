@@ -11,6 +11,7 @@ import { NavLink } from 'react-router-dom';
 export default function AllLeave(){
 
     const [leaves,setLeaves] = useState([]);
+    const [query,setQuery] =useState("");
     
     useEffect(()=>{
         function get(){
@@ -33,14 +34,27 @@ export default function AllLeave(){
 
                 <div className="container">
                     <div className="add_btn mt-2 mb-2">
-                        <br/><br/><br/>
+                        <br/><br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        
+                        <form className="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                <div className="input-group">
+                    <input className="form-control" type="text" placeholder="Type Leave Id here" aria-label="Search for..." aria-describedby="btnNavbarSearch" onChange={(e) =>{
+                        setQuery(e.target.value);
+                    }}/>
+                </div>
+            </form>
                    
                     </div>
+                    <br/><br/>
 
                     <table className="table">
                         <thead>
                             <tr className="table-dark">
-                                <th scope="col">id</th>
+                                <th scope="col">Leave Id</th>
                                 <th scope="col">eid</th>
                                 <th scope="col">Fullname</th>
                                 <th scope="col">Title</th>
@@ -54,7 +68,8 @@ export default function AllLeave(){
                             </tr>
                         </thead>
                         {
-                                leaves.map((l) => (
+                                leaves.filter((l) => 
+                                l.Id.toString().includes(query)).map((l) => (
                         <tbody>
                         
                                     <tr> 

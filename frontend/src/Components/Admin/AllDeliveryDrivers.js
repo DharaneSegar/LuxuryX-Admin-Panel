@@ -9,6 +9,7 @@ import Footer from '../Common/Footer';
 export default function AllDeliveryDriver(){
 
     const [deliverydrivers,setDeliveryDrivers] = useState([]);
+    const [query,setQuery] =useState("");
 
     useEffect(()=>{
         function getDD(){
@@ -30,8 +31,21 @@ export default function AllDeliveryDriver(){
                 <div className="container">
                     <div className="add_btn mt-2 mb-2">
                         <br/><br/><br/>
-                        <a className="btn btn-primary" href='/adddd'>Add Delivery Driver</a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a className="btn btn-primary" href='http://localhost:3000/adddd'>Add Delivery Driver</a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        
+                        <form className="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                <div className="input-group">
+                    <input className="form-control" type="text" placeholder="Type Did here" aria-label="Search for..." aria-describedby="btnNavbarSearch" onChange={(e) =>{
+                        setQuery(e.target.value);
+                    }}/>
+                </div>
+            </form>
                     </div>
+                    <br/><br/>
 
                     <table className="table">
                         <thead>
@@ -53,7 +67,8 @@ export default function AllDeliveryDriver(){
                         </thead>
                         <tbody>
                             {
-                                deliverydrivers.map((deliverydriver) => (
+                                deliverydrivers.filter((d) => 
+                                d.did.toLowerCase().includes(query)).map((deliverydriver) => (
                                
                                     <tr>
                                     <th scope='row'>{deliverydriver.did}</th>

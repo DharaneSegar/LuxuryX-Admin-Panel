@@ -22,7 +22,7 @@ function AdminSideBar(){
                             <div className="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav className="sb-sidenav-menu-nested nav">
                                     <a className="nav-link" href="/test" >Add Orders</a>
-                                    <a className="nav-link" href="">View Orders</a>
+                                    <a className="nav-link" href="/table">View Orders</a>
                                 </nav>
                             </div>
 
@@ -33,7 +33,7 @@ function AdminSideBar(){
                             </a>
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                    <a class="nav-link" href="" >Add products</a>
+                                    <a class="nav-link" href="/form" >Add products</a>
                                         
                                     <a className="nav-link" href="">View products</a>
                                         

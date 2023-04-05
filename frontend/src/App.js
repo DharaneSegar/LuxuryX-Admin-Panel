@@ -28,6 +28,8 @@ import UpdateSalary from './Components/Admin/UpdateTransaction';
 
 import UpdateLeave1 from './Components/Admin/EditStatus';
 import Allleave1 from './Components/Admin/test';
+import Table from './Components/Admin/table'
+import Form from './Components/Admin/form';
 
 
 function App() {
@@ -63,6 +65,8 @@ function App() {
 
         <Route exact path = '/update/:id' element = {<UpdateLeave1/>}/> 
         <Route exact path = '/test' element = {<Allleave1/>}/>
+        <Route exact path = '/table' element = {<Table/>}/>
+        <Route exact path = '/form' element = {<Form/>}/>
         </Routes>
         
   </Router>

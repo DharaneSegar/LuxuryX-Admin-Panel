@@ -9,7 +9,7 @@ import { useNavigate,NavLink } from 'react-router-dom';
 export default function AllSalesExecutive(){
 
     const [salesexecutives,setSalesExecutives] = useState([]);
-    const [search,setSearch]  =useState("");
+    const [query,setQuery] =useState("");
 
     useEffect(()=>{
         function getSE(){
@@ -24,22 +24,8 @@ export default function AllSalesExecutive(){
     getSE();
 },[])
 
-const handleSearch = async(e)=>{
-    e.preventDefault();
-     return await axios.get(`http://localhost:8070/salesexecutive/getSid/${search}`).then((response) => {
-        console.log(`Saerch is ${search}`);
-        console.log(response.data)
-        setSalesExecutives(response.data);
-        setSearch("");
-
-     }).catch((err)=>{
-        console.log(err);
-     })
-}
-
-
     return(
-        <>
+   
         <div>
         <AdminDashBoard></AdminDashBoard>
 <div className="mt-5">
@@ -47,23 +33,20 @@ const handleSearch = async(e)=>{
                     <div className="add_btn mt-2 mb-2">
                         <br/><br/><br/>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a className="btn btn-primary" href='/addse'>Add Sales Executive</a>
+                        <a className="btn btn-primary" href='http://localhost:3000/addse'>Add Sales Executive</a>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         
                         <form className="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                 <div className="input-group">
-                    <input className="form-control" type="text" placeholder="Search" aria-label="Search for..." aria-describedby="btnNavbarSearch" onChange={(e) =>{
-                        setSearch(e.target.value);
+                    <input className="form-control" type="text" placeholder="Type Sid here" aria-label="Search for..." aria-describedby="btnNavbarSearch" onChange={(e) =>{
+                        setQuery(e.target.value);
                     }}/>
-                        <input type = "submit" className="btn btn-primary" id="btnNavbarSearch" value = "Search" onClick={handleSearch}></input>
-        
                 </div>
-
-
             </form>
                     </div>
+                    <br/><br/>
 
                     <table className="table">
                         <thead>
@@ -84,7 +67,8 @@ const handleSearch = async(e)=>{
                         </thead>
                         <tbody>
                             {
-                                salesexecutives.map((salesexecutive) => (
+                                salesexecutives.filter((s) => 
+                                    s.sid.toLowerCase().includes(query)).map((salesexecutive) => (
                                 
                                
                                     <tr>
@@ -124,12 +108,13 @@ const handleSearch = async(e)=>{
                             </tbody>
                             
                         </table>
-    </div>
+                       
     
 </div>
 
 </div>
 <Footer></Footer>
-</>
-    )
+</div>
+
+    );
 }

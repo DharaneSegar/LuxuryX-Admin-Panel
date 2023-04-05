@@ -10,7 +10,8 @@ import { NavLink } from 'react-router-dom';
 
 export default function AllSalary(){
 
-    const [transaction,setTransaction] = useState([]);
+    const [transactions,setTransaction] = useState([]);
+    const [query,setQuery] =useState("");
     
     useEffect(()=>{
         function get(){
@@ -26,8 +27,6 @@ export default function AllSalary(){
 },[])
 
 
-
-
     return(
         <>
         <div>
@@ -41,8 +40,17 @@ export default function AllSalary(){
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                        <form className="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                <div className="input-group">
+                    <input className="form-control" type="text" placeholder="Type Transaction Id here" aria-label="Search for..." aria-describedby="btnNavbarSearch" onChange={(e) =>{
+                        setQuery(e.target.value);
+                    }}/>
+                </div>
+            </form>
                    
                     </div>
+                    <br/><br/>
 
                     <table className="table">
                         <thead>
@@ -60,7 +68,8 @@ export default function AllSalary(){
                             </tr>
                         </thead>
                         {
-                                transaction.map((t) => (
+                               transactions.filter((t) => 
+                               t.Id.toString().includes(query)).map((t) => (
                         <tbody>
                         
                                     <tr> 
