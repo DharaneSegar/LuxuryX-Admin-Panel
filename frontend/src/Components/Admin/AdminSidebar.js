@@ -104,13 +104,13 @@ function AdminSideBar(){
                             </a>
                             <div class="collapse" id="collapsesu" aria-labelledby="headingFour" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" >
-                                    <a class="nav-link" href="/addse" >Add Sales Executive</a>                             
-                                    <a className="nav-link" href="/allse">View Sales Executive</a>
-                                    <a class="nav-link" href="/adddd" >Add Delivery Driver</a>                             
-                                    <a className="nav-link" href="/alldd">View Delivery Driver</a>
-                                    <a className="nav-link" href="/allleave">View Leave Applications</a>
-                                    <a className="nav-link" href="/addsalary">Add salary transaction</a>
-                                    <a className="nav-link" href="allsalary">View Salary transaction</a>
+                                    <a class="nav-link" href="http://localhost:3000/addse" >Add Sales Executive</a>                             
+                                    <a className="nav-link" href="http://localhost:3000/allse">View Sales Executive</a>
+                                    <a class="nav-link" href="http://localhost:3000/adddd" >Add Delivery Driver</a>                             
+                                    <a className="nav-link" href="http://localhost:3000/alldd">View Delivery Driver</a>
+                                    <a className="nav-link" href="http://localhost:3000/allleave">View Leave Applications</a>
+                                    <a className="nav-link" href="http://localhost:3000/addsalary">Add salary transaction</a>
+                                    <a className="nav-link" href="http://localhost:3000/allsalary">View Salary transaction</a>
      
                                     <div class="collapse" id="pagesCollapseError" aria-labelledby="headingFour" data-bs-parent="#sidenavAccordionPages">
                                         

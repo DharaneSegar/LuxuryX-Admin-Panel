@@ -30,6 +30,7 @@ export default function AllLeave(){
         <div>
         <AdminDashBoard></AdminDashBoard>
 <div className="mt-5">
+
                 <div className="container">
                     <div className="add_btn mt-2 mb-2">
                         <br/><br/><br/>

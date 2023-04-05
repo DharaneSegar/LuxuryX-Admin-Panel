@@ -87,19 +87,19 @@ export default function UpdateSalary(){
 
                                         <div className="form-floating mb-3" >
                                         <label>Employee type : </label><br/><br/>
-                                        <input className="form-control"  type="text" value={type}/>
+                                        <input className="form-control"  type="text" value={type} readOnly/>
                                                 
                                             </div>
 
                                         <div className="form-floating mb-3">
                                                 <label>Employee Id :</label><br/><br/>
-                                                <input className="form-control"  type="text" value = {eid}/>
+                                                <input className="form-control"  type="text" value = {eid} readOnly/>
                                                
                                             </div>
 
                                             <div className="form-floating mb-3">
                                                 <label>Basic Salary :</label><br/><br/>
-                                                <input className="form-control"  type="text" value = {basicsalary}/>
+                                                <input className="form-control"  type="text" value = {basicsalary} readOnly/>
                                                
                                             </div>
                                             <div className="form-floating mb-3">
