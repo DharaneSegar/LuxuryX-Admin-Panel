@@ -39,7 +39,7 @@ export default function AllDeliveryDriver(){
                         
                         <form className="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                 <div className="input-group">
-                    <input className="form-control" type="text" placeholder="Type Did here" aria-label="Search for..." aria-describedby="btnNavbarSearch" onChange={(e) =>{
+                    <input className="form-control" type="text" placeholder="Type Did/Name here" aria-label="Search for..." aria-describedby="btnNavbarSearch" onChange={(e) =>{
                         setQuery(e.target.value);
                     }}/>
                 </div>
@@ -68,7 +68,9 @@ export default function AllDeliveryDriver(){
                         <tbody>
                             {
                                 deliverydrivers.filter((d) => 
-                                d.did.toLowerCase().includes(query)).map((deliverydriver) => (
+                                d.did.toLowerCase().includes(query) ||
+                                d.fullname.toLowerCase().includes(query)
+                                ).map((deliverydriver) => (
                                
                                     <tr>
                                     <th scope='row'>{deliverydriver.did}</th>

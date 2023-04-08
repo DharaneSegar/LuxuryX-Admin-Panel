@@ -68,7 +68,9 @@ export default function AllSalesExecutive(){
                         <tbody>
                             {
                                 salesexecutives.filter((s) => 
-                                    s.sid.toLowerCase().includes(query)).map((salesexecutive) => (
+                                    s.sid.toLowerCase().includes(query)||
+                                    s.fullname.toLowerCase().includes(query)
+                                    ).map((salesexecutive) => (
                                 
                                
                                     <tr>
