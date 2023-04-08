@@ -5,18 +5,21 @@ import DeliveryDriverDashBoard from "./DeliveryDriverDashBoard";
 
 
 function ApplyForLeaveDD(){
-    const [eid,setEid] = useState("");
-    const [fullname,setFullname]  = useState("");
+
     const [title,setTitle] = useState("");
     const [days,setDays] = useState("");
     const [startdate,setStartDate] = useState("");
     const [enddate,setEndDate] = useState("");
     const [reason,setReason] = useState("");
 
+    var user = JSON.parse(localStorage.getItem('DDInfo'));
+    const eid = user.did;
+    const fullname = user.fullname
+
     async function sendData(e){
         e.preventDefault();
 
-        if (!eid ||!fullname || !title || !days || !startdate || !enddate || !reason){
+        if (!title || !days || !startdate || !enddate || !reason){
             alert("Fields can't be empty");
         }
         else{
@@ -60,13 +63,13 @@ function ApplyForLeaveDD(){
                                         <form method="post">
                                         <div className="form-floating mb-3">
                                                 <label>Employee Id :</label><br/><br/>
-                                                <input className="form-control"  type="text"  pattern="[S/D][0-9][0-9][0-9]" onChange={(e)=>{setEid(e.target.value);}}/>
+                                                <input className="form-control"  type="text" value = {user.did} readOnly/>
                                                
                                             </div>
 
                                             <div className="form-floating mb-3">
                                                 <label>Full name :</label><br/><br/>
-                                                <input className="form-control"  type="text" onChange={(e)=>{setFullname(e.target.value);}} />
+                                                <input className="form-control"  value = {user.fullname}type="text" readOnly />
                                                
                                             </div>
                                             <div className="form-floating mb-3">

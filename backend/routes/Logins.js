@@ -15,7 +15,8 @@ router.post("/log",async(req,res)=>{
         if((check1) && accType === "Admin"){
             const p1 = await Admin.findOne({password:password})
             if(p1){
-                res.json("admin")
+                res.send({type:"admin",check1})
+                
             }else{
                 res.json("Invalid Password")
             }
@@ -23,7 +24,7 @@ router.post("/log",async(req,res)=>{
         }else if((check2) && accType === "Sales Executive"){
             const p2 = await SE.findOne({password:password})
             if(p2){
-                res.json("se");
+                res.json({type:"se",check2});
             }else{
                 res.json("Invalid Password")
             }
@@ -32,7 +33,7 @@ router.post("/log",async(req,res)=>{
         }else if((check3) && accType === "Delivery Driver"){
             const p3 = await DD.findOne({password:password})
             if(p3){
-                res.json("dd");
+                res.json({type:"dd",check3});
             }else{
                 res.json("Invalid Password")
             }      

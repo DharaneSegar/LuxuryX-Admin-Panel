@@ -1,10 +1,9 @@
 import React from "react";
 import DeliveryDriverDashBoard from "./DeliveryDriverDashBoard";
 import Footer from "../Common/Footer";
-import {useLocation,useNavigate} from 'react-router-dom'
 
-function DeliveryDriverHome(){
-    const location = useLocation();
+function DDHome(){
+    var user = JSON.parse(localStorage.getItem('DDInfo'));
     return(
         <>
         <div>
@@ -14,7 +13,7 @@ function DeliveryDriverHome(){
             <main>
                 <div className="container-fluid px-4">
                     <br/><br/><br/>
-                    <h1 className="mt-4">Welcome {location.state.id}!!!</h1>
+                    <h1 className="mt-4">Welcome {user.fullname} !!</h1>
         
                     <img id="logo" src={require('../Common/images/logo.png')}/>
                     <br/><br/><br/>
@@ -22,11 +21,6 @@ function DeliveryDriverHome(){
                 
                 </div>
             </main>
-                    
-                    
-                    
-                    
-        
         <Footer></Footer>
         </div>
         </>
@@ -34,4 +28,4 @@ function DeliveryDriverHome(){
     }
 
 
-export default DeliveryDriverHome;
+export default DDHome;

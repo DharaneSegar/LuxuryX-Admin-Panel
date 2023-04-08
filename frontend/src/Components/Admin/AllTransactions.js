@@ -67,10 +67,11 @@ export default function AllSalary(){
 
                             </tr>
                         </thead>
+                        
+                        <tbody>
                         {
                                transactions.filter((t) => 
                                t.Id.toString().includes(query)).map((t) => (
-                        <tbody>
                         
                                     <tr> 
                                     <th scope='row'>{t.Id}</th>
@@ -98,10 +99,11 @@ export default function AllSalary(){
                                         }}><DeleteOutlineIcon/></button>
                                     </td>
                                     </tr>
+                                    ))
+                                }  
                           
                             </tbody>
-                            ))
-                                    }    
+                              
                         </table>
     </div>
     

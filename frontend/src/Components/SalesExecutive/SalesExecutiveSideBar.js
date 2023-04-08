@@ -16,14 +16,14 @@ function SalesExecutiveSideBar(){
                            
                             <a class="nav-link collapsed"  data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                                 <div className="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                Apply leaves
+                               Leaves
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                     <a class="nav-link" href="./applyse" >Apply for leave</a>
                                         
-                                    <a className="nav-link" href="./lease">View leaves</a>
+                                    <a className="nav-link" href="./leavese">View leaves</a>
                                         
                                     <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                         

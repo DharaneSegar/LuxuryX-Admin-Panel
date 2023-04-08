@@ -13,7 +13,7 @@ router.route("/addladd").post((req,res) => {
     const startdate = req.body.startdate;
     const enddate =  req.body.enddate;
     const reason = req.body.reason;
-    const status = req.body.status;
+    const status = "Pending";
     DD.findOne({did: `${eid}`}, function(err, doc) {
         if (err) {
           console.error(err);  
@@ -65,7 +65,7 @@ router.route("/addlase").post((req,res) => {
     const startdate = req.body.startdate;
     const enddate =  req.body.enddate;
     const reason = req.body.reason;
-    const status = req.body.status;
+    const status = "Pending";
     SE.findOne({sid: `${eid}`}, function(err, doc) {
         if (err) {
           console.error(err);  
@@ -126,8 +126,6 @@ router.route("/deletela/:id").delete(async(req,res) => {
     })
 })
 
-
-
 router.route("/getId/:id").get(async(req,res) => {
     let id = req.params.id;
 
@@ -160,6 +158,17 @@ router.route("/update/:id").put(async(req,res) => {
     }).patch((err) => {
         console.log(err);
         res.status(500).json("Failed");
+    })
+
+
+    router.route("/getEid/:id").get((req, res) => {
+        let id = req.params.id;
+    
+        LeaveApplication.find({"eid": `${id}`}).then((e) => {
+            res.json(e)
+        }).catch((err) => {
+            console.log(err);
+        })
     })
 
 module.exports = router;

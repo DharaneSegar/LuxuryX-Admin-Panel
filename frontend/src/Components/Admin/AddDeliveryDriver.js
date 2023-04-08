@@ -17,6 +17,8 @@ function AddDeliveryDriver(){
     const [vehicleno,setVehicleNo] = useState("");
     const [nic,setNic] = useState("");
     const [basicsalary,setBasicSalary] = useState("");
+    const type = "Delivery Driver";
+    const eid = did;
 
 
     async function sendData(e){
@@ -73,6 +75,16 @@ function AddDeliveryDriver(){
             
         }).catch((msg)=>{
             alert(msg);
+        })
+
+        await axios.post("http://localhost:8070/t/det",{eid,
+        type,
+        basicsalary
+        }).then((res)=>{
+            
+            
+        }).catch((err)=>{
+            alert(err)
         })
 
     }

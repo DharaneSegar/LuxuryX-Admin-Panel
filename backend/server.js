@@ -50,3 +50,6 @@ app.use("/leave",leaveRouter);
 
 const salaryRouter = require("./routes/Salaries.js");
 app.use("/salary",salaryRouter);
+
+const transactionRouter = require("./routes/Transactions.js");
+app.use("/t",transactionRouter);

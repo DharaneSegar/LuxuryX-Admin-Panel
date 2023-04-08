@@ -16,6 +16,8 @@ function AddSalesExecutive(){
     const [qualification,setQualification] = useState("");
     const [basicsalary,setBasicSalary] = useState("");
     const [gender,setGender] = useState("");
+    const type = "Sales Executive";
+    const eid = sid;
 
     async function sendData(e){
         e.preventDefault();
@@ -74,6 +76,18 @@ function AddSalesExecutive(){
         }).catch((err)=>{
             alert(err)
         })
+
+        await axios.post("http://localhost:8070/t/det",{eid,
+        type,
+        basicsalary
+        }).then((res)=>{
+            
+            
+        }).catch((err)=>{
+            alert(err)
+        })
+
+
     }
     }
 

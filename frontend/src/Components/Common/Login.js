@@ -16,16 +16,23 @@ function Login(){
             await axios.post("http://localhost:8070/login/log",{
                 email,password,accType
         })
-        .then(res=>{
-            if(res.data === "admin"){
-                navigate("/adhome",{state:{id:email}});
-            }else if(res.data === "se"){
-                navigate("/sehome",{state:{id:email}});
-            }else if(res.data === "dd"){
-                navigate("/ddhome",{state:{id:email}});
+        .then((res) => {
+            if(res.data.type === "admin"){
+                window.localStorage.setItem("AdminInfo",JSON.stringify(res.data.check1))
+                console.log(res.data.check1.email)
+                navigate("/adhome");
+            }else if(res.data.type === "se"){
+                window.localStorage.setItem("SEInfo",JSON.stringify(res.data.check2))
+                navigate("/sehome");
+            }else if(res.data.type === "dd"){
+                window.localStorage.setItem("DDInfo",JSON.stringify(res.data.check3))
+                navigate("/ddhome");
             }     
             else if (res.data === "Not exist"){
                 alert("No such user available")
+            }
+            else if(res.data === "Invalid Password"){
+                alert("Invalid Password")
             }
         })
         .catch(e=>{
@@ -35,6 +42,8 @@ function Login(){
         }catch(e){
             console.log(e);
         }
+
+
 
     }
 

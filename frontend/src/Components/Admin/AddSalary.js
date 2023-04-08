@@ -13,53 +13,24 @@ export default function AddSalary(){
     var[paydate,setPaydate] = useState("");
     var[netsalary,setNetSalary] = useState("");
 
-    /*const[search,setSearch]= useState("");
-    const[data,setData] = useState("");
-    console.log(search);*/
-
-    /*useEffect(()=>{
-        function getSE(){
-            axios.get(`http://localhost:8070/salesexecutive/getSid/${search}`).then((res) => {
-            console.log(res.data.se);
-            setBasicSalary(res.data.se.basicsalary);
+    const[search,setSearch]= useState("");
+    
+    
+        function check(){
+            axios.get(`http://localhost:8070/t/get/${search}`).then((res) => {
+            console.log(res.data);
+            setType(res.data.t.type)
+            setEid(res.data.t.eid)
+            setBasicSalary(res.data.t.basicsalary)
+            
         }).catch((err) => {
-            alert(err.message);
+            setSearch("");
+            alert("No such Employee Id exists");
+            
         })
     }
 
-    getSE();
-},[])*/
-
-
-     /*async function sendData(e){
-        e.preventDefault();
-
-        await axios.post("http://localhost:8070/salary/addsal",{type,
-        eid,
-        basicsalary,
-        othrs,
-        otrate,
-        paydate,
-        netsalary
-        }).then((res)=>{
-            if(res.data === "Success" ){
-                alert("Inserted new salary transaction ");
-                //window.location.replace("/alldd");
-            }else if(res.data === "No id"){
-                alert("Couldn't find Employee id")
-            }
-            
-            else{
-                alert("Error in inserting");
-           
-
-            }
-            
-        }).catch((msg)=>{
-            alert(msg);
-        })
-     }*/
-
+ 
      async function Calculation(e){
         const r = Number(otrate);
         const b = Number(basicsalary);
@@ -95,7 +66,8 @@ export default function AddSalary(){
         })
 
      }
-    
+
+  
     
     return(
         <>
@@ -107,49 +79,41 @@ export default function AddSalary(){
         <div className="container1" >
                         <div className="row justify-content-center">
                             <div className="col-lg-5" >
-                                <br/><br/><br/>
+                                <br/><br/><br/><br/>
                                 
-                                {/*<form className="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                                
+                                <form className="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                 <div className="input-group">
-                    
-                
-                    <input className="form-control" type="text" placeholder="Search" aria-label="Search for..." aria-describedby="btnNavbarSearch" onChange={(e) =>{
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input className="form-control" type="text" placeholder="Type Employee Id here" aria-label="Search for..." aria-describedby="btnNavbarSearch" onChange={(e) =>{
                         setSearch(e.target.value);
                     }}/>
-                        <input type = "submit" className="btn btn-primary" id="btnNavbarSearch" value = "Search" ></input>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        
-                        <input className="form-control"  type="text" placeholder='salary' value = {basicsalary}/>
- 
-                                             
+                    <input type = "button" className="btn btn-primary" id="btnNavbarSearch" value = "Search" onClick={check}></input>
                 </div>
-                        
-
-            </form>*/}
-                                <div className="card shadow-lg border-0 rounded-lg mt-5">
+            </form>
+                                
+                                
+        
+               <div className="card shadow-lg border-0 rounded-lg mt-5">
                                     <div className="card-header"><h3 className="text-center font-weight-light my-4">Add Salary</h3></div>
                                     <div className="card-body">
                                         <form>
                                             <br/>
-
-                                        <div >
-                                        &nbsp;&nbsp;<label>Employee type : &nbsp;&nbsp;&nbsp;</label>
-                                                <input type="radio" id="s" name="type" value="Sales Executive" onChange={(e)=> {setType(e.target.value);}} required></input>
-                                                <label htmlFor="m"> &nbsp;&nbsp;Sales Executive &nbsp;&nbsp;&nbsp;</label>
-                                                <input type="radio" id="d" name="type" value="Delivery Driver" onChange={(e)=> {setType(e.target.value);}} required></input>
-                                                <label htmlFor="f"> &nbsp;&nbsp;Delivery Driver</label><br/>
+                                           
+                                            <div className="form-floating mb-3">
+                                                <label>Employee Type:</label><br/><br/>
+                                                <input className="form-control"  type="text" value = {type} />
+                                               
                                             </div>
 
                                         <div className="form-floating mb-3">
                                                 <label>Employee Id :</label><br/><br/>
-                                                <input className="form-control"  type="text" onChange={(e) => {setEid(e.target.value)}}/>
+                                                <input className="form-control"  type="text" value = {eid} />
                                                
                                             </div>
 
                                             <div className="form-floating mb-3">
                                                 <label>Basic Salary :</label><br/><br/>
-                                                <input className="form-control"  type="text" onChange={(e) => {setBasicSalary(e.target.value)}}/>
+                                                <input className="form-control"  type="text" value = {basicsalary}/>
                                                
                                             </div>
                                             <div className="form-floating mb-3">
@@ -188,6 +152,7 @@ export default function AddSalary(){
                                     </div>
                                    
                                 </div>
+                                
                             </div>
            </div>
            </div>

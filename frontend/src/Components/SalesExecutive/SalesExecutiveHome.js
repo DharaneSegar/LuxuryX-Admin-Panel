@@ -1,10 +1,9 @@
 import React from "react";
 import SalesExecutiveDashBoard from "./SalesExecutiveDashBoard";
 import Footer from "../Common/Footer";
-import {useLocation,useNavigate} from 'react-router-dom'
 
-function SalesExecutiveHome(){
-    const location = useLocation();
+function SEHome(){
+    var user = JSON.parse(localStorage.getItem('SEInfo'));
     return(
         <>
         <div>
@@ -14,7 +13,7 @@ function SalesExecutiveHome(){
             <main>
                 <div className="container-fluid px-4">
                     <br/><br/><br/>
-                    <h1 className="mt-4">Welcome {location.state.id}!!!</h1>
+                    <h1 className="mt-4">Welcome {user.fullname} !!</h1>
         
                     <img id="logo" src={require('../Common/images/logo.png')}/>
                     <br/><br/><br/>
@@ -22,11 +21,7 @@ function SalesExecutiveHome(){
                 
                 </div>
             </main>
-                    
-                    
-                    
-                    
-        
+  
         <Footer></Footer>
         </div>
         </>
@@ -34,4 +29,4 @@ function SalesExecutiveHome(){
     }
 
 
-export default SalesExecutiveHome;
+export default SEHome;

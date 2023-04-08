@@ -32,7 +32,7 @@ router.post("/addsal",async(req,res)=>{
                                 newval.save()
                                 seqId = 1
                             }else{
-                                seqid = cd.seq;
+                                seqId = cd.seq;
                             }
 
                             const Id = seqId;

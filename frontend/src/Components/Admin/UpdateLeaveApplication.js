@@ -17,8 +17,6 @@ function UpdateLeave(){
 
     const {id} = useParams();
 
-
-
     useEffect(() =>{
         function GET(){
             axios.get(`http://localhost:8070/leave/getId/${id}`).then((res) => {    

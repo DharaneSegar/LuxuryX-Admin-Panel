@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const SalesExecutive = require("../models/salesexecutive");
 
-
 router.post("/addse",async(req,res)=>{
     // console.log(req.body);
     const sid = req.body.sid;
@@ -14,6 +13,7 @@ router.post("/addse",async(req,res)=>{
     const qualification = req.body.qualification;
     const basicsalary = Number(req.body.basicsalary);
     const gender = req.body.gender;
+    
 
     try {
         
@@ -33,10 +33,14 @@ router.post("/addse",async(req,res)=>{
                 
             });
 
+            
+
             await newSalesExecutive.save();
             res.status(201).json(newSalesExecutive);
             console.log("Added");
             console.log(newSalesExecutive);
+
+            
         }
 
     } catch (error) {

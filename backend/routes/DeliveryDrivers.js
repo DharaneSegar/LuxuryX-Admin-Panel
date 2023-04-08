@@ -14,6 +14,7 @@ router.post("/adddd",async(req,res)=>{
     const vehicleno = req.body.vehicleno;
     const nic = req.body.nic;
     const basicsalary = Number(req.body.basicsalary);
+    const type = "Delivery Driver";
 
     try {
         
@@ -29,6 +30,7 @@ router.post("/adddd",async(req,res)=>{
                 did,fullname,email,password,address,phone,age,licenseno,vehicleno,nic,basicsalary
                 
             });
+
 
             await newDeliveryDriver.save();
             res.status(201).json(newDeliveryDriver);

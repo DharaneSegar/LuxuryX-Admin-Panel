@@ -13,14 +13,15 @@ import AllDeliveryDriver from './Components/Admin/AllDeliveryDrivers';
 import UpdateDeliveryDriver from './Components/Admin/UpdateDeliveryDriver';
 import ApplyForLeaveSE from './Components/SalesExecutive/ApplyForLeaveSE';
 import ApplyForLeaveDD from './Components/DeliveryDriver/ApplyForLeaveDD';
-import AdHome from './Components/Admin/Home';
-import SEHome from './Components/SalesExecutive/Home';
-import DDHome from './Components/DeliveryDriver/Home';
 import AllLeave from './Components/Admin/AllLeaves';
 import AddSalary from './Components/Admin/AddSalary';
 import UpdateLeave from './Components/Admin/UpdateLeaveApplication';
 import AllSalary from './Components/Admin/AllTransactions';
 import UpdateSalary from './Components/Admin/UpdateTransaction';
+import ViewProfileDD from './Components/DeliveryDriver/DeliveryDriverViewProfile';
+import ViewProfileSE from './Components/SalesExecutive/SalesExecutiveViewProfile';
+import ViewLeaveSE from './Components/SalesExecutive/SalesExecutiveViewLeave';
+import ViewLeaveDD from './Components/DeliveryDriver/DeliveryDriverViewLeave'
 
 
 
@@ -44,11 +45,8 @@ function App() {
         <Route exact path = "/addse" element={<AddSalesExecutive/>}/>
         <Route exact path = "/adddd" element={<AddDeliveryDriver/>}/>
         <Route exact path='/sehome' element={<SalesExecutiveHome/>}/>
-        <Route exact path='/shome' element={<SEHome/>}/>
         <Route exact path='/ddhome' element={<DeliveryDriverHome/>}/>
-        <Route exact path='/dhome' element={<DDHome/>}/>
         <Route exact path = '/adhome' element = {<AdminHome/>}/>
-        <Route exact path = '/ahome' element = {<AdHome/>}/>
         <Route exact path='/allse' element={<AllSalesExecutive/>}/>
         <Route exact path ='/updatese/:id' element={<UpdateSalesExecutive/>}/>
         <Route exact path = '/alldd' element = {<AllDeliveryDriver/>}/>
@@ -60,6 +58,10 @@ function App() {
         <Route exact path = '/updatela/:id' element = {<UpdateLeave/>}/> 
         <Route exact path = '/updatet/:id' element = {<UpdateSalary/>}/>
         <Route exact path = '/allsalary' element = {<AllSalary/>}/>
+        <Route exact path = '/viewse' element = {<ViewProfileSE/>}/>
+        <Route exact path = '/viewdd' element = {<ViewProfileDD/>}/>
+        <Route exact path = '/leavese' element = {<ViewLeaveSE/>}/>
+        <Route exact path = '/leavedd' element = {<ViewLeaveDD/>}/>
 
 
 
