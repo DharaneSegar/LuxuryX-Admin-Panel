@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const nodemailer =require("nodemailer");
 const Salary = require("../models/salary");
 const SE = require('../models/salesexecutive')
 const DD = require('../models/deliverydriver')
@@ -13,7 +14,10 @@ router.post("/addsal",async(req,res)=>{
     const otrate = Number(req.body.otrate);
     var paydate = req.body.paydate;
     const netsalary =  Number(req.body.netsalary);
-
+    const email = req.body.email;
+    console.log(email)
+    const msg =  "Your salary Rs." + netsalary + " has been credited"
+    console.log(msg)
 
     if(type == "Sales Executive"){
         SE.findOne({sid:`${eid}`},function(err,doc){
@@ -47,9 +51,46 @@ router.post("/addsal",async(req,res)=>{
                                     res.json("Failed");
                                     console.log(err);
                                     })
+
+                                    
                             
                         }
                     )
+
+                    try {
+                        //hfyfimbbvdzdypfh
+
+                        const transporter = nodemailer.createTransport({
+                            service: "gmail",
+                            auth: {
+                                user: "itpmetrogroup2@gmail.com",
+                                pass: "hfyfimbbvdzdypfh"
+                            }
+                        });
+                
+                        const mailOptions = {
+                            from: "itpmetrogroup2@gmail.com",
+                            to: email,
+                            subject: "Salary Transaction",
+                            html: msg
+                        };
+                
+                        transporter.sendMail(mailOptions, (error, info) => {
+                            if (error) {
+                                console.log("Error" + error)
+                            } else {
+                                console.log("Email sent:" + info.response);
+                                res.status(201).json({status:201,info})
+                            }
+                        })
+                
+                    } catch (error) {
+                        console.log("Error" + error);
+                        res.status(401).json({status:401,error})
+                    }
+                
+
+                    
                 }
                 else{
                     res.json("No id")
@@ -92,6 +133,37 @@ router.post("/addsal",async(req,res)=>{
                             
                         }
                     )
+                    try {
+                        //hfyfimbbvdzdypfh
+
+                        const transporter = nodemailer.createTransport({
+                            service: "gmail",
+                            auth: {
+                                user: "itpmetrogroup2@gmail.com",
+                                pass: "hfyfimbbvdzdypfh"
+                            }
+                        });
+                
+                        const mailOptions = {
+                            from: "itpmetrogroup2@gmail.com",
+                            to: email,
+                            subject: "Salary Transaction",
+                            html: msg
+                        };
+                
+                        transporter.sendMail(mailOptions, (error, info) => {
+                            if (error) {
+                                console.log("Error" + error)
+                            } else {
+                                console.log("Email sent:" + info.response);
+                                res.status(201).json({status:201,info})
+                            }
+                        })
+                
+                    } catch (error) {
+                        console.log("Error" + error);
+                        res.status(401).json({status:401,error})
+                    }
                 }
                 else{
                     res.json("No id")
@@ -124,7 +196,18 @@ router.route("/deletet/:id").delete(async(req,res) => {
 
 router.route("/update/:id").put(async(req,res) => {
     let Id = req.params.id;
-    const{othrs,otrate,paydate,netsalary} = req.body;
+    const{othrs,otrate,paydate,netsalary,email} = req.body;
+    var difference = req.body.difference
+    var msg;
+
+    if(difference < 0){
+        difference = difference * -1;
+        msg =  "Your salary has decreased by Rs." + difference 
+    }else{
+        msg =  "Your salary has increased by Rs." + difference 
+    }
+
+    console.log(msg)
 
     const updateTransaction = {
         othrs,
@@ -137,9 +220,44 @@ router.route("/update/:id").put(async(req,res) => {
 
      
         res.status(200).send("Done")
+        try {
+            //hfyfimbbvdzdypfh
+
+            const transporter = nodemailer.createTransport({
+                service: "gmail",
+                auth: {
+                    user: "itpmetrogroup2@gmail.com",
+                    pass: "hfyfimbbvdzdypfh"
+                }
+            });
+    
+            const mailOptions = {
+                from: "itpmetrogroup2@gmail.com",
+                to: email,
+                subject: "Change in salary",
+                html: msg
+            };
+    
+            transporter.sendMail(mailOptions, (error, info) => {
+                if (error) {
+                    console.log("Error" + error)
+                } else {
+                    console.log("Email sent:" + info.response);
+                    res.status(201).json({status:201,info})
+                }
+            })
+    
+        } catch (error) {
+            console.log("Error" + error);
+            res.status(401).json({status:401,error})
+        }
+
+        
     }).patch((err) => {
         console.log(err);
         res.status(500).json("Failed");
+
+
     })
 
 
@@ -152,6 +270,18 @@ router.route("/getId/:id").get(async(req,res) => {
         console.log(err.message);
 
         res.status(500).send({status : "Error with fetching details",error : err.message});
+    })
+})
+
+
+
+router.route("/getEid/:id").get((req, res) => {
+    let id = req.params.id;
+
+    Salary.find({"eid": `${id}`}).then((e) => {
+        res.json(e)
+    }).catch((err) => {
+        console.log(err);
     })
 })
 

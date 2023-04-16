@@ -45,12 +45,17 @@ function SalesExecutiveSideBar(){
                                     
                                 </nav>
                             </div>
-
-                            
-
-                            
-                            
-                          
+                            <a class="nav-link collapsed"  data-bs-toggle="collapse" data-bs-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
+                                <div className="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                Salary
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseExample1" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                    <a class="nav-link" href="./viewsalse" >My Salaries</a>
+                              
+                                </nav>
+                            </div>       
                     </div>
                    
         </div>

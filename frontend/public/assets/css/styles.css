@@ -12,11 +12,7 @@
  */
  
 
- #logo{
-  width:125%;
-  align-content: center;
-  align-self: center;
- }
+
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -129,6 +125,7 @@ h3,.h3{
   margin-bottom: 0.5rem;
   font-weight: 500;
   line-height: 1.2;
+  text-align: center;
 
 }
 h1, .h1 {
@@ -665,26 +662,7 @@ progress {
   
 }
 
-.container1{
-  width: 90%;
-  padding-right: var(--bs-gutter-x, 0.75rem);
-  padding-left: var(--bs-gutter-x, 0.75rem);
-  margin-right: auto;
-  margin-left: auto;
-  position:absolute; 
-  left:175px
 
-}
-
-.container2{
-  width: 100%;
-  padding-right: var(--bs-gutter-x, 0.75rem);
-  padding-left: var(--bs-gutter-x, 0.75rem);
-  margin-right: auto;
-  margin-left: auto;
-  position:absolute; 
-
-}
 
 
 
@@ -2046,6 +2024,7 @@ progress {
 
 .table-bordered > :not(caption) > *, .dataTable-table > :not(caption) > * {
   border-width: 1px 0;
+  padding: 0 0;
 }
 .table-bordered > :not(caption) > * > *, .dataTable-table > :not(caption) > * > * {
   border-width: 0 1px;
@@ -5540,10 +5519,11 @@ textarea.form-control-lg {
   position: fixed;
   top: 0;
   left: 0;
+  margin-left: 550px;
   z-index: 1055;
   display: none;
   width: 100%;
-  height: 100%;
+  height: 55%;
   overflow-x: hidden;
   overflow-y: auto;
   outline: 0;
@@ -5554,6 +5534,7 @@ textarea.form-control-lg {
   width: auto;
   margin: 0.5rem;
   pointer-events: none;
+  height: 50px;
 }
 .modal.fade .modal-dialog {
   transition: transform 0.3s ease-out;
@@ -5630,6 +5611,7 @@ textarea.form-control-lg {
 .modal-header .btn-close {
   padding: 0.5rem 0.5rem;
   margin: -0.5rem -0.5rem -0.5rem auto;
+  
 }
 
 .modal-title {
@@ -11766,14 +11748,20 @@ body {
 }
 
 .modalContainer {
-  width: 500px;
-  height: 500px;
-  border-radius: 12px;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  display: flex;
   flex-direction: column;
-  padding: 25px;
+  border-radius: 10px;
+  width:95%;
+  text-align: center;
+  background: rgba(0,0,0,0);
+  margin-left: 20px;
+  margin-right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  text-align: center;
 }
 
 .modalContainer .title {
@@ -11801,6 +11789,7 @@ body {
   align-items: center;
   font-size: 1.7rem;
   text-align: center;
+  padding:0px 0px 0px 0;
 }
 
 .modalContainer .footer {
@@ -11825,3 +11814,103 @@ body {
 #cancelBtn {
   background-color: crimson;
 }
+
+#login-modal{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal{
+  padding:10px 0px 20px 0;
+  border-radius: 10px;
+  width:450px;
+  text-align: center;
+  background: rgba(0,0,0,0.6);
+
+}
+
+.top-form{
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
+  padding: 0 20px;
+  font-size: 20px;
+  justify-content:right;
+  align-items: right;
+
+}
+
+ .close-modal{
+  cursor: pointer;
+  padding: 0 20px;
+  font-size: 20px;
+
+}
+.login-form{
+
+  margin-right: 70px;
+}
+
+#leave-modal{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 100;
+  justify-content: center;
+  align-items: center;
+}
+
+#logo{
+  width:125%;
+  align-content: center;
+  align-self: center;
+ }
+
+ #pic{
+  width:100%;
+  height:100%;
+  align-content: center;
+  align-self: center;
+ }
+
+
+ #pic1{
+  width:100%;
+  height:320px;
+  align-content: center;
+  align-self: center;
+ }
+ .container1{
+  width: 90%;
+  padding-right: var(--bs-gutter-x, 0.75rem);
+  padding-left: var(--bs-gutter-x, 0.75rem);
+  margin-right: auto;
+  margin-left: auto;
+  position:absolute; 
+  left:175px
+
+}
+
+.container2{
+  width: 100%;
+  padding-right: var(--bs-gutter-x, 0.75rem);
+  padding-left: var(--bs-gutter-x, 0.75rem);
+  margin-right: auto;
+  margin-left: auto;
+  position:absolute; 
+
+}
+
+
+

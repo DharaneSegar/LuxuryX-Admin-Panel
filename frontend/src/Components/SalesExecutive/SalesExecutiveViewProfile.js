@@ -11,6 +11,7 @@ function ViewProfileSE(){
         <div className="container mt-4 mb-4 p-3 d-flex justify-content-center" > 
 <div className="card p-4"> 
 <div className=" image d-flex flex-column justify-content-center "> 
+<img  id = "pic"src={user.image}/>
 <h1 style={{color:"red"}}>{user.fullname}</h1>
 <h3>Email&nbsp;: {user.email}</h3>
 <h3>Address&nbsp;: {user.address}</h3>

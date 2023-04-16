@@ -5,11 +5,11 @@ const Transaction = require("../models/transaction");
 router.post("/det",async(req,res)=>{
 
     const eid = req.body.eid;
-    const type = req.body.type;
+    const email = req.body.email;
     const basicsalary = Number(req.body.basicsalary);
 
     const newTransaction  =new Transaction({
-        eid,type,basicsalary
+        eid,email,basicsalary
 
     });
 
@@ -28,6 +28,16 @@ router.route("/get/:id").get(async(req,res) => {
         console.log(err.message);
 
         res.status(500).send({status : "Error with fetching details",error : err.message});
+    })
+})
+
+router.route("/delete/:id").delete(async(req,res) => {
+    let Id = req.params.id;
+    await Transaction.findOneAndDelete(Id).then(()=>{
+        res.status(200).json("success");
+    }).catch((err) => {
+        res.status(500).json("error");
+
     })
 })
 

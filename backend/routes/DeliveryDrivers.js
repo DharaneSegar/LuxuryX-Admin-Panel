@@ -1,7 +1,19 @@
 const router = require("express").Router();
 const DeliveryDriver = require("../models/deliverydriver");
+const multer = require("multer")
 
-router.post("/adddd",async(req,res)=>{
+const storage = multer.diskStorage({
+    destination:(req,file,callback)=>{
+        callback(null,"../frontend/public/assets/images")
+    },
+    filename:(req,file,callback)=>{
+        callback(null,file.originalname)
+    }
+})
+
+const upload = multer({storage:storage})
+
+router.post("/adddd" ,async(req,res)=>{
     // console.log(req.body);
     const did = req.body.did;
     const fullname = req.body.fullname;
@@ -14,8 +26,9 @@ router.post("/adddd",async(req,res)=>{
     const vehicleno = req.body.vehicleno;
     const nic = req.body.nic;
     const basicsalary = Number(req.body.basicsalary);
-    const type = "Delivery Driver";
-
+    const image = req.body.image;
+    
+    
     try {
         
         const preuser = await DeliveryDriver.findOne({email:email});
@@ -27,7 +40,7 @@ router.post("/adddd",async(req,res)=>{
         
         }else{
             const newDeliveryDriver = new DeliveryDriver({
-                did,fullname,email,password,address,phone,age,licenseno,vehicleno,nic,basicsalary
+                did,fullname,email,password,address,phone,age,licenseno,vehicleno,nic,basicsalary,image
                 
             });
 
@@ -49,36 +62,6 @@ router.route("/getdd").get((req,res)=>{
         console.log(err)
     })
 })
-
-
-router.route("/updatedd/:id").put(async(req,res) => {
-    let id = req.params.id;
-    const{fullname,email,password,address,phone,age,licenseno,vehicleno,nic,basicsalary} = req.body;
-
-    const updateDeliveryDriver = {
-        fullname,
-        email,
-        password,
-        address,
-        phone,
-        age,
-        licenseno,
-        vehicleno,
-        nic,
-        basicsalary
-    }
-
-    const update = await DeliveryDriver.findOneAndUpdate(id,updateDeliveryDriver).then(() => {
-        res.status(200).json("Success")
-
-        //user:update-pass the updated value to the front end
-
-    }).catch((err) => {
-        console.log(err);
-        res.status(500).json("Failed");
-    })
-})
-
 
 
     router.route("/deletedd/:id").delete(async(req,res) => {

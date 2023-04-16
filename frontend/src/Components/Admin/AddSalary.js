@@ -5,23 +5,31 @@ import Footer from "../Common/Footer";
 
 export default function AddSalary(){
 
-    const [type,setType] = useState("");
+    var [type,setType] = useState("");
     const[eid,setEid] = useState("");
     const[basicsalary,setBasicSalary] = useState("");
     const[othrs,setOTHrs] = useState("");
     const[otrate,setOTRate] = useState("");
     var[paydate,setPaydate] = useState("");
     var[netsalary,setNetSalary] = useState("");
+    const [email,setEmail] = useState("");
 
-    const[search,setSearch]= useState("");
+    var[search,setSearch]= useState("");
     
     
         function check(){
+            search = search.toUpperCase();
             axios.get(`http://localhost:8070/t/get/${search}`).then((res) => {
             console.log(res.data);
-            setType(res.data.t.type)
             setEid(res.data.t.eid)
+            setEmail(res.data.t.email)
             setBasicSalary(res.data.t.basicsalary)
+            if(eid.startsWith('S')){
+                setType("Sales Executive")
+            }
+            else if(eid.startsWith('D')){
+                setType("Delivery Driver")
+            }
             
         }).catch((err) => {
             setSearch("");
@@ -46,7 +54,8 @@ export default function AddSalary(){
         othrs,
         otrate,
         paydate,
-        netsalary
+        netsalary,
+        email
         }).then((res)=>{
             if(res.data === "Success" ){
                 alert("Inserted new salary transaction ");
@@ -66,9 +75,7 @@ export default function AddSalary(){
         })
 
      }
-
   
-    
     return(
         <>
         <div> 

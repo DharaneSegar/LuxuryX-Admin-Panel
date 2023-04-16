@@ -17,7 +17,7 @@ function AdHome(){
                     <h1 className="mt-4">Welcome {user.fullname} !!</h1>
         
                     <img id="logo" src={require('../Common/images/logo.png')}/>
-                    <br/><br/><br/>
+                    
 
                 
                 </div>

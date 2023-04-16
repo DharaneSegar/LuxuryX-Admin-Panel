@@ -1,13 +1,14 @@
 {
   "dependencies": {
     "bootstrap": "^5.2.3",
-    "dotenv": "^16.0.3"
+    "dotenv": "^16.0.3",
+    "nodemailer": "^6.9.1"
   },
   "devDependencies": {
     "concurrently": "^7.6.0",
     "nodemon": "^2.0.21"
   },
-  "scripts":{
-    "start":"node backend/server"
+  "scripts": {
+    "start": "node backend/server"
   }
 }

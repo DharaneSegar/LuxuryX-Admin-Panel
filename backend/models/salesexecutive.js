@@ -54,8 +54,10 @@ const SalesExecutiveSchema = new Schema({
         required: true,
         
     },
-
-    
+    image:{
+        type:String,
+        
+    }
 
 })
 

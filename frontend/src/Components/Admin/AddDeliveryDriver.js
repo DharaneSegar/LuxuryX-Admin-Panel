@@ -17,12 +17,24 @@ function AddDeliveryDriver(){
     const [vehicleno,setVehicleNo] = useState("");
     const [nic,setNic] = useState("");
     const [basicsalary,setBasicSalary] = useState("");
-    const type = "Delivery Driver";
+    const [image,setImage] = useState("")
     const eid = did;
+
+    function convert(e){
+        var reader = new FileReader();
+        reader.readAsDataURL(e.target.files[0]);
+        reader.onload = () => {
+            setImage(reader.result);
+        }
+        reader.onerror = error => {
+            console.log("Error: ",error);
+        }
+    }
 
 
     async function sendData(e){
         e.preventDefault();
+
         var input = document.getElementById("pswd").value;
         var em = document.getElementById("em").value;
         var d = document.getElementById("did").value;
@@ -63,7 +75,9 @@ function AddDeliveryDriver(){
         licenseno,
         vehicleno,
         nic,
-        basicsalary
+        basicsalary,
+        image
+        
         }).then((res)=>{
             if(res.data === "Taken" ){
                 alert("User already available provide another email address ");
@@ -78,7 +92,7 @@ function AddDeliveryDriver(){
         })
 
         await axios.post("http://localhost:8070/t/det",{eid,
-        type,
+        email,
         basicsalary
         }).then((res)=>{
             
@@ -164,6 +178,11 @@ function AddDeliveryDriver(){
                                             <div className="form-floating mb-3">
                                                 <label>Basic Salary :</label><br/><br/>
                                                 <input className="form-control"  type="text" name = "basicsalary" placeholder="Type basic salary" onChange={(e)=> {setBasicSalary(e.target.value);}} required/>
+                                            </div>
+                                            
+                                            <div className="form-floating mb-3">
+                                                <label>Add Image :</label><br/><br/>
+                                                <input   type="file"  placeholder="Add Image" accept = "image/" filename = "image" onChange={convert} required/>
                                             </div>
 
                                             <br/>

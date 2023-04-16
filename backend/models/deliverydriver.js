@@ -60,6 +60,10 @@ const DeliveryDriverSchema = new Schema({
     basicsalary:{
         type:Number,
         required: true,
+    },
+    image:{
+        type:String,
+        required:true
     }
    
 

@@ -13,6 +13,7 @@ router.post("/addse",async(req,res)=>{
     const qualification = req.body.qualification;
     const basicsalary = Number(req.body.basicsalary);
     const gender = req.body.gender;
+    const image = req.body.image;
     
 
     try {
@@ -29,19 +30,19 @@ router.post("/addse",async(req,res)=>{
 
         }else{
             const newSalesExecutive = new SalesExecutive({
-                sid,fullname,email,password,address,phone,age,qualification,basicsalary,gender
+                sid,fullname,email,password,address,phone,age,qualification,basicsalary,gender,image
+
+                
                 
             });
 
-            
-
             await newSalesExecutive.save();
-            res.status(201).json(newSalesExecutive);
-            console.log("Added");
-            console.log(newSalesExecutive);
+                res.status(201).json(newSalesExecutive);
+                console.log("Added");
+                console.log(newSalesExecutive);
 
-            
         }
+
 
     } catch (error) {
         res.status(422).json(error);
@@ -84,35 +85,6 @@ router.route("/update/:id").put(async(req,res) => {
     })
 })
 
-router.route("/updatese/:id").put(async(req,res) => {
-    let id = req.params.id;
-    const{fullname,email,password,address,phone,age,qualification,basicsalary,gender} = req.body;
-
-    const updateSalesExecutive = {
-        fullname,
-        email,
-        password,
-        address,
-        phone,
-        age,
-        qualification,
-        basicsalary,
-        gender
-    }
-
-    const update = await SalesExecutive.findOneAndUpdate(id,updateSalesExecutive).then(() => {
-        res.status(200).json("Success")
-
-        //user:update-pass the updated value to the front end
-
-    }).catch((err) => {
-        console.log(err);
-        res.status(500).json("Failed");
-    })
-})
-
-
-
     router.route("/deletese/:id").delete(async(req,res) => {
         let Id = req.params.id;
         await SalesExecutive.findByIdAndDelete(Id).then(()=>{
@@ -122,19 +94,6 @@ router.route("/updatese/:id").put(async(req,res) => {
 
         })
     })
-
-
-router.route("/get/:id").get(async(req,res) => {
-    let Id = req.params.id;
-
-    const user = await SalesExecutive.findById(Id).then((user) => {
-        res.json("Success");
-        console.log(user)
-    }).catch((err) => {
-        console.log(err.message);
-        res.json("Failed");
-    })
-})
 
 
 router.route("/getSid/:id").get(async(req,res) => {

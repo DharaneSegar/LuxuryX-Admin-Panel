@@ -7,12 +7,12 @@ const TSchema = new Schema({
         required: true,
         
     },
-    type:{
+    email:{
         type:String,
         required: true,
-        unique:true,
         
     },
+
     basicsalary:{
         type:Number,
         required: true,

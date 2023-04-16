@@ -11,9 +11,9 @@ function Header(){
             const sidebarToggle = document.body.querySelector('#sidebarToggle');
             if (sidebarToggle) {
                 // Uncomment Below to persist sidebar toggle between refreshes
-                 if (window.localStorage.getItem('sb|sidebar-toggle') === 'true') {
+                 /*if (window.localStorage.getItem('sb|sidebar-toggle') === 'true') {
                     document.body.classList.toggle('sb-sidenav-toggled');
-                }
+                }*/
                 sidebarToggle.addEventListener('click', event => {
                     event.preventDefault();
                     document.body.classList.toggle('sb-sidenav-toggled');

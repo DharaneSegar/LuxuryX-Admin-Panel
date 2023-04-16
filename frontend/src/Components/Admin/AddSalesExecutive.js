@@ -16,8 +16,21 @@ function AddSalesExecutive(){
     const [qualification,setQualification] = useState("");
     const [basicsalary,setBasicSalary] = useState("");
     const [gender,setGender] = useState("");
-    const type = "Sales Executive";
+    const [image,setImage] = useState("")
     const eid = sid;
+
+    function convert(e){
+        var reader = new FileReader();
+        reader.readAsDataURL(e.target.files[0]);
+        reader.onload = () => {
+            setImage(reader.result);
+        }
+        reader.onerror = error => {
+            console.log("Error: ",error);
+        }
+    }
+
+    
 
     async function sendData(e){
         e.preventDefault();
@@ -36,7 +49,7 @@ function AddSalesExecutive(){
             alert("Password should contain a simple letter,a capital letter,a number and a special character")
         }
         else if(s.startsWith("S") === false){
-            alert("did should start with D ")
+            alert("sid should start with S ")
         }
         else if(s.length !== 4){
             alert("did should consist 4 characters")
@@ -62,7 +75,8 @@ function AddSalesExecutive(){
         age,
         qualification,
         basicsalary,
-        gender
+        gender,
+        image
         }).then((res)=>{
             if(res.data === "Taken"){
                 alert("User already available provide another email address ");
@@ -78,7 +92,7 @@ function AddSalesExecutive(){
         })
 
         await axios.post("http://localhost:8070/t/det",{eid,
-        type,
+        email,
         basicsalary
         }).then((res)=>{
             
@@ -164,7 +178,14 @@ function AddSalesExecutive(){
                                                 <label htmlFor="m"> &nbsp;&nbsp;Male &nbsp;</label>
                                                 <input type="radio" id="f" name="gender" value="Female" onChange={(e)=> {setGender(e.target.value);}} required></input>
                                                 <label htmlFor="f"> &nbsp;&nbsp;Female</label><br/>
-                                            </div><br/><br/>
+                                            </div>
+
+                                            <div className="form-floating mb-3">
+                                                <label>Add Image :</label><br/><br/>
+                                                <input   type="file"  placeholder="Add Image" accept = "image/" onChange={convert} required/>
+                                            </div>
+                                            
+                                            <br/>
 
                                                 <div className="d-grid">
                                                     <input type='submit' className="btn btn-primary"  onClick = {sendData} value = "Add"></input></div>

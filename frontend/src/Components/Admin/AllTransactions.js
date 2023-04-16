@@ -4,7 +4,7 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import axios from 'axios';
 import AdminDashBoard from './AdminDashBoard';
 import Footer from '../Common/Footer';
-import { NavLink } from 'react-router-dom';
+import { NavLink,Link } from 'react-router-dom';
 
 
 
@@ -26,6 +26,10 @@ export default function AllSalary(){
     get();
 },[])
 
+function modal(){
+    var pdf = document.getElementById("pdf").value;
+    pdf.fadeIn().css("display","flex")
+}
 
     return(
         <>
@@ -35,22 +39,28 @@ export default function AllSalary(){
                 <div className="container">
                     <div className="add_btn mt-2 mb-2">
                         <br/><br/><br/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a className="btn btn-primary" href='http://localhost:3000/addsalary'>Add Transaction</a>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <form className="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                <div className="input-group">
-                    <input className="form-control" type="text" placeholder="Type Transaction Id here" aria-label="Search for..." aria-describedby="btnNavbarSearch" onChange={(e) =>{
+                        <div className="input-group">
+                    <input className="form-control" type="text" placeholder="Search here" aria-label="Search for..." aria-describedby="btnNavbarSearch" onChange={(e) =>{
                         setQuery(e.target.value);
                     }}/>
                 </div>
             </form>
+            
+            
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <Link to = {`http://localhost:3000/reportt/${query}`} className="btn btn-primary">Yearly Report</Link>
+                        
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <Link to = {`http://localhost:3000/reportt/${query}`} className="btn btn-primary">Monthly Report</Link>
+                        
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <Link to = {`http://localhost:3000/reportt/${query}`} className="btn btn-primary">Daily Report</Link>
+                        
                    
                     </div>
-                    <br/><br/>
+                    <br/>
 
                     <table className="table">
                         <thead>
@@ -71,7 +81,10 @@ export default function AllSalary(){
                         <tbody>
                         {
                                transactions.filter((t) => 
-                               t.Id.toString().includes(query)).map((t) => (
+                               t.paydate.slice(5,7).includes(query)||
+                               t.paydate.slice(0,7).includes(query)||
+                               t.paydate.includes(query)
+                               ).map((t) => (
                         
                                     <tr> 
                                     <th scope='row'>{t.Id}</th>

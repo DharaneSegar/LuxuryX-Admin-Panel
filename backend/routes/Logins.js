@@ -15,7 +15,8 @@ router.post("/log",async(req,res)=>{
         if((check1) && accType === "Admin"){
             const p1 = await Admin.findOne({password:password})
             if(p1){
-                res.send({type:"admin",check1})
+                res.json({type:"admin",check1})
+                
                 
             }else{
                 res.json("Invalid Password")

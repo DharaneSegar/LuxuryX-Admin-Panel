@@ -14,6 +14,9 @@ export default function UpdateSalary(){
     const[otrate,setOTRate] = useState("");
     const [paydate,setPaydate] = useState("");
     var[netsalary,setNetSalary] = useState("");
+    var [email,setEmail] = useState("");
+    var oldsal;
+    var difference;
 
     const {id} = useParams();
 
@@ -36,22 +39,40 @@ export default function UpdateSalary(){
     GET();
 },[])
 
+if(eid.startsWith('S')){
+    axios.get(`http://localhost:8070/salesexecutive/getSid/${eid}`).then((res) => {
+        setEmail(res.data.se.email)
+})
+
+}else{
+    axios.get(`http://localhost:8070/deliverydriver/getDid/${eid}`).then((res) => {
+        setEmail(res.data.dd.email)
+
+})
+}
+
 
      async function updateData(e){
         e.preventDefault();
 
+        oldsal = Number(netsalary)
+        console.log(oldsal)
         const r = Number(otrate);
         const b = Number(basicsalary);
         const h = Number(othrs);
         var val = (r/100) * b;
         netsalary = b + (h*val);
         setNetSalary(netsalary);
+        difference = Number(netsalary - oldsal)
+        console.log(difference)
 
         await axios.put(`http://localhost:8070/salary/update/${Id}`,{
         othrs,
         otrate,
         paydate,
-        netsalary
+        netsalary,
+        difference,
+        email
         }).then((res)=>{
             if(res.data === "Done" ){
                 alert("Transaction updated successfully ");
