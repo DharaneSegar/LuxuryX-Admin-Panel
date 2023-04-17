@@ -11912,5 +11912,10 @@ body {
 
 }
 
+.containerf{
+  display: flex;
+flex-direction: row;
+
+}
 
 

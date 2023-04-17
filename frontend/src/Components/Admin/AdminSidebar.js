@@ -153,17 +153,21 @@ function AdminSideBar() {
                   data-bs-parent="#sidenavAccordion"
                 >
                   <nav class="sb-sidenav-menu-nested nav accordion">
-                    <a class="nav-link" href="">
+                    <a class="nav-link" href="/addsupplier">
                       Add Suppliers
                     </a>
-                    <a className="nav-link" href="">
+                    <a className="nav-link" href="/supplier">
                       View Suppliers
                     </a>
-                    <a class="nav-link" href="">
-                      Add Stock
+                    <a class="nav-link" href="/addsupplierTransaction">
+                      Add Supplier Transaction
                     </a>
+                    <a className="nav-link" href="/supplierTransaction">
+                      View Supplier Transactions
+                    </a>
+
                     <a className="nav-link" href="">
-                      View Stock
+                      Inventory Report
                     </a>
 
                     <div

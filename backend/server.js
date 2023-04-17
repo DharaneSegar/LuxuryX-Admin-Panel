@@ -57,3 +57,9 @@ app.use("/salary",salaryRouter);
 
 const transactionRouter = require("./routes/Transactions.js");
 app.use("/t",transactionRouter);
+
+const supplierRouter = require("./routes/Supplier.js");
+app.use("/supplier", supplierRouter);
+
+const supplierTransactionRouter = require("./routes/SupplierTransaction.js");
+app.use("/supplierTransaction", supplierTransactionRouter);

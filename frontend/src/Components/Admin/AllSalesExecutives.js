@@ -1,4 +1,4 @@
-Simport React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import CreateIcon from "@mui/icons-material/Create";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";

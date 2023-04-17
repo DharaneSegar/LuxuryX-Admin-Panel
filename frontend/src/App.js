@@ -29,10 +29,18 @@ import ViewSalarySE from './Components/SalesExecutive/SalesExecutiveSalary';
 import ViewSalaryDD from './Components/DeliveryDriver/DeliveryDriverSalary';
 
 
+import AddSupplier  from './Components/Supplier/AddSupplier';
+import AllSuppliers from './Components/Supplier/AllSuppliers';
+import UpdateSupplier from './Components/Supplier/UpdateSupplier';
+import DeleteSupplier from './Components/Supplier/DeleteSupplier';
+import AddSupplierTransaction from './Components/Supplier/AddSupplierTransaction';
+import AllSupplierTransactions from './Components/Supplier/AllSupplierTransactions';
+import UpdateSupplierTransaction from './Components/Supplier/UpdateSupplierTransaction';
+import DeleteSupplierTransaction from './Components/Supplier/DeleteSupplierTransaction';
 
 
-import Table from './Components/Admin/table'
-import Form from './Components/Admin/form';
+
+
 
 
 function App() {
@@ -69,11 +77,17 @@ function App() {
         <Route exact path = '/reportt/:query' element = {<TransactionReport/>}/>
         <Route exact path = '/viewsalse' element = {<ViewSalarySE/>}/>
         <Route exact path = '/viewsaldd' element = {<ViewSalaryDD/>}/>
+        <Route path="/supplier" element={<AllSuppliers/>} exact />
+      <Route path="/addsupplier" element={<AddSupplier/>} exact />
+      <Route path="/updatesupplier/:id" element={<UpdateSupplier/>} exact />
+      <Route path="/deletesupplier/:id" element={<DeleteSupplier/>} exact />
+
+      <Route path="/addsupplierTransaction" element={<AddSupplierTransaction/>} exact />
+      <Route path="/supplierTransaction" element={<AllSupplierTransactions/>} exact />
+      <Route path="/updatesupplierTransaction/:id" element={<UpdateSupplierTransaction/>} exact />
+      <Route path="/deletesupplierTransaction/:id" element={<DeleteSupplierTransaction/>} exact />
 
 
-
-        <Route exact path = '/table' element = {<Table/>}/>
-        <Route exact path = '/form' element = {<Form/>}/>
 
         
         </Routes>
