@@ -1,67 +1,34 @@
 const router = require("express").Router();
-const SalesExecutive = require("../models/salesexecutive");
+const SalesExecutive = require("../models/salesexecutive"); //import sales executive model
 
-router.post("/addse",async(req,res)=>{
-    // console.log(req.body);
-    const sid = req.body.sid;
-    const fullname = req.body.fullname
-    const email = req.body.email;
-    const password = req.body.password;
-    const address = req.body.address;
-    const phone = Number(req.body.phone);
-    const age = Number(req.body.age);
-    const qualification = req.body.qualification;
-    const basicsalary = Number(req.body.basicsalary);
-    const gender = req.body.gender;
-    const image = req.body.image;
-    
+//CREATE function - create/adding a salesexecutive
 
-    try {
-        
-        const preuser = await SalesExecutive.findOne({email:email});
-        const useId = await SalesExecutive.findOne({sid:sid});
-        console.log(preuser);
+router.post("/addse", async (req, res) => {
+  // get the body of the request and store the values in variables
+  const sid = req.body.sid;
+  const fullname = req.body.fullname;
+  const email = req.body.email;
+  const password = req.body.password;
+  const address = req.body.address;
+  const phone = Number(req.body.phone);
+  const age = Number(req.body.age);
+  const qualification = req.body.qualification;
+  const basicsalary = Number(req.body.basicsalary);
+  const gender = req.body.gender;
+  const image = req.body.image;
 
-        if(preuser){
-            res.status(200).json("Taken");
-        
-        }else if(useId){
-            res.status(200).json("Id");
+  try {
+    const preuser = await SalesExecutive.findOne({ email: email }); //check whether the email address already exists
+    const useId = await SalesExecutive.findOne({ sid: sid }); //check whether the sid already exists
+    console.log(preuser);
 
-        }else{
-            const newSalesExecutive = new SalesExecutive({
-                sid,fullname,email,password,address,phone,age,qualification,basicsalary,gender,image
-
-                
-                
-            });
-
-            await newSalesExecutive.save();
-                res.status(201).json(newSalesExecutive);
-                console.log("Added");
-                console.log(newSalesExecutive);
-
-        }
-
-
-    } catch (error) {
-        res.status(422).json(error);
-    }
-})
-
-router.route("/getse").get((req,res)=>{
-    SalesExecutive.find().then((salesexecutives) => {
-        res.json(salesexecutives)
-    }).catch((err)=>{
-        console.log(err)
-    })
-})
-
-router.route("/update/:id").put(async(req,res) => {
-    let id = req.params.id;
-    const{sid,fullname,email,password,address,phone,age,qualification,basicsalary,gender} = req.body;
-
-    const updateSalesExecutive = {
+    if (preuser) {
+      res.status(200).json("Taken"); //response in json format is sent to the frontend if email is already taken
+    } else if (useId) {
+      res.status(200).json("Id"); //response in json format is sent to the frontend if sid is already taken
+    } else {
+      const newSalesExecutive = new SalesExecutive({
+        //creating object from salesexecutive model and assigning it to a const variable
         sid,
         fullname,
         email,
@@ -71,72 +38,101 @@ router.route("/update/:id").put(async(req,res) => {
         age,
         qualification,
         basicsalary,
-        gender
+        gender,
+        image,
+      });
+
+      await newSalesExecutive.save(); //save the newly created object in the database using save function
+      res.status(201).json(newSalesExecutive); //response in json format is sent if above condition true(if object is passed)
     }
+  } catch (error) {
+    //if unsuccess
+    res.status(422).json(error); //catches error and send tthe error as a json object to the frontend
+  }
+});
 
-    const update = await SalesExecutive.findByIdAndUpdate(id,updateSalesExecutive).then(() => {
-        res.status(200).json("Success");
+//READ function - fetch data of all salesexecutives
 
-        //user:update-pass the updated value to the front end
-
-    }).catch((err) => {
-        console.log(err);
-        res.status(500).json("Failed");
+router.route("/getse").get((req, res) => {
+  //get is used to retrieve data from database
+  SalesExecutive.find()
+    .then((salesexecutives) => {
+      //find() method is used to fetch details of all deliverydrivers from the db
+      res.json(salesexecutives);//if success, then a response is sent to front end(response is all sales executives)
     })
-})
+    .catch((err) => {
+      console.log(err);
+    });
+});
 
-    router.route("/deletese/:id").delete(async(req,res) => {
-        let Id = req.params.id;
-        await SalesExecutive.findByIdAndDelete(Id).then(()=>{
-            res.status(200).json("success");
-        }).catch((err) => {
-            res.status(500).json("error");
+//DELETE function
 
-        })
+router.route("/deletese/:id").delete(async (req, res) => {
+  let Id = req.params.id;//get the id from the request(parameter)
+  await SalesExecutive.findByIdAndDelete(Id)//delete the deliverydriver with whose id = Id
+    .then(() => {
+      res.status(200).json("success");//send success message to the frontend
     })
+    .catch((err) => {
+      res.status(500).json("error");//send error message to the frontend
+    });
+});
 
+//Function to get the the salesexecutive details by their sid
 
-router.route("/getSid/:id").get(async(req,res) => {
-    let id = req.params.id;
+router.route("/getSid/:id").get(async (req, res) => {
+  let id = req.params.id;//get the id from the request(parameter)
 
-    await SalesExecutive.findOne({"sid" : `${id}`}).then((se) => {
-        res.status(200).send({status : "SE Details fetched", se})
-    }).catch((err) => {
-        console.log(err.message);
-
-        res.status(500).send({status : "Error with fetching SE details",error : err.message});
+  await SalesExecutive.findOne({ sid: `${id}` })//compare the sid with the got id and return the details
+    .then((se) => {
+      res.status(200).send({ status: "SE Details fetched", se });//send response as a json object and a status
     })
-})
+    .catch((err) => {
+      console.log(err.message);
 
-router.route("/update/:id").put(async(req,res) => {
+      res.status(500).send({ status: "Error with fetching SE details", error: err.message }); //send error message
+    });
+});
 
-    let Id = req.params.id;
+//UPDATE function
 
-    const{fullname,email,password,address,phone,age,qualification,basicsalary,gender} = req.body;
-   
+router.route("/update/:id").put(async (req, res) => {
+    let Id = req.params.id;//get the id from the request(parameter)
 
-        //This variable is the object to update. This object will be passed to the record of the variable "userId" and the respective id is updated with these values in the object.
+    // get the body of the request and store the values in variables
+    const {
+      fullname,
+      email,
+      password,
+      address,
+      phone,
+      age,
+      qualification,
+      basicsalary,
+      gender,
+    } = req.body;
 
-        const updateSalesExecutive = {
-            fullname,
-            email,
-            password,
-            address,
-            phone,
-            age,
-            qualification,
-            basicsalary,
-            gender
-        }
+    //This variable is the object to update. This object will be passed to the record of the variable "Id" and the respective id is updated with these values in the object.
 
-        await SalesExecutive.findByIdAndUpdate(Id,updateSalesExecutive);
+    const updateSalesExecutive = {//fetch the retrieved info to a variable
+      fullname,
+      email,
+      password,
+      address,
+      phone,
+      age,
+      qualification,
+      basicsalary,
+      gender,
+    };
 
-     
-        res.status(200).send("Done")
-    }).patch((err) => {
-        console.log(err);
-        res.status(500).json("Failed");
-    })
+    await SalesExecutive.findByIdAndUpdate(Id, updateSalesExecutive);// update the details with the update variable where id = "Id"
 
+    res.status(200).send("Done");//send status
+  })
+  .patch((err) => {
+    console.log(err);
+    res.status(500).json("Failed");//send status
+  });
 
 module.exports = router;
