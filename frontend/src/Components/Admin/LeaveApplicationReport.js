@@ -9,7 +9,6 @@ export default function LeaveReport() {
     content: () => componentPDF.current,
     documentTitle: "Leavedata",
     onAfterPrint: () => {
-      alert("Data saved in PDF");
       window.location.replace("/allleave");
     },
   });

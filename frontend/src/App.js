@@ -100,7 +100,7 @@ function App() {
       
         <Route path="/supplierTransactionReport" element={<SupplierTransactionReport/>} exact />
         <Route path="/supplierReport" element={<SupplierReport/>} exact />
-        <Route exact path = "customer" element = {<RegCustomers/>}/>
+        <Route exact path = "/customer" element = {<RegCustomers/>}/>
         <Route exact path="/AddProducts" element={<AddProducts />} />
         <Route exact path="/EditProducts" element={<EditProducts />} />
         <Route exact path="/ViewProducts" element={<ViewProducts />} />

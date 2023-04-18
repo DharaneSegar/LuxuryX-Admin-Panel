@@ -1,16 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useRef } from "react";
 import axios from "axios";
 import AdminDashBoard from "../AdminDashBoard";
 import { useNavigate } from 'react-router-dom';
 import CreateIcon from '@mui/icons-material/Create';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import Footer from "../../Common/Footer";
+import { useReactToPrint } from "react-to-print";
 
 function ViewProducts() {
   const navigate = useNavigate();
+  const componentPDF = useRef();
 
   const [state, setState] = useState({
     getAllProducts: [],
     isLoading: false,
+  });
+
+  const generatePDF = useReactToPrint({
+    content: () => componentPDF.current,
+    documentTitle: "ProductReport",
+    onAfterPrint: () => {
+      window.location.replace("/ViewProducts");
+    },
   });
 
   const getProducts = () => {
@@ -59,8 +70,13 @@ function ViewProducts() {
               <div >
                 <div >
                   <div>
-                    <h1 style={{ textAlign: "center" }}>View All Products</h1>
-                    <div>
+                    <h1 style={{ textAlign: "center", marginLeft: "160px"}}>View All Products</h1>
+                    <div >
+                    <a className="btn btn-primary" style={{ marginLeft: "500px" }}onClick={generatePDF}>
+                        Generate Report
+                      </a>
+                      <br/><br/>
+                      <div ref = {componentPDF}>
                       <table className="table">
                         <thead>
                           <tr className="table-dark">
@@ -109,6 +125,7 @@ function ViewProducts() {
                           )}
                         </tbody>
                       </table>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -117,7 +134,7 @@ function ViewProducts() {
           </main>
         </div>
       </div>
-      {/* <Footer /> */}
+     <Footer></Footer>
     </div>
   );
 }

@@ -43,7 +43,6 @@ export default function DeliveryDriverView() {
     content: () => componentPDF.current,
     documentTitle: "DeliveryDriverData",
     onAfterPrint: () => {
-      alert("Data saved in PDF");
       window.location.replace("/deliveryDriverView");
     },
   });

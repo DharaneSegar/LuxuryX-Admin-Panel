@@ -38,9 +38,9 @@ export default function AllSupplierTransaction() {
     const generatePDF = useReactToPrint({
         content: () => componentPDF.current,
         documentTitle: "SupplierTransaction",
-        onAfterPrint: () => alert("Data saved in Report")
+        onAfterPrint: () => window.location.replace("/supplierTransaction")
     });
-
+   
     return (
         <div>
             <Header></Header>

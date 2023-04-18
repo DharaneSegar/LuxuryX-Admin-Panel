@@ -123,14 +123,21 @@ router.route("/updateQuantitysupplierTransaction/:id").put(async(req,res) => {
     })
 
 
-    router.route("/searchsupplierTransaction/:keyword").get(async (req, res) => {
-        let keyword = req.params.keyword;
-        await SupplierTransaction.find({ "ProductName": `${keyword}` }).then((supplierTransactions) => {
-            res.json(supplierTransactions);
-        }).catch((err) => {
-            console.log(err.message);
-            res.status(500).send({ status: "Error with get the supplier transaction", error: err.message });
-        })
-    })
+    router.get("/search/:key", async (req, res) => {
+        let result = await SupplierTransaction.find({
+          $or: [
+            {
+              InvoiceNo: { $regex: req.params.key },
+            },
+            {
+              ProductName: { $regex: req.params.key },
+            },
+            {
+              Supplier: { $regex: req.params.key },
+            },
+          ],
+        });
+        res.send(result);
+      });
 
 module.exports = router;

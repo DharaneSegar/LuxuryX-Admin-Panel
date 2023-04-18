@@ -14,5 +14,23 @@ router.route("/").get((req, res) => {
     });
 });
 
+//search function
+router.get("/search/:key", async (req, res) => {
+  let result = await User.find({
+    $or: [
+      {
+        email: { $regex: req.params.key },
+      },
+      {
+        fname: { $regex: req.params.key },
+      },
+      {
+        address: { $regex: req.params.key },
+      },
+    ],
+  });
+  res.send(result);
+});
+
 
 module.exports = router;

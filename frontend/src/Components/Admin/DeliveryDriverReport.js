@@ -26,7 +26,6 @@ export default function DeliveryDriverReport() {
     content: () => componentPDF.current,
     documentTitle: "DeliveryDriverdata",
     onAfterPrint: () => {
-      alert("Data saved in PDF");
       window.location.replace("/alldd");
     },
   });

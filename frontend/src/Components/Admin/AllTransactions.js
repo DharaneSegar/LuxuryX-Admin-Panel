@@ -37,54 +37,44 @@ export default function AllSalary() {
               <br />
               <br />
               <br />
+
+              <div className="row justify-content-center"></div>
+
+            <div>
+              <input
+                type="text"
+                id="searchDelivery"
+                style={{ marginLeft: "200px" }}
+                placeholder="Search here"
+                onChange={(e) => setQuery(e.target.value)}
+              />
               
-                <div className="col-xl-3 col-md-6">
-                  <form className="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                    <input
-                      className="search-box2"
-                      type="text"
-                      placeholder="Search here"
-                      aria-label="Search for..."
-                      aria-describedby="btnNavbarSearch"
-                      onChange={(e) => {
-                        setQuery(e.target.value);
-                      }}
-                    />
-                  </form>
-                </div>
-                <br/>
-                
-                <div className="row1">
-                <div class="col-xl-3 col-md-0"> </div>
-                  
-                <div class="col-xl-3 col-md-0">
-                <Link
+              <Link style={{ marginLeft: "80px" }}
                 to={`http://localhost:3000/reportt/${query}`}
                 className="btn btn-primary"
               >
                 Yearly Report
               </Link>
-                </div>
 
-                <div class="col-xl-3 col-md-6">
-                <Link
+              <Link style={{ marginLeft: "80px" }}
                 to={`http://localhost:3000/reportt/${query}`}
                 className="btn btn-primary"
               >
                 Monthly Report
               </Link>
-                </div>
 
-                <div class="col-xl-3 col-md-6">
-                <Link
+              <Link style={{ marginLeft: "80px" }}
                 to={`http://localhost:3000/reportt/${query}`}
                 className="btn btn-primary"
               >
                 Daily Report
               </Link>
-                </div>
-              </div>
             </div>
+          </div>
+              
+                <br/>
+                
+                
 
             <br />
 

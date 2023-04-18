@@ -28,7 +28,6 @@ export default function TransactionReport() {
     content: () => componentPDF.current,
     documentTitle: "Transaction Data",
     onAfterPrint: () => {
-      alert("Data saved in PDF");
       window.location.replace("/allsalary");
     },
   });

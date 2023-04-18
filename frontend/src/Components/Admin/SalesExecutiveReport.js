@@ -26,7 +26,6 @@ export default function SalesExecutiveReport() {
     content: () => componentPDF.current,
     documentTitle: "SalesExecutivedata",
     onAfterPrint: () => {
-      alert("Data saved in PDF");
       window.location.replace("/allse");
     },
   });

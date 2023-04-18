@@ -44,7 +44,6 @@ export default function DeliveryList() {
     content: () => componentPDF.current,
     documentTitle: "DeliveryData",
     onAfterPrint: () => {
-      alert("Data saved in PDF");
       window.location.replace("/DeliveryList");
     },
   });

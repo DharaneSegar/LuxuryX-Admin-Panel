@@ -25,7 +25,7 @@ function RegCustomers() {
   const generatePDF = useReactToPrint({
     content: () => conponentPDF.current,
     documentTitle: "RegisteredUsers",
-    onAfterPrint: () => alert("Data saved in PDF"),
+    onAfterPrint: () => window.location.replace("/customer"),
   });
 
   //fetch search function from backend
@@ -50,31 +50,32 @@ function RegCustomers() {
           <div className="add_btn mt-2 mb-2">
             <br />
             <br />
-            <div class="col-xl-3 col-md-6"></div>
-            <h1 style={{ textAlign: "center" }}>All Registered Users</h1>
-            <br />
 
-            <div className="row">
-              <div className="col-xl-3 col-md-6">
-                <form className="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                  <input
-                  type = "text"
-                    className="search-product-box"
-                    placeholder="search registered user"
-                    onChange={searchHandle}
-                  />
-                </form>
-              </div>
-              <div class="col-xl-3 col-md-6"></div>
-              <div class="col-xl-3 col-md-6"></div>
+            <div className="row justify-content-center"></div>
 
-              <div class="col-xl-3 col-md-6">
-                <button className="btn btn-dark" onClick={generatePDF}>
-                  Generate Report
-                </button>
-              </div>
+            <div>
+              <input
+                type="text"
+                id="searchDelivery"
+                style={{ marginLeft: "300px" }}
+                placeholder="search registered user"
+                onChange={searchHandle}
+              />
+              
+
+              <a
+                className="btn btn-primary"
+                href="http://localhost:3000/reportdd"
+                style={{ marginLeft: "200px" }}
+                onClick={generatePDF}
+                id="pdf"
+              
+              >
+                Generate Report
+              </a>
             </div>
           </div>
+            
           <br />
 
           <div ref={conponentPDF} style={{ width: "100%" }}>
