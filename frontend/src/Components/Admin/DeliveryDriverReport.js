@@ -44,9 +44,8 @@ export default function DeliveryDriverReport() {
           </div>
           <div className="login-form">
             <div ref={componentPDF} style={{ width: "70%" }}>
-              <h2>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Delivery
-                Driver Report
+              <h2 style = {{marginLeft:"400px"}}>
+                Delivery Driver Report
               </h2>
               <table className="table">
                 <thead>

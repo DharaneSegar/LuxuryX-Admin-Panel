@@ -49,7 +49,7 @@ export default function UpdateDeliveryDriver() {
   async function updateData(e) {
     e.preventDefault();
 
-    const newDeliveryDriver = {
+    const newDeliveryDriver = {fullname,
       email,
       address,
       phone,

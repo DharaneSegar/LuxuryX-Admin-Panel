@@ -43,8 +43,8 @@ export default function LeaveReport() {
           </div>
           <div className="login-form">
             <div ref={componentPDF} style={{ width: "85%" }}>
-              <h2>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <h2 style = {{marginLeft:"200px"}}>
+                
                 Leave Application Report
               </h2>
               <table className="table">

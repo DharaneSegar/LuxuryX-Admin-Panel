@@ -44,9 +44,7 @@ export default function SalesExecutiveReport() {
           </div>
           <div className="login-form">
             <div ref={componentPDF} style={{ width: "70%" }}>
-              <h2>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sales
-                Executive Report
+              <h2 style = {{marginLeft:"340px"}}>Sales Executive Report
               </h2>
               <table className="table">
                 <thead>

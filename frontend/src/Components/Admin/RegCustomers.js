@@ -5,7 +5,7 @@ import AdminDashBoard from "./AdminDashBoard";
 import Footer from "../Common/Footer";
 
 function RegCustomers() {
-  const conponentPDF = useRef();
+  const componentPDF = useRef();
   const [userData, setUserdata] = useState([]);
   //using useeffect to show all  the fetched registered customers
   useEffect(() => {
@@ -23,7 +23,7 @@ function RegCustomers() {
   };
   //function to generate pdf
   const generatePDF = useReactToPrint({
-    content: () => conponentPDF.current,
+    content: () => componentPDF.current,
     documentTitle: "RegisteredUsers",
     onAfterPrint: () => window.location.replace("/customer"),
   });
@@ -65,7 +65,6 @@ function RegCustomers() {
 
               <a
                 className="btn btn-primary"
-                href="http://localhost:3000/reportdd"
                 style={{ marginLeft: "200px" }}
                 onClick={generatePDF}
                 id="pdf"
@@ -78,7 +77,7 @@ function RegCustomers() {
             
           <br />
 
-          <div ref={conponentPDF} style={{ width: "100%" }}>
+          <div ref={componentPDF} style={{ width: "100%" }}>
             <table className="table">
               <thead>
                 <tr className="table-dark">

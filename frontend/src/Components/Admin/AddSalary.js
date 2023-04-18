@@ -23,9 +23,9 @@ export default function AddSalary() {
         setEid(res.data.t.eid);
         setEmail(res.data.t.email);
         setBasicSalary(res.data.t.basicsalary);
-        if (eid.startsWith("S")) {
+        if (search.startsWith("S")) {
           setType("Sales Executive");
-        } else if (eid.startsWith("D")) {
+        } else if (search.startsWith("D")) {
           setType("Delivery Driver");
         }
       })

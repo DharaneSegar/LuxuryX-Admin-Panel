@@ -46,8 +46,8 @@ export default function TransactionReport() {
           </div>
           <div className="login-form">
             <div ref={componentPDF} style={{ width: "70%" }}>
-              <h2 id="topic">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <h2 id="topic" style = {{marginLeft:"280px"}}> 
+                
                 Transaction report of {query}
               </h2>
               <table className="table">
