@@ -86,7 +86,7 @@ function DeliveryDriverSideBar() {
                     class="sb-sidenav-menu-nested nav accordion"
                     id="sidenavAccordionPages"
                   >
-                    <a class="nav-link" href="">
+                    <a class="nav-link" href="/deliveryDriverView">
                       My Deliveries
                     </a>
                   </nav>

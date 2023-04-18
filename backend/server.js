@@ -13,7 +13,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true
 }))
 
+app.use(express.json({ limit: "20mb", extended: true }));
+app.use(express.urlencoded({ limit: "20mb", extended: true }));
 
+app.use("/uploads", express.static("uploads"));
+app.use(bodyParser.json());
 
 const URL = process.env.MONGODB_URL;
 
@@ -66,3 +70,9 @@ app.use("/supplierTransaction", supplierTransactionRouter);
 
 const userRouter = require("./routes/users.js");
 app.use("/user", userRouter);
+
+const productRoute = require("./routes/product");
+app.use("/product", productRoute);
+
+const deliveryRouter = require("./routes/delivery.js");
+app.use("/delivery",deliveryRouter);

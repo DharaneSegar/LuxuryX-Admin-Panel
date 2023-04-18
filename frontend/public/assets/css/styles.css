@@ -11966,5 +11966,7 @@ flex-direction: row;
   border: solid 1px black;
 }
 
-
+.abc {
+  max-width: 80%;
+}
 

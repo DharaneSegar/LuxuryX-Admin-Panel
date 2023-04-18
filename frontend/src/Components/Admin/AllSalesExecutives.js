@@ -54,42 +54,32 @@ export default function AllSalesExecutive() {
             <br />
             <br />
             <br />
-            <div className="row">
-              <div className="col-xl-3 col-md-6">
-                <form className="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                  <input
-                    className="search-box"
-                    type="text"
-                    placeholder="Type Sid/Name here"
-                    aria-label="Search for..."
-                    aria-describedby="btnNavbarSearch"
-                    onChange={(e) => {
-                      setQuery(e.target.value);
-                    }}
-                  />
-                </form>
-              </div>
-              <div class="col-xl-3 col-md-6"></div>
+            <div className="row justify-content-center"></div>
 
-              <div class="col-xl-3 col-md-6">
-                <a
-                  className="btn btn-primary"
-                  href="http://localhost:3000/addse"
-                >
-                  Add Sales Executive
-                </a>
-              </div>
+            <div>
+              <input
+                type="text"
+                id="searchDelivery"
+                style={{ marginLeft: "250px" }}
+                placeholder="Type Sid/Name here"
+                onChange={(e) => setQuery(e.target.value)}
+              />
+              <a
+                className="btn btn-primary"
+                href="http://localhost:3000/addse"
+                style={{ marginLeft: "120px" }}
+              >
+                Add Sales Executive
+              </a>
 
-              <div class="col-xl-3 col-md-6">
-                <a
-                  className="btn btn-primary"
-                  href="http://localhost:3000/reportse"
-                  id="pdf"
-                  onClick={modal}
-                >
-                  Generate Report
-                </a>
-              </div>
+              <a
+                className="btn btn-primary"
+                href="http://localhost:3000/reportse"
+                style={{ marginLeft: "120px" }}
+                onClick={modal}
+              >
+                Generate Report
+              </a>
             </div>
 
             <br />

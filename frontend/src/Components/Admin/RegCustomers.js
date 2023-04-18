@@ -58,6 +58,7 @@ function RegCustomers() {
               <div className="col-xl-3 col-md-6">
                 <form className="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                   <input
+                  type = "text"
                     className="search-product-box"
                     placeholder="search registered user"
                     onChange={searchHandle}

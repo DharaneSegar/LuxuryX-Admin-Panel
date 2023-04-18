@@ -37,13 +37,19 @@ import AddSupplierTransaction from './Components/Supplier/AddSupplierTransaction
 import AllSupplierTransactions from './Components/Supplier/AllSupplierTransactions';
 import UpdateSupplierTransaction from './Components/Supplier/UpdateSupplierTransaction';
 import DeleteSupplierTransaction from './Components/Supplier/DeleteSupplierTransaction';
-import SearchSupplierTransaction from './Components/Supplier/SearchSupplierTransaction';
 import SupplierTransactionReport from './Components/Supplier/SupplierTransactionReport';
 import SupplierReport from './Components/Supplier/SupplierReport';
 
 import RegCustomers from './Components/Admin/RegCustomers';
 
+import AddProducts from "./Components/Admin/Products/AddProducts";
+import EditProducts from "./Components/Admin/Products/EditProducts";
+import ViewProducts from "./Components/Admin/Products/ViewPeoducts";
 
+import Delivery from './Components/Admin/AddDelivery';
+import DeliveryList from './Components/Admin/DeliveryList';
+import UpdateDelivery from './Components/Admin/UpdateDelivery';
+import DeliveryDriverView from './Components/DeliveryDriver/DeliveryDriverView';
 
 
 
@@ -91,10 +97,20 @@ function App() {
         <Route path="/supplierTransaction" element={<AllSupplierTransactions/>} exact />
         <Route path="/updatesupplierTransaction/:id" element={<UpdateSupplierTransaction/>} exact />
         <Route path="/deletesupplierTransaction/:id" element={<DeleteSupplierTransaction/>} exact />
-        <Route path="/getsupplierTransaction/:code" element={<SearchSupplierTransaction/>} exact />
+      
         <Route path="/supplierTransactionReport" element={<SupplierTransactionReport/>} exact />
         <Route path="/supplierReport" element={<SupplierReport/>} exact />
         <Route exact path = "customer" element = {<RegCustomers/>}/>
+        <Route exact path="/AddProducts" element={<AddProducts />} />
+        <Route exact path="/EditProducts" element={<EditProducts />} />
+        <Route exact path="/ViewProducts" element={<ViewProducts />} />
+
+        <Route exact path = '/addd' element = {<Delivery/>}/>
+        <Route exact path = '/DeliveryList' element = {<DeliveryList/>}/>
+        <Route exact path = '/UpdateDelivery/:id' element = {<UpdateDelivery/>}/>
+        <Route exact path = '/deliveryDriverView' element = {<DeliveryDriverView/>}/>
+
+        
 
 
 

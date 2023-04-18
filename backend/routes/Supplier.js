@@ -90,6 +90,24 @@ router.route("/getsupplier/:id").get(async (req, res) => {
 })
 
 
+router.get("/search/:key", async (req, res) => {
+    let result = await SupplierTransaction.find({
+      $or: [
+        {
+          InvoiceNo: { $regex: req.params.key },
+        },
+        {
+          ProductName: { $regex: req.params.key },
+        },
+        {
+          Supplier: { $regex: req.params.key },
+        },
+      ],
+    });
+    res.send(result);
+  });
+
+
 
 
 

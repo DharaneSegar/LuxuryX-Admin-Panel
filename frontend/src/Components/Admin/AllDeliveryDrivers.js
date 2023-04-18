@@ -53,42 +53,33 @@ export default function AllDeliveryDriver() {
             <br />
             <br />
             <br />
-            <div className="row">
-              <div className="col-xl-3 col-md-6">
-                <form className="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                  <input
-                    className="search-box"
-                    type="text"
-                    placeholder="Type Did/Name here"
-                    aria-label="Search for..."
-                    aria-describedby="btnNavbarSearch"
-                    onChange={(e) => {
-                      setQuery(e.target.value);
-                    }}
-                  />
-                </form>
-              </div>
-              <div class="col-xl-3 col-md-6"></div>
+            <div className="row justify-content-center"></div>
 
-              <div class="col-xl-3 col-md-6">
-                <a
-                  className="btn btn-primary"
-                  href="http://localhost:3000/adddd"
-                >
-                  Add Delivery Driver
-                </a>
-              </div>
+            <div>
+              <input
+                type="text"
+                id="searchDelivery"
+                style={{ marginLeft: "250px" }}
+                placeholder="Type Sid/Name here"
+                onChange={(e) => setQuery(e.target.value)}
+              />
+              <a
+                className="btn btn-primary"
+                href="http://localhost:3000/adddd"
+                style={{ marginLeft: "120px" }}
+              >
+                Add Delivery Driver
+              </a>
 
-              <div class="col-xl-3 col-md-6">
-                <a
-                  className="btn btn-primary"
-                  href="http://localhost:3000/reportdd"
-                  id="pdf"
-                  onClick={modal}
-                >
-                  Generate Report
-                </a>
-              </div>
+              <a
+                className="btn btn-primary"
+                href="http://localhost:3000/reportdd"
+                style={{ marginLeft: "120px" }}
+                onClick={modal}
+                id="pdf"
+              >
+                Generate Report
+              </a>
             </div>
           </div>
 

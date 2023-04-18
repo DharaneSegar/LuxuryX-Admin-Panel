@@ -42,10 +42,10 @@ function AdminSideBar() {
                   data-bs-parent="#sidenavAccordion"
                 >
                   <nav className="sb-sidenav-menu-nested nav">
-                    <a className="nav-link" href="/test">
+                    <a className="nav-link" href="">
                       Add Orders
                     </a>
-                    <a className="nav-link" href="/table">
+                    <a className="nav-link" href="">
                       View Orders
                     </a>
                   </nav>
@@ -76,11 +76,11 @@ function AdminSideBar() {
                     class="sb-sidenav-menu-nested nav accordion"
                     id="sidenavAccordionPages"
                   >
-                    <a class="nav-link" href="/form">
+                    <a class="nav-link" href="/AddProducts">
                       Add products
                     </a>
 
-                    <a className="nav-link" href="">
+                    <a className="nav-link" href="/ViewProducts">
                       View products
                     </a>
 
@@ -197,15 +197,12 @@ function AdminSideBar() {
                     class="sb-sidenav-menu-nested nav accordion"
                     id="sidenavAccordionPages"
                   >
-                    <a class="nav-link" href="">
-                      View Delivery Drivers
-                    </a>
-
-                    <a className="nav-link" href="">
+                    
+                    <a className="nav-link" href="/addd">
                       Add Delivery
                     </a>
 
-                    <a className="nav-link" href="">
+                    <a className="nav-link" href="/DeliveryList">
                       View Delivery
                     </a>
                   </nav>
