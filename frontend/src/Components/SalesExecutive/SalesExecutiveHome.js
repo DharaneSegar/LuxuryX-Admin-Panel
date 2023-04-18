@@ -3,7 +3,6 @@ import SalesExecutiveDashBoard from "./SalesExecutiveDashBoard";
 import Footer from "../Common/Footer";
 
 function SEHome() {
-  var user = JSON.parse(localStorage.getItem("SEInfo"));
   return (
     <>
       <div>
@@ -14,8 +13,6 @@ function SEHome() {
             <br />
             <br />
             <br />
-            <h1 className="mt-4">Welcome {user.fullname} !!</h1>
-
             <img id="logo" src={require("../Common/images/logo.png")} />
             <br />
             <br />

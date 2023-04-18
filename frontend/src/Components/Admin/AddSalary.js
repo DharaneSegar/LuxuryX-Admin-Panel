@@ -12,7 +12,6 @@ export default function AddSalary() {
   var [paydate, setPaydate] = useState("");
   var [netsalary, setNetSalary] = useState("");
   const [email, setEmail] = useState("");
-
   var [search, setSearch] = useState("");
 
   function check() {

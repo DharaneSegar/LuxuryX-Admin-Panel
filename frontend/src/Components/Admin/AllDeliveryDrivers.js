@@ -53,35 +53,45 @@ export default function AllDeliveryDriver() {
             <br />
             <br />
             <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <form className="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-              <div className="input-group">
-                <input
-                  className="form-control"
-                  type="text"
-                  placeholder="Type Did/Name here"
-                  aria-label="Search for..."
-                  aria-describedby="btnNavbarSearch"
-                  onChange={(e) => {
-                    setQuery(e.target.value);
-                  }}
-                />
+            <div className="row">
+              <div className="col-xl-3 col-md-6">
+                <form className="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                  <input
+                    className="search-box"
+                    type="text"
+                    placeholder="Type Did/Name here"
+                    aria-label="Search for..."
+                    aria-describedby="btnNavbarSearch"
+                    onChange={(e) => {
+                      setQuery(e.target.value);
+                    }}
+                  />
+                </form>
               </div>
-            </form>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a className="btn btn-primary" href="http://localhost:3000/adddd">
-              Add Delivery Driver
-            </a>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a
-              className="btn btn-primary"
-              href="http://localhost:3000/reportdd"
-              id="pdf"
-              onClick={modal}
-            >
-              Generate Report
-            </a>
+              <div class="col-xl-3 col-md-6"></div>
+
+              <div class="col-xl-3 col-md-6">
+                <a
+                  className="btn btn-primary"
+                  href="http://localhost:3000/adddd"
+                >
+                  Add Delivery Driver
+                </a>
+              </div>
+
+              <div class="col-xl-3 col-md-6">
+                <a
+                  className="btn btn-primary"
+                  href="http://localhost:3000/reportdd"
+                  id="pdf"
+                  onClick={modal}
+                >
+                  Generate Report
+                </a>
+              </div>
+            </div>
           </div>
+
           <br />
 
           <table className="table">

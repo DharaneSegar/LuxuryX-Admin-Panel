@@ -54,119 +54,128 @@ export default function AllSalesExecutive() {
             <br />
             <br />
             <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <form className="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-              <div className="input-group">
-                <input
-                  className="form-control"
-                  type="text"
-                  placeholder="Type Sid here"
-                  aria-label="Search for..."
-                  aria-describedby="btnNavbarSearch"
-                  onChange={(e) => {
-                    setQuery(e.target.value);
-                  }}
-                />
+            <div className="row">
+              <div className="col-xl-3 col-md-6">
+                <form className="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                  <input
+                    className="search-box"
+                    type="text"
+                    placeholder="Type Sid/Name here"
+                    aria-label="Search for..."
+                    aria-describedby="btnNavbarSearch"
+                    onChange={(e) => {
+                      setQuery(e.target.value);
+                    }}
+                  />
+                </form>
               </div>
-            </form>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a className="btn btn-primary" href="http://localhost:3000/addse">
-              Add Sales Executive
-            </a>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a
-              className="btn btn-primary"
-              href="http://localhost:3000/reportse"
-              id="pdf"
-              onClick={modal}
-            >
-              Generate Report
-            </a>
+              <div class="col-xl-3 col-md-6"></div>
+
+              <div class="col-xl-3 col-md-6">
+                <a
+                  className="btn btn-primary"
+                  href="http://localhost:3000/addse"
+                >
+                  Add Sales Executive
+                </a>
+              </div>
+
+              <div class="col-xl-3 col-md-6">
+                <a
+                  className="btn btn-primary"
+                  href="http://localhost:3000/reportse"
+                  id="pdf"
+                  onClick={modal}
+                >
+                  Generate Report
+                </a>
+              </div>
+            </div>
+
+            <br />
           </div>
-          <br />
-          <div>
-            <table className="table">
-              <thead>
-                <tr className="table-dark">
-                  <th scope="col">id</th>
-                  <th scope="col">Fullname</th>
-                  <th scope="col">Email</th>
-                  <th scope="col">Password</th>
-                  <th scope="col">Address</th>
-                  <th scope="col">Phone</th>
-                  <th scope="col">Age</th>
-                  <th scope="col">Qualification</th>
-                  <th scope="col">Basic Salary</th>
-                  <th scope="col">Gender</th>
-                  <th scope="col">Operations</th>
-                </tr>
-              </thead>
-              <tbody>
-                {salesexecutives
-                  .filter(
-                    (s) =>
-                      s.sid.toLowerCase().includes(query) ||
-                      s.fullname.toLowerCase().includes(query)
-                  )
-                  .map((salesexecutive) => (
-                    <tr>
-                      <th scope="row">{salesexecutive.sid}</th>
-                      <td>{salesexecutive.fullname}</td>
-                      <td>{salesexecutive.email}</td>
-                      <td>{salesexecutive.password}</td>
-                      <td>{salesexecutive.address}</td>
-                      <td>{salesexecutive.phone}</td>
-                      <td>{salesexecutive.age}</td>
-                      <td>{salesexecutive.qualification}</td>
-                      <td>{salesexecutive.basicsalary}</td>
-                      <td>{salesexecutive.gender}</td>
-                      <td className="d-flex justify-content-between">
-                        <NavLink to={`/updatese/${salesexecutive.sid}`}>
-                          <button className="btn btn-primary">
-                            <CreateIcon />
-                          </button>
-                        </NavLink>
-                        <button
-                          className="btn"
-                          onClick={(e) => GET(salesexecutive.sid)}
-                          data-toggle="modal"
-                          data-target="#myModal"
-                        >
-                          <RemoveRedEyeIcon />
+          <table className="table">
+            <thead>
+              <tr className="table-dark">
+                <th scope="col">id</th>
+                <th scope="col">Fullname</th>
+                <th scope="col">Email</th>
+                <th scope="col">Password</th>
+                <th scope="col">Address</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Age</th>
+                <th scope="col">Qualification</th>
+                <th scope="col">Basic Salary</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Operations</th>
+              </tr>
+            </thead>
+            <tbody>
+              {salesexecutives
+                .filter(
+                  (s) =>
+                    s.sid.toLowerCase().includes(query) ||
+                    s.fullname.toLowerCase().includes(query)
+                )
+                .map((salesexecutive) => (
+                  <tr>
+                    <th scope="row">{salesexecutive.sid}</th>
+                    <td>{salesexecutive.fullname}</td>
+                    <td>{salesexecutive.email}</td>
+                    <td>{salesexecutive.password}</td>
+                    <td>{salesexecutive.address}</td>
+                    <td>{salesexecutive.phone}</td>
+                    <td>{salesexecutive.age}</td>
+                    <td>{salesexecutive.qualification}</td>
+                    <td>{salesexecutive.basicsalary}</td>
+                    <td>{salesexecutive.gender}</td>
+                    <td className="d-flex justify-content-between">
+                      <NavLink to={`/updatese/${salesexecutive.sid}`}>
+                        <button className="btn btn-primary">
+                          <CreateIcon />
                         </button>
-                        <button
-                          className="btn btn-danger"
-                          onClick={() => {
-                            axios.delete(
-                              `http://localhost:8070/salesexecutive/deletese/${salesexecutive._id}`
-                            );
-                            axios
-                              .delete(
-                                `http://localhost:8070/t/delete/${salesexecutive.sid}`
-                              )
-                              .then((res) => {
-                                if (res.data === "success") {
-                                  alert("Sales Executive deleted successfully");
-                                  window.location.replace("/allse");
-                                } else if (res.data === "error") {
-                                  alert("Error in deleting sales executive");
-                                }
-                              })
-                              .catch((err) => {
-                                alert(err);
-                              });
-                          }}
-                        >
-                          <DeleteOutlineIcon />
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-              </tbody>
-            </table>
-          </div>
+                      </NavLink>
+                      <button
+                        className="btn"
+                        onClick={(e) => GET(salesexecutive.sid)}
+                        data-toggle="modal"
+                        data-target="#myModal"
+                      >
+                        <RemoveRedEyeIcon />
+                      </button>
+                      <button
+                        className="btn btn-danger"
+                        onClick={() => {
+                          axios.delete(
+                            `http://localhost:8070/salesexecutive/deletese/${salesexecutive._id}`
+                          );
+                          axios
+                            .delete(
+                              `http://localhost:8070/t/delete/${salesexecutive.sid}`
+                            )
+                            .then((res) => {
+                              if (res.data === "success") {
+                                alert("Sales Executive deleted successfully");
+                                window.location.replace("/allse");
+                              } else if (res.data === "error") {
+                                alert("Error in deleting sales executive");
+                              }
+                            })
+                            .catch((err) => {
+                              alert(err);
+                            });
+                        }}
+                      >
+                        <DeleteOutlineIcon />
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
         </div>
       </div>
+
       <Footer></Footer>
       <div className="modal" id="myModal">
         <div className="modal-dialog">

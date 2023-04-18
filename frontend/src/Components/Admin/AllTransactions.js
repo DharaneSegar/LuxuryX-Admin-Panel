@@ -26,10 +26,6 @@ export default function AllSalary() {
     get();
   }, []);
 
-  function modal() {
-    var pdf = document.getElementById("pdf").value;
-    pdf.fadeIn().css("display", "flex");
-  }
 
   return (
     <>
@@ -41,44 +37,55 @@ export default function AllSalary() {
               <br />
               <br />
               <br />
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <form className="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                <div className="input-group">
-                  <input
-                    className="form-control"
-                    type="text"
-                    placeholder="Search here"
-                    aria-label="Search for..."
-                    aria-describedby="btnNavbarSearch"
-                    onChange={(e) => {
-                      setQuery(e.target.value);
-                    }}
-                  />
+              
+                <div className="col-xl-3 col-md-6">
+                  <form className="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                    <input
+                      className="search-box2"
+                      type="text"
+                      placeholder="Search here"
+                      aria-label="Search for..."
+                      aria-describedby="btnNavbarSearch"
+                      onChange={(e) => {
+                        setQuery(e.target.value);
+                      }}
+                    />
+                  </form>
                 </div>
-              </form>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <Link
+                <br/>
+                
+                <div className="row1">
+                <div class="col-xl-3 col-md-0"> </div>
+                  
+                <div class="col-xl-3 col-md-0">
+                <Link
                 to={`http://localhost:3000/reportt/${query}`}
                 className="btn btn-primary"
               >
                 Yearly Report
               </Link>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <Link
+                </div>
+
+                <div class="col-xl-3 col-md-6">
+                <Link
                 to={`http://localhost:3000/reportt/${query}`}
                 className="btn btn-primary"
               >
                 Monthly Report
               </Link>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <Link
+                </div>
+
+                <div class="col-xl-3 col-md-6">
+                <Link
                 to={`http://localhost:3000/reportt/${query}`}
                 className="btn btn-primary"
               >
                 Daily Report
               </Link>
+                </div>
+              </div>
             </div>
+
             <br />
 
             <table className="table">

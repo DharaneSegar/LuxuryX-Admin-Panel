@@ -1,6 +1,8 @@
 import React from "react";
 
 function Header() {
+  var user = JSON.parse(localStorage.getItem("SEInfo"));
+
   window.addEventListener("DOMContentLoaded", (event) => {
     // Toggle the side navigation
     const sidebarToggle = document.body.querySelector("#sidebarToggle");
@@ -36,7 +38,7 @@ function Header() {
         </button>
         {/* <!-- Navbar Search--> */}
         <form className="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-          <div className="input-group"></div>
+          <a className="navbar-brand ps-3">{user.fullname}</a>
         </form>
         {/* <!-- Navbar--> */}
         <ul className="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">

@@ -19,7 +19,7 @@ function AddDeliveryDriver() {
   const [image, setImage] = useState("");
   const eid = did;
 
-  function convert(e) {
+  function convert(e) {//function to convert image as url
     var reader = new FileReader();
     reader.readAsDataURL(e.target.files[0]);
     reader.onload = () => {
@@ -64,7 +64,7 @@ function AddDeliveryDriver() {
       !licenseno ||
       !vehicleno ||
       !nic ||
-      !basicsalary
+      !basicsalary 
     ) {
       alert("Fields can't be empty");
     } else if (password !== repassword) {

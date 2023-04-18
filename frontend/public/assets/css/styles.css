@@ -4607,7 +4607,7 @@ textarea.form-control-lg {
 .card-header {
   padding: 0.5rem 1rem;
   margin-bottom: 0;
-  background-color:#FF0000;
+  background-color:#808080;
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
 .card-header:first-child {
@@ -11917,5 +11917,46 @@ body {
 flex-direction: row;
 
 }
+
+.search-box{
+  width: 200px;
+  height: 38px;
+  padding-left: 30px;
+  border:solid 1px grey;
+  border-radius: 5px;
+  margin-left: 250px;
+
+}
+
+.search-box1{
+  width: 200px;
+  height: 36px;
+  padding-left: 30px;
+  border:solid 1px grey;
+  border-radius: 5px;
+  margin-left: 300px;
+
+}
+
+.search-box2{
+  width: 200px;
+  height: 36px;
+  padding-left: 52px;
+  border:solid 1px grey;
+  border-radius: 5px;
+  margin-left: 525px;
+
+}
+
+.row1 {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(-1 * var(--bs-gutter-y));
+  margin-right: calc(-0.5 * var(--bs-gutter-x));
+  margin-left: calc(2.5 * var(--bs-gutter-x));
+}
+
 
 

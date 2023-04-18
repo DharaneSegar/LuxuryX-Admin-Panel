@@ -3,7 +3,7 @@ import DeliveryDriverDashBoard from "./DeliveryDriverDashBoard";
 import Footer from "../Common/Footer";
 
 function DDHome() {
-  var user = JSON.parse(localStorage.getItem("DDInfo"));
+  
   return (
     <>
       <div>
@@ -14,8 +14,6 @@ function DDHome() {
             <br />
             <br />
             <br />
-            <h1 className="mt-4">Welcome {user.fullname} !!</h1>
-
             <img id="logo" src={require("../Common/images/logo.png")} />
             <br />
             <br />

@@ -3,7 +3,6 @@ import AdminDashBoard from "./AdminDashBoard";
 import Footer from "../Common/Footer";
 
 function AdHome() {
-  var user = JSON.parse(localStorage.getItem("AdminInfo"));
 
   return (
     <>
@@ -15,7 +14,6 @@ function AdHome() {
             <br />
             <br />
             <br />
-            <h1 className="mt-4">Welcome {user.fullname} !!</h1>
 
             <img id="logo" src={require("../Common/images/logo.png")} />
           </div>
