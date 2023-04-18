@@ -11958,5 +11958,13 @@ flex-direction: row;
   margin-left: calc(2.5 * var(--bs-gutter-x));
 }
 
+.search-product-box{
+  width: 300px;
+  height: 30px;
+  margin-left: 200px;
+  padding-left: 30px;
+  border: solid 1px black;
+}
+
 
 

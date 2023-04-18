@@ -37,6 +37,12 @@ import AddSupplierTransaction from './Components/Supplier/AddSupplierTransaction
 import AllSupplierTransactions from './Components/Supplier/AllSupplierTransactions';
 import UpdateSupplierTransaction from './Components/Supplier/UpdateSupplierTransaction';
 import DeleteSupplierTransaction from './Components/Supplier/DeleteSupplierTransaction';
+import SearchSupplierTransaction from './Components/Supplier/SearchSupplierTransaction';
+import SupplierTransactionReport from './Components/Supplier/SupplierTransactionReport';
+import SupplierReport from './Components/Supplier/SupplierReport';
+
+import RegCustomers from './Components/Admin/RegCustomers';
+
 
 
 
@@ -78,14 +84,19 @@ function App() {
         <Route exact path = '/viewsalse' element = {<ViewSalarySE/>}/>
         <Route exact path = '/viewsaldd' element = {<ViewSalaryDD/>}/>
         <Route path="/supplier" element={<AllSuppliers/>} exact />
-      <Route path="/addsupplier" element={<AddSupplier/>} exact />
-      <Route path="/updatesupplier/:id" element={<UpdateSupplier/>} exact />
-      <Route path="/deletesupplier/:id" element={<DeleteSupplier/>} exact />
+        <Route path="/addsupplier" element={<AddSupplier/>} exact />
+        <Route path="/updatesupplier/:id" element={<UpdateSupplier/>} exact />
+        <Route path="/deletesupplier/:id" element={<DeleteSupplier/>} exact />
+        <Route path="/addsupplierTransaction" element={<AddSupplierTransaction/>} exact />
+        <Route path="/supplierTransaction" element={<AllSupplierTransactions/>} exact />
+        <Route path="/updatesupplierTransaction/:id" element={<UpdateSupplierTransaction/>} exact />
+        <Route path="/deletesupplierTransaction/:id" element={<DeleteSupplierTransaction/>} exact />
+        <Route path="/getsupplierTransaction/:code" element={<SearchSupplierTransaction/>} exact />
+        <Route path="/supplierTransactionReport" element={<SupplierTransactionReport/>} exact />
+        <Route path="/supplierReport" element={<SupplierReport/>} exact />
+        <Route exact path = "customer" element = {<RegCustomers/>}/>
 
-      <Route path="/addsupplierTransaction" element={<AddSupplierTransaction/>} exact />
-      <Route path="/supplierTransaction" element={<AllSupplierTransactions/>} exact />
-      <Route path="/updatesupplierTransaction/:id" element={<UpdateSupplierTransaction/>} exact />
-      <Route path="/deletesupplierTransaction/:id" element={<DeleteSupplierTransaction/>} exact />
+
 
 
 

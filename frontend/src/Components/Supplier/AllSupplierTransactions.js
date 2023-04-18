@@ -58,6 +58,9 @@ export default function AllSupplierTransaction() {
                         
                     </div>
 
+                    <button style={{marginBottom:"10px", marginLeft:"auto"}} className="btn btn-primary" onClick={() => {
+          window.location.replace(`http://localhost:3000/supplierTransactionReport`); }}>Generate Supplier Transaction Report</button>
+
 
                        
 

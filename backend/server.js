@@ -63,3 +63,6 @@ app.use("/supplier", supplierRouter);
 
 const supplierTransactionRouter = require("./routes/SupplierTransaction.js");
 app.use("/supplierTransaction", supplierTransactionRouter);
+
+const userRouter = require("./routes/users.js");
+app.use("/user", userRouter);

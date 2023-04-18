@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
-import Header from "../common/Header";
+import Header from "../Admin/Header";
 import AdminSideBar from "../Admin/AdminSidebar";
-import Footer from "../common/Footer";
+import Footer from "../Common/Footer";
 
 export default function SearchSupplierTransaction() {
     const { InvoiceNo } = useParams();
@@ -39,9 +39,10 @@ export default function SearchSupplierTransaction() {
         <div className="containerf">
             <AdminSideBar></AdminSideBar>
 
-        <div className="container">
+        <div className="container" style={{marginTop:"150px"}}>
             <table className="table">
-                <tr>
+            <thead>
+                <tr className="table-dark">
                     <th>Invoice No</th>
                     <th>Supplied Date</th>
                     <th>Supplier</th>
@@ -51,7 +52,7 @@ export default function SearchSupplierTransaction() {
                     <th>Operations</th>
 
                 </tr>
-
+                </thead>
                 <tbody>
                     {
                         supplierTransactions.map((supplierTransaction) => (
@@ -77,8 +78,14 @@ export default function SearchSupplierTransaction() {
 
                 </tbody>
             </table>
+          
+            
+            <div style={{textAlign: 'right' }}>
+            <a href="/supplierTransaction" type="button" class="btn btn-primary float-right" style={{ marginTop:"100px" ,marginRight: "40px", width: "8%" }}>back</a>
+            </div>
 
-            <a href="/supplierTransaction" type="button" class="btn btn-secondary float-right" style={{ marginRight: "40px", width: "8%" }}>back</a>
+
+
         </div>
         </div>
         <Footer></Footer>

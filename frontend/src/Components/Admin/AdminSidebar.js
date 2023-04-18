@@ -117,17 +117,10 @@ function AdminSideBar() {
                     class="sb-sidenav-menu-nested nav accordion"
                     id="sidenavAccordionPages"
                   >
-                    <a class="nav-link" href="">
-                      All Customers
-                    </a>
-
-                    <a className="nav-link" href="">
+                    <a className="nav-link" href="/customer">
                       Registered Customers
                     </a>
 
-                    <a className="nav-link" href="">
-                      Login
-                    </a>
                   </nav>
                 </div>
 

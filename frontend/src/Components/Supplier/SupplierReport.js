@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef} from "react";
 import axios from "axios";
 
 import Header from "../Admin/Header";
 import AdminSideBar from "../Admin/AdminSidebar";
-import CreateIcon from '@mui/icons-material/Create';
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import Footer from "../Common/Footer";
 
+import { useReactToPrint } from "react-to-print";
 
 export default function AllSuppliers() {
 
-    const [eid, setEid] = useState("");
+    const componentPDF = useRef();
+
     const [suppliers, setSuppliers] = useState([]);
 
 
@@ -24,7 +24,14 @@ export default function AllSuppliers() {
             })
         }
         getSuppliers();
-    }, [])
+    }, []);
+ 
+        const generatePDF = useReactToPrint({
+        content: ()=>componentPDF.current,
+        documentTitle:"Supplier",
+        onAfterPrint: () =>alert("Report was sent to print")
+    });
+
 
 
     return (
@@ -34,16 +41,11 @@ export default function AllSuppliers() {
 
             <div className="containerf">
                 <AdminSideBar></AdminSideBar>
-                <div className="container" style={{marginTop:"100px"}}>
-                    <h3 style={{marginBottom:"80px"}}>List of Suppliers</h3>
-                    <div style={{ textAlign: 'right' }}>
-                        <button style={{ marginBottom: "10px", marginLeft: "auto" }} className="btn btn-primary" onClick={() => {
-                            window.location.replace(`http://localhost:3000/supplierReport`);
-                        }}>Generate Supplier Report</button>
-                    </div>
-                    
-        
-                        
+                <div className="container " style={{marginTop:"100px"}}>
+
+                    <div ref={componentPDF} style={{width:'100%' }}> 
+
+                    <h3>List of Suppliers Report</h3>
                     
                     <table className="table">
                         <thead>
@@ -55,7 +57,7 @@ export default function AllSuppliers() {
                                 <th scope='col'>Contact Number</th>
                                 <th scope='col'>email</th>
                                 <th scope='col'>Products Supplied</th>
-                                <th scope='col'>Operations</th>
+                                
                                 
 
                             </tr>
@@ -75,16 +77,7 @@ export default function AllSuppliers() {
                                                 <td >{supplier.productsSupplied}</td>
 
                                         
-                                        <td >
-                                            <button className="btn btn-primary" onClick={()=>{
-                                                window.location.replace(`http://localhost:3000/updatesupplier/${supplier._id}`)
-                                            }}><CreateIcon /></button>
-                                       
-                                            <button className="btn btn-danger" onClick={()=>{
-                                                window.location.replace(`http://localhost:3000/deletesupplier/${supplier._id}`)
-                                            }}><DeleteOutlineIcon /></button>
-
-                                        </td>
+                                   
 
                                                 
                                             </tr>
@@ -101,11 +94,14 @@ export default function AllSuppliers() {
                         </div>
                     </table>
                 </div>
+                <div className="d-grid d-md-flex justify-content-md-end mb-3">
+                <button className="btn btn-primary" onClick={generatePDF}>Print Suppliers Report</button>
             </div>
 
 
             <Footer></Footer>
         </div >
-
+        </div >
+        </div >
     )
 }
