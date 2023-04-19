@@ -63,15 +63,15 @@ export default function AllLeave() {
             <div className="add_btn mt-2 mb-2">
               <br />
               <br />
+              
+
+              <div className="row justify-content-center"><h2 style={{ marginLeft: "200px" }}>Leave Application List</h2></div>
               <br />
-
-              <div className="row justify-content-center"></div>
-
               <div>
                 <input
                   type="text"
                   id="searchDelivery"
-                  style={{ marginLeft: "250px" }}
+                  style={{ marginLeft: "300px" }}
                   placeholder="Type Leave Id here"
                   onChange={(e) => setQuery(e.target.value)}
                 />
@@ -79,7 +79,7 @@ export default function AllLeave() {
                 <a
                   className="btn btn-primary"
                   href="http://localhost:3000/reportle"
-                  style={{ marginLeft: "120px" }}
+                  style={{ marginLeft: "200px" }}
                   id="pdf"
                 >
                   Generate Report

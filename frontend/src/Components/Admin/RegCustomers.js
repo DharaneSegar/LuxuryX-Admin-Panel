@@ -51,7 +51,7 @@ function RegCustomers() {
             <br />
             <br />
 
-            <div className="row justify-content-center"></div>
+            <div className="row justify-content-center"><h2 style={{ marginLeft: "140px" }}>Customer List</h2></div>
 
             <div>
               <input

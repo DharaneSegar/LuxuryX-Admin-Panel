@@ -51,6 +51,21 @@ import DeliveryList from './Components/Admin/DeliveryList';
 import UpdateDelivery from './Components/Admin/UpdateDelivery';
 import DeliveryDriverView from './Components/DeliveryDriver/DeliveryDriverView';
 
+/*import AddCoupon from './Components/Coupon/AddCoupon';
+import AllCoupons from './Components/Coupon/AllCoupon';
+import UpdateCoupon from './Components/Coupon/UpdateCoupon';
+import DeleteCoupon from './Components/Coupon/DeleteCoupon';
+import searchCoupon from './Components/Coupon/SearchCoupon';*/
+
+import AllOrder from './Components/Order/AllOrder';
+import UpdateOrder from './Components/Order/UpdateOrder';
+import DeleteOrder from './Components/Order/DeleteOrder';
+import OrderReport from './Components/Order/OrderReport';
+
+import AddCoupon from './Components/Coupon/AddCoupon';
+import AllCoupons from './Components/Coupon/AllCoupons';
+
+
 
 
 
@@ -109,6 +124,20 @@ function App() {
         <Route exact path = '/DeliveryList' element = {<DeliveryList/>}/>
         <Route exact path = '/UpdateDelivery/:id' element = {<UpdateDelivery/>}/>
         <Route exact path = '/deliveryDriverView' element = {<DeliveryDriverView/>}/>
+
+        {/*<Route path="/coupon" element={<AllCoupons/>} exact/>
+        <Route path="/addcoupon" element={<AddCoupon/>} exact/>
+        <Route path="/updatecoupon/:id" element={<UpdateCoupon/>} exact/>
+        <Route path="/deletecoupon/:id" element={<DeleteCoupon/>} exact/>
+  <Route path="/getcoupon/:code" element={<searchCoupon/>} exact/>*/}
+
+<Route path="/order" element={<AllOrder/>} exact />
+      <Route path="/updateorder/:id" element={<UpdateOrder/>} exact />
+      <Route path="/deleteorder/:id" element={<DeleteOrder/>} exact />
+      <Route path="/orderReport" element={<OrderReport/>} exact />
+
+      <Route path="/coupon" element={<AllCoupons />} exact />
+            <Route path="/addcoupon" element={<AddCoupon />} exact />
 
         
 

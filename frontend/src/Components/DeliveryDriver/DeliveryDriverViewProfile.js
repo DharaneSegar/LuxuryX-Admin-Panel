@@ -19,7 +19,7 @@ function ViewProfileDD() {
             <h3>Address&nbsp;: {user.address}</h3>
             <h3>Contact No&nbsp;: {user.phone}</h3>
             <h3>Age&nbsp;: {user.age}</h3>
-            <h3>License Nov&nbsp;: {user.licenseno}</h3>
+            <h3>License No&nbsp;: {user.licenseno}</h3>
             <h3>Vehicle No&nbsp;: {user.vehicleno}</h3>
             <h3>NIC&nbsp;:{user.nic}</h3>
             <h3>Basic Salary&nbsp;: {user.basicsalary}</h3>

@@ -65,35 +65,7 @@ router.post("/addsal", async (req, res) => {
             }
           );
 
-          try {
-            //send email
-            const transporter = nodemailer.createTransport({
-              service: "gmail",
-              auth: {
-                user: "itpmetrogroup2@gmail.com",
-                pass: "hfyfimbbvdzdypfh",
-              },
-            });
-
-            const mailOptions = {
-              from: "itpmetrogroup2@gmail.com",
-              to: email,
-              subject: "Salary Transaction",
-              html: msg,
-            };
-
-            transporter.sendMail(mailOptions, (error, info) => {
-              if (error) {
-                console.log("Error" + error);
-              } else {
-                console.log("Email sent:" + info.response);
-                res.status(201).json({ status: 201, info });
-              }
-            });
-          } catch (error) {
-            console.log("Error" + error);
-            res.status(401).json({ status: 401, error });
-          }
+         
         } else {//if eid doesn't exixts
           res.json("No id");//send response
         }
@@ -142,36 +114,7 @@ router.post("/addsal", async (req, res) => {
                 });
             }
           );
-          try {
-
-            //send email
-            const transporter = nodemailer.createTransport({
-              service: "gmail",
-              auth: {
-                user: "itpmetrogroup2@gmail.com",
-                pass: "hfyfimbbvdzdypfh",
-              },
-            });
-
-            const mailOptions = {
-              from: "itpmetrogroup2@gmail.com",
-              to: email,
-              subject: "Salary Transaction",
-              html: msg,
-            };
-
-            transporter.sendMail(mailOptions, (error, info) => {
-              if (error) {
-                console.log("Error" + error);
-              } else {
-                console.log("Email sent:" + info.response);
-                res.status(201).json({ status: 201, info });
-              }
-            });
-          } catch (error) {
-            console.log("Error" + error);
-            res.status(401).json({ status: 401, error });
-          }
+          
         } else {//if eid doesn't exixts
           res.json("No id");//send response
         }
@@ -238,36 +181,7 @@ router.route("/update/:id").put(async (req, res) => {
     await Salary.findByIdAndUpdate(Id, updateTransaction);// update the details with the update variable where id = "Id"
 
     res.status(200).send("Done");//send status
-    try {
-      //send email when an update is done to the salary
-
-      const transporter = nodemailer.createTransport({
-        service: "gmail",
-        auth: {
-          user: "itpmetrogroup2@gmail.com",
-          pass: "hfyfimbbvdzdypfh",
-        },
-      });
-
-      const mailOptions = {
-        from: "itpmetrogroup2@gmail.com",
-        to: email,
-        subject: "Change in salary",
-        html: msg,
-      };
-
-      transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-          console.log("Error" + error);
-        } else {
-          console.log("Email sent:" + info.response);
-          res.status(201).json({ status: 201, info });
-        }
-      });
-    } catch (error) {
-      console.log("Error" + error);
-      res.status(401).json({ status: 401, error });
-    }
+    
   })
   .patch((err) => {
     console.log(err);

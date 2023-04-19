@@ -86,11 +86,11 @@ function SalesExecutiveSideBar() {
                     class="sb-sidenav-menu-nested nav accordion"
                     id="sidenavAccordionPages"
                   >
-                    <a class="nav-link" href="">
+                    <a class="nav-link" href="/addcoupon">
                       Add Coupons
                     </a>
 
-                    <a className="nav-link" href="">
+                    <a className="nav-link" href="/coupon">
                       View Coupons
                     </a>
                   </nav>

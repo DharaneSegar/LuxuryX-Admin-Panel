@@ -42,10 +42,8 @@ function AdminSideBar() {
                   data-bs-parent="#sidenavAccordion"
                 >
                   <nav className="sb-sidenav-menu-nested nav">
-                    <a className="nav-link" href="">
-                      Add Orders
-                    </a>
-                    <a className="nav-link" href="">
+                    
+                    <a className="nav-link" href="/order">
                       View Orders
                     </a>
                   </nav>

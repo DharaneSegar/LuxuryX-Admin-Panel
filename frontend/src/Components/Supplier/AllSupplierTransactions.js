@@ -52,7 +52,7 @@ export default function AllSupplierTransaction() {
         <AdminSideBar></AdminSideBar>
 
         <div className="container" style={{ marginTop: "100px" }}>
-          <h3>All Supplier Trasactions</h3>
+          <h2 style={{ marginLeft: "90px"}}>All Supplier Trasactions</h2>
 
           <div style={{ textAlign: "right" }}>
             <input
@@ -65,7 +65,7 @@ export default function AllSupplierTransaction() {
 
           <div>
             <button
-              style={{ marginBottom: "10px", marginLeft: "auto" }}
+              style={{ marginBottom: "10px", marginLeft: "110px" }}
               className="btn btn-primary"
               onClick={() => {
                 window.location.replace(

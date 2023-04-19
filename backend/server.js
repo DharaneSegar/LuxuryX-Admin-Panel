@@ -76,3 +76,10 @@ app.use("/product", productRoute);
 
 const deliveryRouter = require("./routes/delivery.js");
 app.use("/delivery",deliveryRouter);
+
+const orderRouter = require("./routes/Order.js");
+app.use("/order", orderRouter);
+
+const couponRouter = require("./routes/Coupon.js");
+
+app.use("/coupon", couponRouter);

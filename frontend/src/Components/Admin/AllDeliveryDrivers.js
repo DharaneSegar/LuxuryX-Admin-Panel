@@ -52,9 +52,9 @@ export default function AllDeliveryDriver() {
           <div className="add_btn mt-2 mb-2">
             <br />
             <br />
+            
+            <div className="row justify-content-center"><h2 style={{ marginLeft: "200px" }}>Delivery Driver List</h2></div>
             <br />
-            <div className="row justify-content-center"></div>
-
             <div>
               <input
                 type="text"
@@ -85,7 +85,7 @@ export default function AllDeliveryDriver() {
 
           <br />
 
-          <table className="table">
+          <table className="table" style={{ marginLeft: "50px" }}>
             <thead>
               <tr className="table-dark">
                 <th scope="col">id</th>
@@ -141,6 +141,7 @@ export default function AllDeliveryDriver() {
                       >
                         <RemoveRedEyeIcon />
                       </button>
+                      <br/>
                       <button
                         className="btn btn-danger"
                         onClick={() => {

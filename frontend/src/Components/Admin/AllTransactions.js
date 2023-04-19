@@ -36,10 +36,10 @@ export default function AllSalary() {
             <div className="add_btn mt-2 mb-2">
               <br />
               <br />
+              
+
+              <div className="row justify-content-center"><h2 style={{ marginLeft: "200px" }}>Salary Transaction List</h2></div>
               <br />
-
-              <div className="row justify-content-center"></div>
-
             <div>
               <input
                 type="text"
