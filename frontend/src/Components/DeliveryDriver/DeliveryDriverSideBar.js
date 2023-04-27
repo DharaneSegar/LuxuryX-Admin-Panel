@@ -12,10 +12,10 @@ function DeliveryDriverSideBar() {
             <div className="sb-sidenav-menu">
               <div className="nav">
                 <a className="nav-link">
-                  <div className="sb-nav-link-icon">
+                  <div className="sb-nav-link-icon" style={{color:"white"}}>
                     <i className="fas fa-tachometer-alt"></i>
                   </div>
-                  <a className="nav-link" href="./viewdd">
+                  <a className="nav-link" style={{color:"white"}}href="./viewdd">
                     View Profile
                   </a>
                 </a>
@@ -26,13 +26,14 @@ function DeliveryDriverSideBar() {
                   data-bs-target="#collapsePages"
                   aria-expanded="false"
                   aria-controls="collapsePages"
+                  style={{color:"white"}}
                 >
-                  <div className="sb-nav-link-icon">
-                    <i class="fas fa-columns"></i>
+                  <div className="sb-nav-link-icon"style={{color:"white"}}>
+                    <i class="fas fa-columns" style={{color:"white"}}></i>
                   </div>
                   Leaves
-                  <div class="sb-sidenav-collapse-arrow">
-                    <i class="fas fa-angle-down"></i>
+                  <div class="sb-sidenav-collapse-arrow" style={{color:"white"}}>
+                    <i class="fas fa-angle-down" style={{color:"white"}}></i>
                   </div>
                 </a>
                 <div
@@ -45,11 +46,11 @@ function DeliveryDriverSideBar() {
                     class="sb-sidenav-menu-nested nav accordion"
                     id="sidenavAccordionPages"
                   >
-                    <a class="nav-link" href="./applydd">
+                    <a class="nav-link" href="./applydd" style={{color:"white"}}>
                       Apply for leave
                     </a>
 
-                    <a className="nav-link" href="./leavedd">
+                    <a className="nav-link" href="./leavedd" style={{color:"white"}}>
                       View leaves
                     </a>
 
@@ -67,13 +68,14 @@ function DeliveryDriverSideBar() {
                   data-bs-target="#collapseExample"
                   aria-expanded="false"
                   aria-controls="collapseExample"
+                  style={{color:"white"}}
                 >
-                  <div className="sb-nav-link-icon">
+                  <div className="sb-nav-link-icon" style={{color:"white"}}>
                     <i class="fas fa-columns"></i>
                   </div>
                   Delivery
-                  <div class="sb-sidenav-collapse-arrow">
-                    <i class="fas fa-angle-down"></i>
+                  <div class="sb-sidenav-collapse-arrow" style={{color:"white"}}>
+                    <i class="fas fa-angle-down" style={{color:"white"}}></i>
                   </div>
                 </a>
                 <div
@@ -84,9 +86,9 @@ function DeliveryDriverSideBar() {
                 >
                   <nav
                     class="sb-sidenav-menu-nested nav accordion"
-                    id="sidenavAccordionPages"
+                    id="sidenavAccordionPages"style={{color:"white"}}
                   >
-                    <a class="nav-link" href="/deliveryDriverView">
+                    <a class="nav-link" style={{color:"white"}}href="/deliveryDriverView">
                       My Deliveries
                     </a>
                   </nav>
@@ -98,13 +100,14 @@ function DeliveryDriverSideBar() {
                   data-bs-target="#collapseExample1"
                   aria-expanded="false"
                   aria-controls="collapseExample"
+                  style={{color:"white"}}
                 >
-                  <div className="sb-nav-link-icon">
-                    <i class="fas fa-columns"></i>
+                  <div className="sb-nav-link-icon" style={{color:"white"}}>
+                    <i class="fas fa-columns" style={{color:"white"}}></i>
                   </div>
                   Salary
-                  <div class="sb-sidenav-collapse-arrow">
-                    <i class="fas fa-angle-down"></i>
+                  <div class="sb-sidenav-collapse-arrow" style={{color:"white"}}>
+                    <i class="fas fa-angle-down" style={{color:"white"}}></i>
                   </div>
                 </a>
                 <div
@@ -117,7 +120,7 @@ function DeliveryDriverSideBar() {
                     class="sb-sidenav-menu-nested nav accordion"
                     id="sidenavAccordionPages"
                   >
-                    <a class="nav-link" href="./viewsaldd">
+                    <a class="nav-link" href="./viewsaldd" style={{color:"white"}}>
                       My Salaries
                     </a>
                   </nav>

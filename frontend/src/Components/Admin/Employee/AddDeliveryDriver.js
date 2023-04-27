@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
-import AdminDashBoard from "./AdminDashBoard";
-import Footer from "../Common/Footer";
+import AdminDashBoard from "../AdminDashBoard";
+import Footer from "../../Common/Footer";
+
 
 function AddDeliveryDriver() {
   const [did, setDid] = useState("");
@@ -48,7 +49,7 @@ function AddDeliveryDriver() {
       alert("did should consist 4 characters");
     } else if (!input.match(/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}/)) {
       alert(
-        "Password should contain a simple letter,a capital letter,a number and a special character"
+        "Password should contain a simple letter,a capital letter,a number or a special character"
       );
     } else if (!em.match(/^[a-z0-9._%+-]+@[a-z0-9-]+(?:\.[a-z0-9-]+)*$/)) {
       alert("Email invalid");

@@ -13,10 +13,10 @@ function AdminSideBar() {
               <div className="nav">
                 <a className="nav-link">
                   <div className="sb-nav-link-icon">
-                    <i className="fas fa-tachometer-alt"></i>
+                    <i className="fa fa-tachometer-alt" style={{color:"white"}}></i>
                   </div>
-                  <a className="nav-link">
-                    <b>Menu</b>
+                  <a className="nav-link" style={{color:"white"}} >
+                    <b className="box">Menu</b>
                   </a>
                 </a>
 
@@ -27,12 +27,13 @@ function AdminSideBar() {
                   aria-expanded="false"
                   aria-controls="collapseLayouts"
                 >
-                  <div className="sb-nav-link-icon">
-                    <i className="fas fa-columns"></i>
+                  <div className="sb-nav-link-icon" style={{color:"white"}}>
+                    <i className="fa fa-columns" style={{color:"white"}}></i>
                   </div>
-                  Orders
+                  <div className="box" style={{color:"white"}}>Orders</div>
+                  
                   <div className="sb-sidenav-collapse-arrow">
-                    <i className="fas fa-angle-down"></i>
+                    <i className="fa fa-angle-down" style={{color:"white"}}></i>
                   </div>
                 </a>
                 <div
@@ -41,9 +42,9 @@ function AdminSideBar() {
                   aria-labelledby="headingOne"
                   data-bs-parent="#sidenavAccordion"
                 >
-                  <nav className="sb-sidenav-menu-nested nav">
+                  <nav className="sb-sidenav-menu-nested nav" style={{color:"white"}} >
                     
-                    <a className="nav-link" href="/order">
+                    <a className="nav-link" style={{color:"white"}}href="/order">
                       View Orders
                     </a>
                   </nav>
@@ -56,12 +57,13 @@ function AdminSideBar() {
                   aria-expanded="false"
                   aria-controls="collapsePages"
                 >
-                  <div className="sb-nav-link-icon">
-                    <i class="fas fa-columns"></i>
+                  <div className="sb-nav-link-icon" style={{color:"white"}}>
+                    <i class="fa fa-columns" style={{color:"white"}}></i>
                   </div>
-                  Products
-                  <div class="sb-sidenav-collapse-arrow">
-                    <i class="fas fa-angle-down"></i>
+                  <div style={{color:"white"}}> Products</div>
+                 
+                  <div class="sb-sidenav-collapse-arrow" style={{color:"white"}}>
+                    <i class="fa fa-angle-down" style={{color:"white"}}></i>
                   </div>
                 </a>
                 <div
@@ -74,11 +76,11 @@ function AdminSideBar() {
                     class="sb-sidenav-menu-nested nav accordion"
                     id="sidenavAccordionPages"
                   >
-                    <a class="nav-link" href="/AddProducts">
+                    <a class="nav-link" style={{color:"white"}}href="/AddProducts">
                       Add products
                     </a>
 
-                    <a className="nav-link" href="/ViewProducts">
+                    <a className="nav-link" style={{color:"white"}}href="/ViewProducts">
                       View products
                     </a>
 
@@ -96,13 +98,15 @@ function AdminSideBar() {
                   data-bs-target="#collapseExample"
                   aria-expanded="false"
                   aria-controls="collapseExample"
+                 
                 >
-                  <div className="sb-nav-link-icon">
-                    <i class="fas fa-columns"></i>
+                  <div className="sb-nav-link-icon" style={{color:"white"}}>
+                    <i class="fa fa-columns"></i>
                   </div>
-                  Customers
-                  <div class="sb-sidenav-collapse-arrow">
-                    <i class="fas fa-angle-down"></i>
+                  <div style={{color:"white"}}>Customers</div>
+                  
+                  <div class="sb-sidenav-collapse-arrow" style={{color:"white"}}>
+                    <i class="fa fa-angle-down" style={{color:"white"}}></i>
                   </div>
                 </a>
                 <div
@@ -115,7 +119,7 @@ function AdminSideBar() {
                     class="sb-sidenav-menu-nested nav accordion"
                     id="sidenavAccordionPages"
                   >
-                    <a className="nav-link" href="/customer">
+                    <a className="nav-link" style={{color:"white"}}href="/customer">
                       Registered Customers
                     </a>
 
@@ -129,11 +133,12 @@ function AdminSideBar() {
                   aria-expanded="false"
                   aria-controls="collapsePages"
                 >
-                  <div className="sb-nav-link-icon">
-                    <i class="fas fa-columns"></i>
+                  <div className="sb-nav-link-icon" style={{color:"white"}}>
+                    <i class="fa fa-columns" ></i>
                   </div>
-                  Suppliers
-                  <div class="sb-sidenav-collapse-arrow">
+                  <div style={{color:"white"}}>Suppliers</div>
+                  
+                  <div class="sb-sidenav-collapse-arrow" style={{color:"white"}}>
                     <i class="fas fa-angle-down"></i>
                   </div>
                 </a>
@@ -144,20 +149,20 @@ function AdminSideBar() {
                   data-bs-parent="#sidenavAccordion"
                 >
                   <nav class="sb-sidenav-menu-nested nav accordion">
-                    <a class="nav-link" href="/addsupplier">
+                    <a class="nav-link" style={{color:"white"}} href="/addsupplier">
                       Add Suppliers
                     </a>
-                    <a className="nav-link" href="/supplier">
+                    <a className="nav-link" style={{color:"white"}} href="/supplier">
                       View Suppliers
                     </a>
-                    <a class="nav-link" href="/addsupplierTransaction">
+                    <a class="nav-link" style={{color:"white"}} href="/addsupplierTransaction">
                       Add Supplier Transaction
                     </a>
-                    <a className="nav-link" href="/supplierTransaction">
+                    <a className="nav-link" style={{color:"white"}}href="/supplierTransaction">
                       View Supplier Transactions
                     </a>
 
-                    <a className="nav-link" href="">
+                    <a className="nav-link" style={{color:"white"}}href="">
                       Inventory Report
                     </a>
 
@@ -177,11 +182,12 @@ function AdminSideBar() {
                   aria-expanded="false"
                   aria-controls="collapseExample"
                 >
-                  <div className="sb-nav-link-icon">
+                  <div className="sb-nav-link-icon" style={{color:"white"}}>
                     <i class="fas fa-columns"></i>
                   </div>
-                  Delivery
-                  <div class="sb-sidenav-collapse-arrow">
+                  <div style={{color:"white"}}>Delivery</div>
+                  
+                  <div class="sb-sidenav-collapse-arrow" style={{color:"white"}}>
                     <i class="fas fa-angle-down"></i>
                   </div>
                 </a>
@@ -196,21 +202,21 @@ function AdminSideBar() {
                     id="sidenavAccordionPages"
                   >
                     
-                    <a className="nav-link" href="/addd">
+                    <a className="nav-link" style={{color:"white"}}href="/addd">
                       Add Delivery
                     </a>
 
-                    <a className="nav-link" href="/DeliveryList">
+                    <a className="nav-link" style={{color:"white"}}href="/DeliveryList">
                       View Delivery
                     </a>
                   </nav>
                 </div>
 
                 <a className="nav-link">
-                  <div className="sb-nav-link-icon">
+                  <div className="sb-nav-link-icon" style={{color:"white"}}>
                     <i className="fas fa-tachometer-alt"></i>
                   </div>
-                  <a className="nav-link">
+                  <a className="nav-link" style={{color:"white"}}>
                     <b>Business</b>
                   </a>
                 </a>
@@ -222,11 +228,12 @@ function AdminSideBar() {
                   aria-expanded="false"
                   aria-controls="collapsePages"
                 >
-                  <div className="sb-nav-link-icon">
+                  <div className="sb-nav-link-icon" style={{color:"white"}}>
                     <i class="fas fa-columns"></i>
                   </div>
-                  Employees
-                  <div class="sb-sidenav-collapse-arrow">
+                  <div style={{color:"white"}}> Employees</div>
+                 
+                  <div class="sb-sidenav-collapse-arrow" style={{color:"white"}}>
                     <i class="fas fa-angle-down"></i>
                   </div>
                 </a>
@@ -237,32 +244,28 @@ function AdminSideBar() {
                   data-bs-parent="#sidenavAccordion"
                 >
                   <nav class="sb-sidenav-menu-nested nav accordion">
-                    <a class="nav-link" href="http://localhost:3000/addse">
-                      Add Sales Executive
-                    </a>
-                    <a className="nav-link" href="http://localhost:3000/allse">
+                    
+                    <a className="nav-link" style={{color:"white"}}href="http://localhost:3000/allse">
                       View Sales Executive
                     </a>
-                    <a class="nav-link" href="http://localhost:3000/adddd">
-                      Add Delivery Driver
-                    </a>
-                    <a className="nav-link" href="http://localhost:3000/alldd">
+                    
+                    <a className="nav-link" style={{color:"white"}}href="http://localhost:3000/alldd">
                       View Delivery Driver
                     </a>
                     <a
-                      className="nav-link"
+                      className="nav-link"style={{color:"white"}}
                       href="http://localhost:3000/allleave"
                     >
                       View Leave Applications
                     </a>
                     <a
-                      className="nav-link"
+                      className="nav-link"style={{color:"white"}}
                       href="http://localhost:3000/addsalary"
                     >
                       Add salary transaction
                     </a>
                     <a
-                      className="nav-link"
+                      className="nav-link"style={{color:"white"}}
                       href="http://localhost:3000/allsalary"
                     >
                       View Salary transaction
@@ -284,11 +287,12 @@ function AdminSideBar() {
                   aria-expanded="false"
                   aria-controls="collapsePages"
                 >
-                  <div className="sb-nav-link-icon">
+                  <div className="sb-nav-link-icon" style={{color:"white"}}>
                     <i class="fas fa-columns"></i>
                   </div>
-                  Finance
-                  <div class="sb-sidenav-collapse-arrow">
+                  <div style={{color:"white"}}>Finance</div>
+                  
+                  <div class="sb-sidenav-collapse-arrow" style={{color:"white"}}>
                     <i class="fas fa-angle-down"></i>
                   </div>
                 </a>
@@ -299,16 +303,16 @@ function AdminSideBar() {
                   data-bs-parent="#sidenavAccordion"
                 >
                   <nav class="sb-sidenav-menu-nested nav accordion">
-                    <a class="nav-link" href="">
+                    <a class="nav-link" style={{color:"white"}}href="">
                       Profit
                     </a>
-                    <a className="nav-link" href="">
+                    <a className="nav-link" style={{color:"white"}}href="">
                       Income
                     </a>
-                    <a class="nav-link" href="">
+                    <a class="nav-link" style={{color:"white"}}href="">
                       Transfer
                     </a>
-                    <a className="nav-link" href="">
+                    <a className="nav-link" style={{color:"white"}}href="">
                       Spend
                     </a>
 

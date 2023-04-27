@@ -103,7 +103,7 @@ export default function AllSupplierTransaction() {
                     <td>
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       <button
-                        className="btn btn-primary"
+                        className="btn btn-secondary"
                         style={{ marginRight: "10px" }}
                         onClick={() => {
                           window.location.replace(

@@ -1,7 +1,8 @@
 import React,{useState} from 'react';
 import axios from "axios";
-import AdminDashBoard from "./AdminDashBoard";
-import Footer from "../Common/Footer";
+import AdminDashBoard from '../AdminDashBoard';
+import Footer from '../../Common/Footer';
+
 
 
 function AddDelivery(){

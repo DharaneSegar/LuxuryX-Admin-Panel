@@ -76,7 +76,7 @@ export default function AllSuppliers() {
 
                                         
                                         <td >
-                                            <button className="btn btn-primary" onClick={()=>{
+                                            <button className="btn btn-secondary" onClick={()=>{
                                                 window.location.replace(`http://localhost:3000/updatesupplier/${supplier._id}`)
                                             }}><CreateIcon /></button>
                                        

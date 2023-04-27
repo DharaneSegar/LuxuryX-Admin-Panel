@@ -33,7 +33,7 @@ const DeliveryList2 = (props) => {
         <td><center>{status}</center></td>
                                    
         <td>
-            <Link className='btn btn-primary' to={{pathname: `/UpdateDelivery/${id}`}}>
+            <Link className='btn btn-secondary' to={{pathname: `/UpdateDelivery/${id}`}}>
             <CreateIcon />
             </Link>
         </td>

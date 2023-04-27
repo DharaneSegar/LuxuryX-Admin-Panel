@@ -4,12 +4,11 @@ import Footer from "../Common/Footer";
 import SalesExecutiveDashBoard from "./SalesExecutiveDashBoard";
 
 function ApplyForLeaveSE() {
-  const [title, setTitle] = useState("");
+
   const [days, setDays] = useState("");
   const [startdate, setStartDate] = useState("");
   const [enddate, setEndDate] = useState("");
   const [reason, setReason] = useState("");
-  const [status, setStatus] = useState("");
 
   var user = JSON.parse(localStorage.getItem("SEInfo"));
 
@@ -17,26 +16,43 @@ function ApplyForLeaveSE() {
   const fullname = user.fullname;
   async function sendData(e) {
     e.preventDefault();
+    var s = new Date(startdate)
+    var e = new Date(enddate)
 
-    setStatus("");
+    var date1 = s.getTime()
+    var date2 = e.getTime()
 
-    if (!title || !days || !startdate || !enddate || !reason) {
+    var diff = (date2 - date1)
+    var days = Math.round(diff/(1000*60*60*24))
+    
+    
+    
+    //console.log(days)
+
+    if ( !days || !startdate || !enddate || !reason) {
       alert("Fields can't be empty");
     } else {
-      await axios
+      if(days < 0){
+        alert("Invalid dates are selected")
+      }
+  
+      else{
+        setDays(days)
+
+        await axios
         .post("http://localhost:8070/leave/addlase", {
           eid,
           fullname,
-          title,
           days,
           startdate,
           enddate,
           reason,
-          status,
         })
         .then((res) => {
           if (res.data === "Success") {
             alert("Leave application submitted successfully");
+          } else if (res.data === "Invalid") {
+            alert("Invalid Id");
           } else if (res.data === "No id") {
             alert("Couldn't find id");
           } else {
@@ -46,6 +62,9 @@ function ApplyForLeaveSE() {
         .catch((msg) => {
           alert(msg);
         });
+  
+      }
+      
     }
   }
   return (
@@ -91,37 +110,22 @@ function ApplyForLeaveSE() {
                         />
                       </div>
                       <div className="form-floating mb-3">
-                        <label>Title :</label>
+                        <label>Reason for Leave:</label>
                         <br />
                         <br />
                         <input
                           className="form-control"
-                          type="text"
+                          type="textarea"
+                          id="reason"
+                          name="reason"
                           onChange={(e) => {
-                            setTitle(e.target.value);
+                            setReason(e.target.value);
                           }}
                         />
+                        {/* <textarea className="form-control"  id="reason" style={"resize: none"} name="reason" rows={"5"} cols={"60"}/> */}
                       </div>
 
-                      <div className="form-floating mb-3">
-                        <label>Period of Leave :</label>
-                        <br />
-                        <br />
-                        <input
-                          type="number"
-                          pattern="^[0-9]"
-                          title="Only Number"
-                          min="1"
-                          step="1"
-                          className="form-control"
-                          onChange={(e) => {
-                            setDays(e.target.value);
-                          }}
-                          required="required"
-                          id="period"
-                          name="period"
-                        />
-                      </div>
+                      
 
                       <div className="form-floating mb-3">
                         <label>Start-Date :</label>
@@ -154,20 +158,23 @@ function ApplyForLeaveSE() {
                       </div>
 
                       <div className="form-floating mb-3">
-                        <label>Reason for Leave:</label>
+                        <label>Period of Leave :</label>
                         <br />
                         <br />
                         <input
+                          type="number"
+                          title="Only Number"
+                          min="1"
+                          step="1"
                           className="form-control"
-                          type="textarea"
-                          id="reason"
-                          name="reason"
-                          onChange={(e) => {
-                            setReason(e.target.value);
-                          }}
+                          value = {days}
+                          required="required"
+                          id="period"
+                          name="period"
                         />
-                        {/* <textarea className="form-control"  id="reason" style={"resize: none"} name="reason" rows={"5"} cols={"60"}/> */}
                       </div>
+
+                      
 
                       <div className="d-grid">
                         <button

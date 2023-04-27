@@ -13,20 +13,17 @@ const LeaveSchema = new Schema({
         type:String,
         required : true
     },
-    title:{
-        type:String,
-        required : true
-    },
+
     days:{
         type:Number,
         required : true
     },
     startdate:{
-        type:String,
+        type:Date,
         required : true
     },
     enddate:{
-        type:String,
+        type:Date,
         required : true
     },
     reason:{

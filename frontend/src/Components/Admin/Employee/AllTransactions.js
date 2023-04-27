@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import CreateIcon from "@mui/icons-material/Create";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import axios from "axios";
-import AdminDashBoard from "./AdminDashBoard";
-import Footer from "../Common/Footer";
+import AdminDashBoard from "../AdminDashBoard";
+import Footer from "../../Common/Footer";
 import { NavLink, Link } from "react-router-dom";
 
 export default function AllSalary() {
@@ -113,7 +113,7 @@ export default function AllSalary() {
                       <td>{t.paydate}</td>
                       <td className="d-flex justify-content-between">
                         <NavLink to={`/updatet/${t.Id}`}>
-                          <button className="btn btn-primary">
+                          <button className="btn btn-secondary">
                             <CreateIcon />
                           </button>
                         </NavLink>

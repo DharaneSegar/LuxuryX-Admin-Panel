@@ -1,15 +1,14 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import AdminDashBoard from "./AdminDashBoard";
-import Footer from "../Common/Footer";
+import AdminDashBoard from "../AdminDashBoard";
+import Footer from "../../Common/Footer";
 
 export default function UpdateSalesExecutive() {
   const [Id, setId] = useState();
   const [sid, setSid] = useState("");
   const [fullname, setFullname] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
   const [age, setAge] = useState("");
@@ -28,7 +27,6 @@ export default function UpdateSalesExecutive() {
           setSid(res.data.se.sid);
           setFullname(res.data.se.fullname);
           setEmail(res.data.se.email);
-          setPassword(res.data.se.password);
           setAddress(res.data.se.address);
           setPhone(res.data.se.phone);
           setAge(res.data.se.age);
@@ -52,7 +50,6 @@ export default function UpdateSalesExecutive() {
       email,
       address,
       phone,
-      password,
       age,
       qualification,
       basicsalary,
@@ -145,23 +142,7 @@ export default function UpdateSalesExecutive() {
                               required
                             />
                           </div>
-                          <div className="form-floating mb-3">
-                            <label>Password :</label>
-                            <br />
-                            <br />
-                            <input
-                              className="form-control"
-                              type="text"
-                              value={password}
-                              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                              name="password"
-                              placeholder="Type password"
-                              onChange={(e) => {
-                                setPassword(e.target.value);
-                              }}
-                              required
-                            />
-                          </div>
+                   
                           <div className="form-floating mb-3">
                             <label>Address :</label>
                             <br />

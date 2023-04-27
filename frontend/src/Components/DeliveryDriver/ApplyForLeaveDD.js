@@ -4,7 +4,7 @@ import Footer from "../Common/Footer";
 import DeliveryDriverDashBoard from "./DeliveryDriverDashBoard";
 
 function ApplyForLeaveDD() {
-  const [title, setTitle] = useState("");
+
   const [days, setDays] = useState("");
   const [startdate, setStartDate] = useState("");
   const [enddate, setEndDate] = useState("");
@@ -16,15 +16,33 @@ function ApplyForLeaveDD() {
 
   async function sendData(e) {
     e.preventDefault();
+    var s = new Date(startdate)
+    var e = new Date(enddate)
 
-    if (!title || !days || !startdate || !enddate || !reason) {
+    var date1 = s.getTime()
+    var date2 = e.getTime()
+
+    var diff = (date2 - date1)
+    var days = Math.round(diff/(1000*60*60*24))
+    
+    
+    
+    //console.log(days)
+
+    if ( !days || !startdate || !enddate || !reason) {
       alert("Fields can't be empty");
     } else {
-      await axios
+      if(days < 0){
+        alert("Invalid dates are selected")
+      }
+  
+      else{
+        setDays(days)
+
+        await axios
         .post("http://localhost:8070/leave/addladd", {
           eid,
           fullname,
-          title,
           days,
           startdate,
           enddate,
@@ -44,6 +62,9 @@ function ApplyForLeaveDD() {
         .catch((msg) => {
           alert(msg);
         });
+  
+      }
+      
     }
   }
   return (
@@ -89,37 +110,22 @@ function ApplyForLeaveDD() {
                         />
                       </div>
                       <div className="form-floating mb-3">
-                        <label>Title :</label>
+                        <label>Reason for Leave:</label>
                         <br />
                         <br />
                         <input
                           className="form-control"
-                          type="text"
+                          type="textarea"
+                          id="reason"
+                          name="reason"
                           onChange={(e) => {
-                            setTitle(e.target.value);
+                            setReason(e.target.value);
                           }}
                         />
+                        {/* <textarea className="form-control"  id="reason" style={"resize: none"} name="reason" rows={"5"} cols={"60"}/> */}
                       </div>
 
-                      <div className="form-floating mb-3">
-                        <label>Period of Leave :</label>
-                        <br />
-                        <br />
-                        <input
-                          type="number"
-                          pattern="^[0-9]"
-                          title="Only Number"
-                          min="1"
-                          step="1"
-                          className="form-control"
-                          onChange={(e) => {
-                            setDays(e.target.value);
-                          }}
-                          required="required"
-                          id="period"
-                          name="period"
-                        />
-                      </div>
+                      
 
                       <div className="form-floating mb-3">
                         <label>Start-Date :</label>
@@ -152,20 +158,23 @@ function ApplyForLeaveDD() {
                       </div>
 
                       <div className="form-floating mb-3">
-                        <label>Reason for Leave:</label>
+                        <label>Period of Leave :</label>
                         <br />
                         <br />
                         <input
+                          type="number"
+                          title="Only Number"
+                          min="1"
+                          step="1"
                           className="form-control"
-                          type="textarea"
-                          id="reason"
-                          name="reason"
-                          onChange={(e) => {
-                            setReason(e.target.value);
-                          }}
+                          value = {days}
+                          required="required"
+                          id="period"
+                          name="period"
                         />
-                        {/* <textarea className="form-control"  id="reason" style={"resize: none"} name="reason" rows={"5"} cols={"60"}/> */}
                       </div>
+
+                      
 
                       <div className="d-grid">
                         <button

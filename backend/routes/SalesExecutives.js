@@ -1,5 +1,7 @@
 const router = require("express").Router();
 const SalesExecutive = require("../models/salesexecutive"); //import sales executive model
+const bcrypt = require("bcrypt")
+const nodemailer = require("nodemailer");
 
 //CREATE function - create/adding a salesexecutive
 
@@ -16,6 +18,8 @@ router.post("/addse", async (req, res) => {
   const basicsalary = Number(req.body.basicsalary);
   const gender = req.body.gender;
   const image = req.body.image;
+  var msg = "You are now an employee of LuxuryX. Your username is " + email + " and password is " + password
+ 
 
   try {
     const preuser = await SalesExecutive.findOne({ email: email }); //check whether the email address already exists
@@ -27,23 +31,58 @@ router.post("/addse", async (req, res) => {
     } else if (useId) {
       res.status(200).json("Id"); //response in json format is sent to the frontend if sid is already taken
     } else {
-      const newSalesExecutive = new SalesExecutive({
-        //creating object from salesexecutive model and assigning it to a const variable
-        sid,
-        fullname,
-        email,
-        password,
-        address,
-        phone,
-        age,
-        qualification,
-        basicsalary,
-        gender,
-        image,
-      });
 
-      await newSalesExecutive.save(); //save the newly created object in the database using save function
-      res.status(201).json(newSalesExecutive); //response in json format is sent if above condition true(if object is passed)
+      try {
+        //send email
+        const transporter = nodemailer.createTransport({
+          service: "gmail",
+          auth: {
+            user: "itpmetrogroup2@gmail.com",
+            pass: "hfyfimbbvdzdypfh",
+          },
+        });
+
+        const mailOptions = {
+          from: "itpmetrogroup2@gmail.com",
+          to: email,
+          subject: "Congratulations!",
+          html: msg,
+        };
+
+        transporter.sendMail(mailOptions, (error, info) => {
+          if (error) {
+            console.log("Error" + error);
+          } else {
+            console.log("Email sent:" + info.response);
+            res.status(201).json({ status: 201, info });
+          }
+        });
+      } catch (error) {
+        console.log("Error" + error);
+        res.status(401).json({ status: 401, error });
+      }
+      bcrypt.hash(password,12).then(hashedpassword => {
+        const newSalesExecutive = new SalesExecutive({
+          //creating object from salesexecutive model and assigning it to a const variable
+          sid,
+          fullname,
+          email,
+          password:hashedpassword,
+          address,
+          phone,
+          age,
+          qualification,
+          basicsalary,
+          gender,
+          image,
+        });
+  
+        newSalesExecutive.save(); //save the newly created object in the database using save function
+        res.status(201).json(newSalesExecutive); //response in json format is sent if above condition true(if object is passed)
+
+      })
+      
+  
     }
   } catch (error) {
     //if unsuccess
@@ -103,7 +142,6 @@ router.route("/update/:id").put(async (req, res) => {
     const {
       fullname,
       email,
-      password,
       address,
       phone,
       age,
@@ -117,7 +155,6 @@ router.route("/update/:id").put(async (req, res) => {
     const updateSalesExecutive = {//fetch the retrieved info to a variable
       fullname,
       email,
-      password,
       address,
       phone,
       age,

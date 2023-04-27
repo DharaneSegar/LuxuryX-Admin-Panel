@@ -1,15 +1,13 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import AdminDashBoard from "./AdminDashBoard";
-import Footer from "../Common/Footer";
-
+import AdminDashBoard from "../AdminDashBoard";
+import Footer from "../../Common/Footer";
 export default function UpdateDeliveryDriver() {
   const [Id, setId] = useState();
   const [did, setDid] = useState("");
   const [fullname, setFullname] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
   const [age, setAge] = useState("");
@@ -29,7 +27,6 @@ export default function UpdateDeliveryDriver() {
           setDid(res.data.dd.did);
           setFullname(res.data.dd.fullname);
           setEmail(res.data.dd.email);
-          setPassword(res.data.dd.password);
           setAddress(res.data.dd.address);
           setPhone(res.data.dd.phone);
           setAge(res.data.dd.age);
@@ -53,7 +50,6 @@ export default function UpdateDeliveryDriver() {
       email,
       address,
       phone,
-      password,
       age,
       licenseno,
       vehicleno,
@@ -148,23 +144,6 @@ export default function UpdateDeliveryDriver() {
                           />
                         </div>
 
-                        <div className="form-floating mb-3">
-                          <label>Password :</label>
-                          <br />
-                          <br />
-                          <input
-                            className="form-control"
-                            type="text"
-                            value={password}
-                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                            name="password"
-                            placeholder="Type password"
-                            onChange={(e) => {
-                              setPassword(e.target.value);
-                            }}
-                            required
-                          />
-                        </div>
 
                         <div className="form-floating mb-3">
                           <label>Address :</label>

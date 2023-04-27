@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import AdminDashBoard from "./AdminDashBoard";
-import Footer from "../Common/Footer";
+import AdminDashBoard from '../AdminDashBoard';
+import Footer from '../../Common/Footer';
 import DeliveryList2 from "./DeliveryList2";
 import { useReactToPrint } from "react-to-print";
 
@@ -87,7 +87,7 @@ export default function DeliveryList() {
             <div ref={componentPDF}>
               <table className="table">
                 <thead>
-                  <tr className="table-dark">
+                  <tr className="table-dark" >
                     <th scope="col">
                       <center>Delivery Id</center>
                     </th>

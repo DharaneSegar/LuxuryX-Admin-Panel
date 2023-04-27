@@ -3,40 +3,41 @@ import CreateIcon from "@mui/icons-material/Create";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import axios from "axios";
-import AdminDashBoard from "./AdminDashBoard";
-import Footer from "../Common/Footer";
+import AdminDashBoard from "../AdminDashBoard";
+import Footer from "../../Common/Footer";
+import { NavLink } from "react-router-dom";
 
-export default function AllDeliveryDriver() {
+export default function AllSalesExecutive() {
   const [image, setImage] = useState("");
 
   function GET(id) {
     axios
-      .get(`http://localhost:8070/deliverydriver/getDid/${id}`)
+      .get(`http://localhost:8070/salesexecutive/getSid/${id}`)
       .then((res) => {
-        setImage(res.data.dd.image);
+        setImage(res.data.se.image);
       })
       .catch((err) => {
         alert(err.message);
       });
   }
 
-  const [deliverydrivers, setDeliveryDrivers] = useState([]);
+  const [salesexecutives, setSalesExecutives] = useState([]);
   const [query, setQuery] = useState("");
 
   useEffect(() => {
-    function getDD() {
+    function getSE() {
       axios
-        .get(`http://localhost:8070/deliverydriver/getdd`)
+        .get("http://localhost:8070/salesexecutive/getse")
         .then((res) => {
           console.log(res.data);
-          setDeliveryDrivers(res.data);
+          setSalesExecutives(res.data);
         })
         .catch((err) => {
           alert(err.message);
         });
     }
 
-    getDD();
+    getSE();
   }, []);
 
   function modal() {
@@ -53,7 +54,7 @@ export default function AllDeliveryDriver() {
             <br />
             <br />
             
-            <div className="row justify-content-center"><h2 style={{ marginLeft: "200px" }}>Delivery Driver List</h2></div>
+            <div className="row justify-content-center"><h2 style={{ marginLeft: "200px" }}>Sales Executive List</h2></div>
             <br />
             <div>
               <input
@@ -65,99 +66,87 @@ export default function AllDeliveryDriver() {
               />
               <a
                 className="btn btn-primary"
-                href="http://localhost:3000/adddd"
+                href="http://localhost:3000/addse"
                 style={{ marginLeft: "120px" }}
               >
-                Add Delivery Driver
+                Add Sales Executive
               </a>
 
               <a
                 className="btn btn-primary"
-                href="http://localhost:3000/reportdd"
+                href="http://localhost:3000/reportse"
                 style={{ marginLeft: "120px" }}
                 onClick={modal}
-                id="pdf"
               >
                 Generate Report
               </a>
             </div>
+
+            <br />
           </div>
-
-          <br />
-
-          <table className="table" style={{ marginLeft: "50px" }}>
+          <table className="table">
             <thead>
               <tr className="table-dark">
                 <th scope="col">id</th>
                 <th scope="col">Fullname</th>
                 <th scope="col">Email</th>
-                <th scope="col">Password</th>
                 <th scope="col">Address</th>
                 <th scope="col">Phone</th>
                 <th scope="col">Age</th>
-                <th scope="col">License No</th>
-                <th scope="col">Vehicle No</th>
-                <th scope="col">NIC</th>
+                <th scope="col">Qualification</th>
                 <th scope="col">Basic Salary</th>
+                <th scope="col">Gender</th>
                 <th scope="col">Operations</th>
               </tr>
             </thead>
             <tbody>
-              {deliverydrivers
+              {salesexecutives
                 .filter(
-                  (d) =>
-                    d.did.toLowerCase().includes(query) ||
-                    d.fullname.toLowerCase().includes(query)
+                  (s) =>
+                    s.sid.toLowerCase().includes(query) ||
+                    s.fullname.toLowerCase().includes(query)
                 )
-                .map((deliverydriver) => (
+                .map((salesexecutive) => (
                   <tr>
-                    <th scope="row">{deliverydriver.did}</th>
-                    <td>{deliverydriver.fullname}</td>
-                    <td>{deliverydriver.email}</td>
-                    <td>{deliverydriver.password}</td>
-                    <td>{deliverydriver.address}</td>
-                    <td>{deliverydriver.phone}</td>
-                    <td>{deliverydriver.age}</td>
-                    <td>{deliverydriver.licenseno}</td>
-                    <td>{deliverydriver.vehicleno}</td>
-                    <td>{deliverydriver.nic}</td>
-                    <td>{deliverydriver.basicsalary}</td>
+                    <th scope="row">{salesexecutive.sid}</th>
+                    <td>{salesexecutive.fullname}</td>
+                    <td>{salesexecutive.email}</td>
+                    <td>{salesexecutive.address}</td>
+                    <td>{salesexecutive.phone}</td>
+                    <td>{salesexecutive.age}</td>
+                    <td>{salesexecutive.qualification}</td>
+                    <td>{salesexecutive.basicsalary}</td>
+                    <td>{salesexecutive.gender}</td>
                     <td className="d-flex justify-content-between">
-                      <button
-                        className="btn btn-primary"
-                        onClick={() => {
-                          window.location.replace(
-                            `/updatedd/${deliverydriver.did}`
-                          );
-                        }}
-                      >
-                        <CreateIcon />
-                      </button>
+                      <NavLink to={`/updatese/${salesexecutive.sid}`}>
+                        <button className="btn btn-secondary">
+                          <CreateIcon />
+                        </button>
+                      </NavLink>
                       <button
                         className="btn"
-                        onClick={(e) => GET(deliverydriver.did)}
+                        onClick={(e) => GET(salesexecutive.sid)}
                         data-toggle="modal"
                         data-target="#myModal"
                       >
                         <RemoveRedEyeIcon />
                       </button>
-                      <br/>
                       <button
                         className="btn btn-danger"
                         onClick={() => {
                           axios.delete(
-                            `http://localhost:8070/deliverydriver/deletedd/${deliverydriver._id}`
+                            `http://localhost:8070/salesexecutive/deletese/${salesexecutive._id}`
                           );
                           axios
                             .delete(
-                              `http://localhost:8070/t/delete/${deliverydriver.did}`
+                              `http://localhost:8070/t/delete/${salesexecutive.sid}`
                             )
                             .then((res) => {
                               if (res.data === "success") {
-                                alert("Delivery Driver deleted successfully");
-                                window.location.replace("/alldd");
+                                alert("Sales Executive deleted successfully");
+                                window.location.replace("/allse");
                               } else if (res.data === "error") {
-                                alert("Error in deleting Delivery Driver");
+                                alert("Error in deleting sales executive");
                               }
                             })
                             .catch((err) => {
@@ -174,6 +163,7 @@ export default function AllDeliveryDriver() {
           </table>
         </div>
       </div>
+
       <Footer></Footer>
       <div className="modal" id="myModal">
         <div className="modal-dialog">

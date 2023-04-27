@@ -3,41 +3,40 @@ import CreateIcon from "@mui/icons-material/Create";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import axios from "axios";
-import AdminDashBoard from "./AdminDashBoard";
-import Footer from "../Common/Footer";
-import { NavLink } from "react-router-dom";
+import AdminDashBoard from "../AdminDashBoard";
+import Footer from "../../Common/Footer";
 
-export default function AllSalesExecutive() {
+export default function AllDeliveryDriver() {
   const [image, setImage] = useState("");
 
   function GET(id) {
     axios
-      .get(`http://localhost:8070/salesexecutive/getSid/${id}`)
+      .get(`http://localhost:8070/deliverydriver/getDid/${id}`)
       .then((res) => {
-        setImage(res.data.se.image);
+        setImage(res.data.dd.image);
       })
       .catch((err) => {
         alert(err.message);
       });
   }
 
-  const [salesexecutives, setSalesExecutives] = useState([]);
+  const [deliverydrivers, setDeliveryDrivers] = useState([]);
   const [query, setQuery] = useState("");
 
   useEffect(() => {
-    function getSE() {
+    function getDD() {
       axios
-        .get("http://localhost:8070/salesexecutive/getse")
+        .get(`http://localhost:8070/deliverydriver/getdd`)
         .then((res) => {
           console.log(res.data);
-          setSalesExecutives(res.data);
+          setDeliveryDrivers(res.data);
         })
         .catch((err) => {
           alert(err.message);
         });
     }
 
-    getSE();
+    getDD();
   }, []);
 
   function modal() {
@@ -54,7 +53,7 @@ export default function AllSalesExecutive() {
             <br />
             <br />
             
-            <div className="row justify-content-center"><h2 style={{ marginLeft: "200px" }}>Sales Executive List</h2></div>
+            <div className="row justify-content-center"><h2 style={{ marginLeft: "200px" }}>Delivery Driver List</h2></div>
             <br />
             <div>
               <input
@@ -66,89 +65,99 @@ export default function AllSalesExecutive() {
               />
               <a
                 className="btn btn-primary"
-                href="http://localhost:3000/addse"
+                href="http://localhost:3000/adddd"
                 style={{ marginLeft: "120px" }}
               >
-                Add Sales Executive
+                Add Delivery Driver
               </a>
 
               <a
                 className="btn btn-primary"
-                href="http://localhost:3000/reportse"
+                href="http://localhost:3000/reportdd"
                 style={{ marginLeft: "120px" }}
                 onClick={modal}
+                id="pdf"
               >
                 Generate Report
               </a>
             </div>
-
-            <br />
           </div>
-          <table className="table">
+
+          <br />
+
+          <table className="table" style={{ marginLeft: "50px" }}>
             <thead>
               <tr className="table-dark">
                 <th scope="col">id</th>
                 <th scope="col">Fullname</th>
                 <th scope="col">Email</th>
-                <th scope="col">Password</th>
+                
                 <th scope="col">Address</th>
                 <th scope="col">Phone</th>
                 <th scope="col">Age</th>
-                <th scope="col">Qualification</th>
+                <th scope="col">License No</th>
+                <th scope="col">Vehicle No</th>
+                <th scope="col">NIC</th>
                 <th scope="col">Basic Salary</th>
-                <th scope="col">Gender</th>
                 <th scope="col">Operations</th>
               </tr>
             </thead>
             <tbody>
-              {salesexecutives
+              {deliverydrivers
                 .filter(
-                  (s) =>
-                    s.sid.toLowerCase().includes(query) ||
-                    s.fullname.toLowerCase().includes(query)
+                  (d) =>
+                    d.did.toLowerCase().includes(query) ||
+                    d.fullname.toLowerCase().includes(query)
                 )
-                .map((salesexecutive) => (
+                .map((deliverydriver) => (
                   <tr>
-                    <th scope="row">{salesexecutive.sid}</th>
-                    <td>{salesexecutive.fullname}</td>
-                    <td>{salesexecutive.email}</td>
-                    <td>{salesexecutive.password}</td>
-                    <td>{salesexecutive.address}</td>
-                    <td>{salesexecutive.phone}</td>
-                    <td>{salesexecutive.age}</td>
-                    <td>{salesexecutive.qualification}</td>
-                    <td>{salesexecutive.basicsalary}</td>
-                    <td>{salesexecutive.gender}</td>
+                    <th scope="row">{deliverydriver.did}</th>
+                    <td>{deliverydriver.fullname}</td>
+                    <td>{deliverydriver.email}</td>
+                    
+                    <td>{deliverydriver.address}</td>
+                    <td>{deliverydriver.phone}</td>
+                    <td>{deliverydriver.age}</td>
+                    <td>{deliverydriver.licenseno}</td>
+                    <td>{deliverydriver.vehicleno}</td>
+                    <td>{deliverydriver.nic}</td>
+                    <td>{deliverydriver.basicsalary}</td>
                     <td className="d-flex justify-content-between">
-                      <NavLink to={`/updatese/${salesexecutive.sid}`}>
-                        <button className="btn btn-primary">
-                          <CreateIcon />
-                        </button>
-                      </NavLink>
+                      <button
+                        className="btn btn-secondary"
+                        onClick={() => {
+                          window.location.replace(
+                            `/updatedd/${deliverydriver.did}`
+                          );
+                        }}
+                      >
+                        <CreateIcon />
+                      </button>
                       <button
                         className="btn"
-                        onClick={(e) => GET(salesexecutive.sid)}
+                        onClick={(e) => GET(deliverydriver.did)}
                         data-toggle="modal"
                         data-target="#myModal"
                       >
                         <RemoveRedEyeIcon />
                       </button>
+                      <br/>
                       <button
                         className="btn btn-danger"
                         onClick={() => {
                           axios.delete(
-                            `http://localhost:8070/salesexecutive/deletese/${salesexecutive._id}`
+                            `http://localhost:8070/deliverydriver/deletedd/${deliverydriver._id}`
                           );
                           axios
                             .delete(
-                              `http://localhost:8070/t/delete/${salesexecutive.sid}`
+                              `http://localhost:8070/t/delete/${deliverydriver.did}`
                             )
                             .then((res) => {
                               if (res.data === "success") {
-                                alert("Sales Executive deleted successfully");
-                                window.location.replace("/allse");
+                                alert("Delivery Driver deleted successfully");
+                                window.location.replace("/alldd");
                               } else if (res.data === "error") {
-                                alert("Error in deleting sales executive");
+                                alert("Error in deleting Delivery Driver");
                               }
                             })
                             .catch((err) => {
@@ -165,7 +174,6 @@ export default function AllSalesExecutive() {
           </table>
         </div>
       </div>
-
       <Footer></Footer>
       <div className="modal" id="myModal">
         <div className="modal-dialog">

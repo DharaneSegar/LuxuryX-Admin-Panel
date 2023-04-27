@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import CreateIcon from "@mui/icons-material/Create";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import axios from "axios";
-import AdminDashBoard from "./AdminDashBoard";
-import Footer from "../Common/Footer";
+import AdminDashBoard from "../AdminDashBoard";
+import Footer from "../../Common/Footer";
 
 export default function AllLeave() {
   const [leaves, setLeaves] = useState([]);
@@ -96,11 +96,11 @@ export default function AllLeave() {
                   <th scope="col">Leave Id</th>
                   <th scope="col">eid</th>
                   <th scope="col">Fullname</th>
-                  <th scope="col">Title</th>
+                  <th scope="col">Reason</th>
                   <th scope="col">Days</th>
                   <th scope="col">Start Date</th>
                   <th scope="col">End Date</th>
-                  <th scope="col">Reason</th>
+                  
                   <th scope="col">Status</th>
                   <th scope="col">Operations</th>
                 </tr>
@@ -113,15 +113,15 @@ export default function AllLeave() {
                       <th scope="row">{l.Id}</th>
                       <td>{l.eid}</td>
                       <td>{l.fullname}</td>
-                      <td>{l.title}</td>
-                      <td>{l.days}</td>
-                      <td>{l.startdate}</td>
-                      <td>{l.enddate}</td>
                       <td>{l.reason}</td>
+                      <td>{l.days}</td>
+                      <td>{l.startdate.toString().slice(0,10)}</td>
+                      <td>{l.enddate.toString().slice(0,10)}</td>
+                      
                       <td>{l.status}</td>
                       <td className="d-flex justify-content-between">
                         <button
-                          className="btn btn-primary"
+                          className="btn btn-secondary"
                           onClick={(e) => GET(l.Id)}
                           data-toggle="modal"
                           data-target="#myModal"

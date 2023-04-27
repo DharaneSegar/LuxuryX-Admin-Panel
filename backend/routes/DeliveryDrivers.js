@@ -1,5 +1,8 @@
 const router = require("express").Router();
 const DeliveryDriver = require("../models/deliverydriver"); //import delivery driver model
+const bcrypt = require("bcrypt")
+const nodemailer = require("nodemailer");
+
 
 //CREATE function - create/adding a deliverydriver
 
@@ -17,6 +20,7 @@ router.post("/adddd", async (req, res) => {
   const nic = req.body.nic;
   const basicsalary = Number(req.body.basicsalary);
   const image = req.body.image;
+  var msg = "You are now an employee of LuxuryX. Your username is " + email + " and password is " + password
 
   try {
     const preuser = await DeliveryDriver.findOne({ email: email }); //check whether the email address already exists
@@ -28,24 +32,59 @@ router.post("/adddd", async (req, res) => {
     } else if(useId){
         res.status(200).json("Id");//response in json format is sent to the frontend if did is already taken
     }else {
-      const newDeliveryDriver = new DeliveryDriver({
-        //creating object from deliverydriver model and assigning it to a const variable
-        did,
-        fullname,
-        email,
-        password,
-        address,
-        phone,
-        age,
-        licenseno,
-        vehicleno,
-        nic,
-        basicsalary,
-        image,
-      });
 
-      await newDeliveryDriver.save(); //save the newly created object in the database using save function
-      res.status(201).json(newDeliveryDriver); //response in json format is sent if above condition true(if object is passed)
+      
+        //send email
+        try{
+        const transporter = nodemailer.createTransport({
+          service: "gmail",
+          auth: {
+            user: "itpmetrogroup2@gmail.com",
+            pass: "hfyfimbbvdzdypfh",
+          },
+        });
+
+        const mailOptions = {
+          from: "itpmetrogroup2@gmail.com",
+          to: email,
+          subject: "Congratulations!",
+          html: msg,
+        };
+
+        transporter.sendMail(mailOptions, (error, info) => {
+          if (error) {
+            console.log("Error" + error);
+          } else {
+            console.log("Email sent:" + info.response);
+            res.status(201).json({ status: 201, info });
+          }
+        });
+      } catch (error) {
+        console.log("Error" + error);
+        res.status(401).json({ status: 401, error });
+      }
+      bcrypt.hash(password,12).then(hashedpassword => {
+        const newDeliveryDriver = new DeliveryDriver({
+          //creating object from deliverydriver model and assigning it to a const variable
+          did,
+          fullname,
+          email,
+          password:hashedpassword,
+          address,
+          phone,
+          age,
+          licenseno,
+          vehicleno,
+          nic,
+          basicsalary,
+          image,
+        });
+  
+        newDeliveryDriver.save(); //save the newly created object in the database using save function
+        res.status(201).json(newDeliveryDriver); //response in json format is sent if above condition true(if object is passed)
+        
+      })
+      
     }
   } catch (error) {
     //if unsuccess
@@ -104,7 +143,6 @@ router.route("/update/:id").put(async (req, res) => {
     const {
       fullname,
       email,
-      password,
       address,
       phone,
       age,
@@ -119,7 +157,6 @@ router.route("/update/:id").put(async (req, res) => {
     const updateDeliveryDriver = {//fetch the retrieved info to a variable
       fullname,
       email,
-      password,
       address,
       phone,
       age,

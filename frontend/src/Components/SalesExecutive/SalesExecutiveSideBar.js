@@ -12,10 +12,10 @@ function SalesExecutiveSideBar() {
             <div className="sb-sidenav-menu">
               <div className="nav">
                 <a className="nav-link">
-                  <div className="sb-nav-link-icon">
-                    <i className="fas fa-tachometer-alt"></i>
+                  <div className="sb-nav-link-icon" style={{color:"white"}}>
+                    <i className="fas fa-tachometer-alt" style={{color:"white"}}></i>
                   </div>
-                  <a className="nav-link" href="./viewse">
+                  <a className="nav-link" style={{color:"white"}}href="./viewse">
                     View Profile
                   </a>
                 </a>
@@ -26,13 +26,14 @@ function SalesExecutiveSideBar() {
                   data-bs-target="#collapsePages"
                   aria-expanded="false"
                   aria-controls="collapsePages"
+                  style={{color:"white"}}
                 >
-                  <div className="sb-nav-link-icon">
-                    <i class="fas fa-columns"></i>
+                  <div className="sb-nav-link-icon" style={{color:"white"}}>
+                    <i class="fas fa-columns" style={{color:"white"}}></i>
                   </div>
                   Leaves
-                  <div class="sb-sidenav-collapse-arrow">
-                    <i class="fas fa-angle-down"></i>
+                  <div class="sb-sidenav-collapse-arrow" style={{color:"white"}}>
+                    <i class="fas fa-angle-down" style={{color:"white"}}></i>
                   </div>
                 </a>
                 <div
@@ -40,16 +41,17 @@ function SalesExecutiveSideBar() {
                   id="collapsePages"
                   aria-labelledby="headingTwo"
                   data-bs-parent="#sidenavAccordion"
+                  style={{color:"white"}}
                 >
                   <nav
-                    class="sb-sidenav-menu-nested nav accordion"
+                    class="sb-sidenav-menu-nested nav accordion"style={{color:"white"}}
                     id="sidenavAccordionPages"
                   >
-                    <a class="nav-link" href="./applyse">
+                    <a class="nav-link" style={{color:"white"}}href="./applyse">
                       Apply for leave
                     </a>
 
-                    <a className="nav-link" href="./leavese">
+                    <a className="nav-link" href="./leavese" style={{color:"white"}}>
                       View leaves
                     </a>
 
@@ -67,12 +69,13 @@ function SalesExecutiveSideBar() {
                   data-bs-target="#collapseExample"
                   aria-expanded="false"
                   aria-controls="collapseExample"
+                  style={{color:"white"}}
                 >
-                  <div className="sb-nav-link-icon">
-                    <i class="fas fa-columns"></i>
+                  <div className="sb-nav-link-icon" style={{color:"white"}}>
+                    <i class="fas fa-columns" style={{color:"white"}}></i>
                   </div>
                   Coupons
-                  <div class="sb-sidenav-collapse-arrow">
+                  <div class="sb-sidenav-collapse-arrow" style={{color:"white"}}>
                     <i class="fas fa-angle-down"></i>
                   </div>
                 </a>
@@ -86,11 +89,11 @@ function SalesExecutiveSideBar() {
                     class="sb-sidenav-menu-nested nav accordion"
                     id="sidenavAccordionPages"
                   >
-                    <a class="nav-link" href="/addcoupon">
+                    <a class="nav-link" href="/addcoupon" style={{color:"white"}}>
                       Add Coupons
                     </a>
 
-                    <a className="nav-link" href="/coupon">
+                    <a className="nav-link" href="/coupon" style={{color:"white"}}>
                       View Coupons
                     </a>
                   </nav>
@@ -101,12 +104,13 @@ function SalesExecutiveSideBar() {
                   data-bs-target="#collapseExample1"
                   aria-expanded="false"
                   aria-controls="collapseExample"
+                  style={{color:"white"}}
                 >
-                  <div className="sb-nav-link-icon">
-                    <i class="fas fa-columns"></i>
+                  <div className="sb-nav-link-icon" style={{color:"white"}}>
+                    <i class="fas fa-columns" style={{color:"white"}}></i>
                   </div>
                   Salary
-                  <div class="sb-sidenav-collapse-arrow">
+                  <div class="sb-sidenav-collapse-arrow" style={{color:"white"}}>
                     <i class="fas fa-angle-down"></i>
                   </div>
                 </a>
@@ -120,7 +124,7 @@ function SalesExecutiveSideBar() {
                     class="sb-sidenav-menu-nested nav accordion"
                     id="sidenavAccordionPages"
                   >
-                    <a class="nav-link" href="./viewsalse">
+                    <a class="nav-link" href="./viewsalse" style={{color:"white"}}>
                       My Salaries
                     </a>
                   </nav>

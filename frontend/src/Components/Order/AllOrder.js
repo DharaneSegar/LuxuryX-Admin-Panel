@@ -67,6 +67,7 @@ export default function AllOrder() {
                             className="search-product-box"
                             placeholder="search Order"
                             onChange={searchHandle}
+                            
                         />
                     </div>
 
@@ -76,7 +77,7 @@ export default function AllOrder() {
 
 
 
-                        <button style={{ marginBottom: "10px", marginRight:"350px" }} className="btn btn-primary" onClick={() => {
+                        <button style={{ marginBottom: "10px", marginRight:"350px",marginLeft:"150px" }} className="btn btn-primary" onClick={() => {
                             window.location.replace(`http://localhost:3000/orderReport`);
                         }}>Generate Orders Report</button>
 
@@ -117,7 +118,7 @@ export default function AllOrder() {
 
                                             <td>
                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                <button className="btn btn-primary" style={{ marginRight: "10px" }} onClick={() => {
+                                                <button className="btn btn-secondary" style={{ marginRight: "10px" }} onClick={() => {
                                                     window.location.replace(`http://localhost:3000/updateorder/${order._id}`);
                                                 }}><CreateIcon /></button>
 

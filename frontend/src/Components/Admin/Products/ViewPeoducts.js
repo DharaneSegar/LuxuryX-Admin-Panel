@@ -113,7 +113,7 @@ function ViewProducts() {
                                     role="group"
                                     aria-label="Actions"
                                   >
-                                    <button className='btn btn-primary' onClick={() => handleEdit(item)}><CreateIcon /></button>
+                                    <button className='btn btn-secondary' onClick={() => handleEdit(item)}><CreateIcon /></button>
                                     <button className='btn btn-danger' onClick={() => handleDelete(item._id)} ><DeleteOutlineIcon /></button>
 
                                   </div>

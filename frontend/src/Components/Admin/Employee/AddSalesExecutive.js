@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
-import AdminDashBoard from "./AdminDashBoard";
-import Footer from "../Common/Footer";
+import AdminDashBoard from "../AdminDashBoard";
+import Footer from "../../Common/Footer";
+
 
 function AddSalesExecutive() {
   const [sid, setSid] = useState("");
@@ -48,7 +49,7 @@ function AddSalesExecutive() {
     } else if (s.startsWith("S") === false) {
       alert("sid should start with S ");
     } else if (s.length !== 4) {
-      alert("did should consist 4 characters");
+      alert("sid should consist 4 characters");
     } else if (!em.match(/^[a-z0-9._%+-]+@[a-z0-9-]+(?:\.[a-z0-9-]+)*$/)) {
       alert("Email invalid");
     } else if (
@@ -86,7 +87,7 @@ function AddSalesExecutive() {
           if (res.data === "Taken") {
             alert("User already available provide another email address ");
           } else if (res.data === "Id") {
-            alert("User Id already taken please provide another id");
+            alert(" Sid already taken please provide another id");
           } else {
             alert("Inserted new Sales Executive");
             window.location.replace("/allse");
@@ -155,6 +156,7 @@ function AddSalesExecutive() {
                               setFullname(e.target.value);
                             }}
                             required
+                            
                           />
                         </div>
 

@@ -1,8 +1,8 @@
 import React,{useState, useEffect} from 'react';
 import axios from "axios";
 import { Link, useParams, withRouter } from 'react-router-dom';
-import AdminDashBoard from "./AdminDashBoard";
-import Footer from "../Common/Footer";
+import AdminDashBoard from '../AdminDashBoard';
+import Footer from '../../Common/Footer';
 
 const UpdateDelivery = (props) => {
 
