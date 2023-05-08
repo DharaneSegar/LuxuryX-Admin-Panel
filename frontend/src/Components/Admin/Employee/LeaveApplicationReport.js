@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { useReactToPrint } from "react-to-print";
+import { useParams } from "react-router-dom";
 
 export default function LeaveReport() {
   const componentPDF = useRef();
   const [leaves, setLeaves] = useState([]);
+  const { query } = useParams();
   const generatePDF = useReactToPrint({
     content: () => componentPDF.current,
     documentTitle: "Leavedata",
@@ -43,7 +45,7 @@ export default function LeaveReport() {
           </div>
           <div className="login-form">
             <div ref={componentPDF} style={{ width: "85%" }}>
-              <h2 style={{ marginLeft: "200px" }}>Leave Application Report</h2>
+              <h2 style={{ marginLeft: "200px" }}>Leave Application Report of {query}</h2>
               <table className="table">
                 <thead>
                   <tr className="table-dark">
@@ -58,7 +60,9 @@ export default function LeaveReport() {
                     <th scope="col">Status</th>
                   </tr>
                 </thead>
-                {leaves.map((l) => (
+                {leaves
+                .filter((l)=>l.startdate.includes(query))
+                .map((l) => (
                   <tbody>
                     <tr>
                       <th scope="row">{l.Id}</th>

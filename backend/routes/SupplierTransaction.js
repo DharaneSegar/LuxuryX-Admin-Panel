@@ -140,4 +140,16 @@ router.route("/updateQuantitysupplierTransaction/:id").put(async(req,res) => {
         res.send(result);
       });
 
+    router.get('/inventoryReport', async (req, res) => {
+        try {
+          const products = await SupplierTransaction.aggregate([
+            { $group: { _id: '$ProductName', Quantity: { $sum: '$Quantity' } } },
+            { $sort: { _id: 1 } },
+          ]);
+          res.json(products);
+        } catch (err) {
+          res.json({ message: err });
+        }
+      });
+
 module.exports = router;

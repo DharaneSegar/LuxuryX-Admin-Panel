@@ -59,24 +59,31 @@ function ViewLeaveSE() {
             <table className="table">
               <thead>
                 <tr className="table-dark">
-                  <th scope="col">Title</th>
+                <th scope="col">Reason</th>
                   <th scope="col">Days</th>
                   <th scope="col">Start Date</th>
                   <th scope="col">End Date</th>
-                  <th scope="col">Reason</th>
+                  
                   <th scope="col">Status</th>
                 </tr>
               </thead>
               {leaves
-                .filter((e) => e.title.toLowerCase().includes(query))
-                .map((e) => (
+
+.filter(
+  (l) => 
+l.reason.toLowerCase().includes(query)
+ )
+
+.map((e) => (
+                
+                
                   <tbody>
                     <tr>
-                      <td>{e.title}</td>
-                      <td>{e.days}</td>
-                      <td>{e.startdate}</td>
-                      <td>{e.enddate}</td>
                       <td>{e.reason}</td>
+                      <td>{e.days}</td>
+                      <td>{e.startdate.toString().slice(0,10)}</td>
+                      <td>{e.enddate.toString().slice(0,10)}</td>
+                      
                       <td>{e.status}</td>
                     </tr>
                   </tbody>

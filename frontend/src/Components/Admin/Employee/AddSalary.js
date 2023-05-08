@@ -4,65 +4,77 @@ import AdminDashBoard from "../AdminDashBoard";
 import Footer from "../../Common/Footer";
 
 export default function AddSalary() {
+  var [type, setType] = useState("");
   const [eid, setEid] = useState("");
   const [basicsalary, setBasicSalary] = useState("");
   const [othrs, setOTHrs] = useState("");
   const [otrate, setOTRate] = useState("");
-  const [paydate, setPaydate] = useState("");
+  var [paydate, setPaydate] = useState("");
   var [netsalary, setNetSalary] = useState("");
+  const [email, setEmail] = useState("");
+  var [search, setSearch] = useState("");
 
-  const [search, setSearch] = useState("");
-  const [data, setData] = useState("");
-  console.log(search);
+  function demo(){
+    setOTRate("0.2")
+    setOTHrs("10")
+    setPaydate("2023-05-07")
 
-  useEffect(() => {
-    function getSE() {
-      axios
-        .get(`http://localhost:8070/salesexecutive/getSid/${search}`)
-        .then((res) => {
-          console.log(res.data);
-          setData(res.data);
-        })
-        .catch((err) => {
-          alert(err.message);
-        });
-    }
-
-    getSE();
-  }, []);
-
-  async function sendData(e) {
-    e.preventDefault();
-    if (!eid || !basicsalary || !othrs || !otrate || !paydate || !netsalary) {
-      alert("Fields can't be empty");
-    } else {
-      await axios
-        .post("http://localhost:8070/salary/addsal", {
-          eid,
-          basicsalary,
-          othrs,
-          otrate,
-          paydate,
-          netsalary,
-        })
-        .then((res) => {
-          if (res.data === "Success") {
-            alert("Inserted new salary transaction ");
-            //window.location.replace("/alldd");
-          } else {
-            alert("Error in inserting");
-          }
-        })
-        .catch((msg) => {
-          alert(msg);
-        });
-    }
   }
 
-  function Calculation() {
-    var val = otrate * basicsalary;
-    netsalary = basicsalary + othrs * val;
+  function check() {
+    search = search.toUpperCase();
+    axios
+      .get(`http://localhost:8070/t/get/${search}`)
+      .then((res) => {
+        console.log(res.data);
+        setEid(res.data.t.eid);
+        setEmail(res.data.t.email);
+        setBasicSalary(res.data.t.basicsalary);
+        if (search.startsWith("S")) {
+          setType("Sales Executive");
+        } else if (search.startsWith("D")) {
+          setType("Delivery Driver");
+        }
+      })
+      .catch((err) => {
+        setSearch("");
+        alert("No such Employee Id exists");
+      });
+  }
+
+  async function Calculation(e) {
+    const r = Number(otrate);
+    const b = Number(basicsalary);
+    const h = Number(othrs);
+    var val = (r / 100) * b;
+    netsalary = b + h * val;
     setNetSalary(netsalary);
+
+    e.preventDefault();
+    await axios
+      .post("http://localhost:8070/salary/addsal", {
+        type,
+        eid,
+        basicsalary,
+        othrs,
+        otrate,
+        paydate,
+        netsalary,
+        email,
+      })
+      .then((res) => {
+        if (res.data === "Success") {
+          alert("Inserted new salary transaction ");
+          window.location.replace("/allsalary");
+        } else if (res.data === "No id") {
+          alert("Couldn't find Employee id");
+        } else {
+          alert("Error in inserting");
+        }
+      })
+      .catch((msg) => {
+        alert(msg);
+      });
   }
 
   return (
@@ -76,13 +88,22 @@ export default function AddSalary() {
                 <br />
                 <br />
                 <br />
+                <br />
+
+                <input
+                            type="submit"
+                            className="btn btn-primary"
+                            onClick={demo}
+                            value="demo"
+                          ></input>
 
                 <form className="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                   <div className="input-group">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <input
                       className="form-control"
                       type="text"
-                      placeholder="Search"
+                      placeholder="Type Employee Id here"
                       aria-label="Search for..."
                       aria-describedby="btnNavbarSearch"
                       onChange={(e) => {
@@ -90,19 +111,15 @@ export default function AddSalary() {
                       }}
                     />
                     <input
-                      type="submit"
+                      type="button"
                       className="btn btn-primary"
                       id="btnNavbarSearch"
                       value="Search"
+                      onClick={check}
                     ></input>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input
-                      className="form-control"
-                      type="text"
-                      placeholder="salary"
-                    />
                   </div>
                 </form>
+
                 <div className="card shadow-lg border-0 rounded-lg mt-5">
                   <div className="card-header">
                     <h3 className="text-center font-weight-light my-4">
@@ -110,7 +127,20 @@ export default function AddSalary() {
                     </h3>
                   </div>
                   <div className="card-body">
-                    <form method="post">
+                    <form>
+                      <br />
+
+                      <div className="form-floating mb-3">
+                        <label>Employee Type:</label>
+                        <br />
+                        <br />
+                        <input
+                          className="form-control"
+                          type="text"
+                          value={type}
+                        />
+                      </div>
+
                       <div className="form-floating mb-3">
                         <label>Employee Id :</label>
                         <br />
@@ -118,10 +148,7 @@ export default function AddSalary() {
                         <input
                           className="form-control"
                           type="text"
-                          pattern="[S/D][0-9][0-9][0-9]"
-                          onChange={(e) => {
-                            setEid(e.target.value);
-                          }}
+                          value={eid}
                         />
                       </div>
 
@@ -132,9 +159,7 @@ export default function AddSalary() {
                         <input
                           className="form-control"
                           type="text"
-                          onChange={(e) => {
-                            setBasicSalary(e.target.value);
-                          }}
+                          value={basicsalary}
                         />
                       </div>
                       <div className="form-floating mb-3">
@@ -147,6 +172,7 @@ export default function AddSalary() {
                           onChange={(e) => {
                             setOTHrs(e.target.value);
                           }}
+                          value = {othrs}
                         />
                       </div>
 
@@ -160,6 +186,7 @@ export default function AddSalary() {
                           onChange={(e) => {
                             setOTRate(e.target.value);
                           }}
+                          value = {otrate}
                         />
                       </div>
 
@@ -169,10 +196,12 @@ export default function AddSalary() {
                         <br />
                         <input
                           className="form-control"
+                          id="pdate"
                           type="date"
                           onChange={(e) => {
                             setPaydate(e.target.value);
                           }}
+                          value  = {paydate}
                         />
                       </div>
 
@@ -190,17 +219,8 @@ export default function AddSalary() {
                       <div className="d-grid">
                         <button
                           className="btn btn-primary btn-block"
-                          onClick={Calculation}
-                        >
-                          Calculate Salary
-                        </button>
-                        <br />
-                      </div>
-                      <div className="d-grid">
-                        <button
-                          className="btn btn-primary btn-block"
                           type="submit"
-                          onClick={sendData}
+                          onClick={Calculation}
                         >
                           Add transaction
                         </button>

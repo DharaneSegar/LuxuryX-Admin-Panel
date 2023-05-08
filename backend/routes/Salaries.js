@@ -304,4 +304,18 @@ router.route("/getEid/:id").get((req, res) => {
     });
 });
 
+router.route("/getTid/:id").get(async (req, res) => {
+  let id = req.params.id;//get the id from the request(parameter)
+
+  await Salary.findOne({ Id: `${id}` })//compare the sid with the got id and return the details
+    .then((s) => {
+      res.status(200).send({ status: "SE Details fetched", s });//send response as a json object and a status
+    })
+    .catch((err) => {
+      console.log(err.message);
+
+      res.status(500).send({ status: "Error with fetching SE details", error: err.message }); //send error message
+    });
+});
+
 module.exports = router;

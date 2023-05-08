@@ -51,9 +51,9 @@ function UpdateInventory() {
 
         <div className="containerf">
             <AdminSideBar></AdminSideBar>
-        <div className="container" style={{marginTop:"100px"}}>
+        <div className="container" style={{marginTop:"100px",marginLeft:"520px", marginRight:"400px"}}>
             <h1>Update Supplier Transaction</h1>
-            <form onSubmit={updateData}>
+            <form style={{marginLeft:"50px"}}onSubmit={updateData}>
                 <div className="form-group">
 
                     <div style={{ marginLeft: "0px", marginRight: "auto", width: "10%" }}>

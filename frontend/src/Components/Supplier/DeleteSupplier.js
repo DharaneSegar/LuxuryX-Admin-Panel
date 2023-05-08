@@ -50,12 +50,12 @@ export default function DeleteSupplier() {
             <div className="containerf">
                 <AdminSideBar></AdminSideBar>
 
-            <div className="container" style={{marginTop:"100px"}}>
+            <div className="container" style={{marginTop:"100px",marginLeft:"520px"}}>
                 <br></br>
                 {/* <h3>{id}</h3> */}
                 <form onSubmit={deleteData} >
-                    <h3>Delete Supplier Information </h3>
-                    <div class="form-row">
+                    <h3 style = {{marginRight:"500px"}}>Delete Supplier Information </h3>
+                    <div class="form-row" >
                         
                         <div class="col-md-6">
                             <label for="name" class="form-label">Name</label>

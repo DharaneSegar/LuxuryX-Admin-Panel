@@ -4,6 +4,7 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import axios from "axios";
 import AdminDashBoard from "../AdminDashBoard";
 import Footer from "../../Common/Footer";
+import { Link } from "react-router-dom";
 
 export default function AllLeave() {
   const [leaves, setLeaves] = useState([]);
@@ -76,14 +77,20 @@ export default function AllLeave() {
                   onChange={(e) => setQuery(e.target.value)}
                 />
 
-                <a
-                  className="btn btn-primary"
-                  href="http://localhost:3000/reportle"
-                  style={{ marginLeft: "200px" }}
-                  id="pdf"
-                >
-                  Generate Report
-                </a>
+<Link style={{ marginLeft: "80px" }}
+                to={`http://localhost:3000/reportle/${query}`}
+                className="btn btn-primary"
+              >
+                Yearly Report
+              </Link>
+
+              <Link style={{ marginLeft: "80px" }}
+                to={`http://localhost:3000/reportle/${query}`}
+                className="btn btn-primary"
+              >
+                Monthly Report
+              </Link>
+
               </div>
             </div>
             <br />
@@ -105,10 +112,17 @@ export default function AllLeave() {
                   <th scope="col">Operations</th>
                 </tr>
               </thead>
-              {leaves
-                .filter((l) => l.Id.toString().includes(query))
-                .map((l) => (
+              
                   <tbody>
+                  {leaves
+                .filter(
+                  (l) => 
+                l.startdate.slice(5,7).includes(query)||
+                l.startdate.slice(0,7).includes(query)||
+                l.startdate.includes(query)
+                 )
+
+                .map((l) => (
                     <tr>
                       <th scope="row">{l.Id}</th>
                       <td>{l.eid}</td>
@@ -129,33 +143,19 @@ export default function AllLeave() {
                           <CreateIcon />
                         </button>
                         <button
-                          className="btn btn-danger"
-                          onClick={() => {
-                            axios
-                              .delete(
-                                `http://localhost:8070/leave/deletela/${l._id}`
-                              )
-                              .then((res) => {
-                                if (res.data === "success") {
-                                  alert(
-                                    "Leave application deleted successfully"
-                                  );
-                                  window.location.replace("/allleave");
-                                } else if (res.data === "error") {
-                                  alert("Error in deleting leave application");
-                                }
-                              })
-                              .catch((err) => {
-                                alert(err);
-                              });
-                          }}
-                        >
+                        
+                        className="btn btn-danger"
+                        onClick={(e) => GET(l.Id)}
+                        data-toggle="modal"
+                        data-target="#delle">
+                         
                           <DeleteOutlineIcon />
                         </button>
                       </td>
                     </tr>
+                    ))}
                   </tbody>
-                ))}
+                
             </table>
           </div>
         </div>
@@ -226,7 +226,63 @@ export default function AllLeave() {
             </div>
           </div>
         </div>
-      </div>
+        </div>
+
+        <div className="modal1" id="delle">
+        <div className="modal-dialog">
+          <div className="modal-content">
+            
+
+            <div className="modal-body">
+                <br></br>
+                <h5>Are you sure you want to delete this leave application? </h5>
+              
+<br></br>
+            
+<button
+                        className="btn btn-danger"
+                        type="submit"
+                style={{ marginLeft: "130px" }}
+                onClick={() => {
+                  axios
+                    .delete(
+                      `http://localhost:8070/leave/deletela/${Id}`
+                    )
+                    .then((res) => {
+                      
+                        window.location.replace("/allleave");
+                      
+                    })
+                    .catch((err) => {
+                      alert(err);
+                    });
+                }}
+                      >
+                Yes
+              </button>
+              
+              <a
+                className="btn btn-primary "
+                type="submit"
+                style={{ marginLeft: "100px" }}
+                href="/allleave"
+                
+                
+              >
+                No
+              </a>
+              
+              <br />
+              </div>
+              <br></br>
+            
+          </div>
+        </div>
+        </div>
+    
+       
+         
+      
     </>
   );
 }

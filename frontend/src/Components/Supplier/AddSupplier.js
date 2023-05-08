@@ -15,6 +15,21 @@ export default function AddSupplier() {
   function sendData(e) {
     e.preventDefault();
 
+    if (!name || !address || !contactNumber || !email || !productsSupplied) {
+      alert("Please fill in all required fields");
+      return;
+  }
+
+  if (!/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[\w-]{2,}$/.test(email)) {
+      alert("Please enter a valid email address");
+      return;
+  }
+
+  if (!/^\d{10}$/.test(contactNumber)) {
+      alert("Please enter a valid 10-digit contact number");
+      return;
+        }
+
     const newSupplier = {
       name,
       address,

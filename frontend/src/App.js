@@ -39,6 +39,7 @@ import UpdateSupplierTransaction from './Components/Supplier/UpdateSupplierTrans
 import DeleteSupplierTransaction from './Components/Supplier/DeleteSupplierTransaction';
 import SupplierTransactionReport from './Components/Supplier/SupplierTransactionReport';
 import SupplierReport from './Components/Supplier/SupplierReport';
+import InventoryReport from './Components/Supplier/InventoryReport';
 
 import RegCustomers from './Components/Admin/RegCustomers';
 
@@ -51,11 +52,6 @@ import DeliveryList from './Components/Admin/Delivery/DeliveryList';
 import UpdateDelivery from './Components/Admin/Delivery/UpdateDelivery';
 import DeliveryDriverView from './Components/DeliveryDriver/DeliveryDriverView';
 
-/*import AddCoupon from './Components/Coupon/AddCoupon';
-import AllCoupons from './Components/Coupon/AllCoupon';
-import UpdateCoupon from './Components/Coupon/UpdateCoupon';
-import DeleteCoupon from './Components/Coupon/DeleteCoupon';
-import searchCoupon from './Components/Coupon/SearchCoupon';*/
 
 import AllOrder from './Components/Order/AllOrder';
 import UpdateOrder from './Components/Order/UpdateOrder';
@@ -65,10 +61,14 @@ import OrderReport from './Components/Order/OrderReport';
 import AddCoupon from './Components/Coupon/AddCoupon';
 import AllCoupons from './Components/Coupon/AllCoupons';
 
-
-
-
-
+import AllFinanceTransactions from './Components/Finance/financeTransactions';
+import UpdateFinanceTransactions from './Components/Finance/transactionUpdate';
+import AddTransactions from './Components/Finance/addTransactions';
+import Bills from './Components/Finance/bills';
+import AddBills from './Components/Finance/addBills';
+import UpdateBills from './Components/Finance/updateBills';
+import Analytics from './Components/Finance/analytics';
+import FinanceOverview from './Components/Finance/financeOverview';
 
 function App() {
   return (
@@ -100,7 +100,7 @@ function App() {
         <Route exact path = '/leavedd' element = {<ViewLeaveDD/>}/>
         <Route exact path = '/reportse' element = {<SalesExecutiveReport/>}/>
         <Route exact path = '/reportdd' element = {<DeliveryDriverReport/>}/>
-        <Route exact path = '/reportle' element = {<LeaveReport/>}/>
+        <Route exact path = '/reportle/:query' element = {<LeaveReport/>}/>
         <Route exact path = '/reportt/:query' element = {<TransactionReport/>}/>
         <Route exact path = '/viewsalse' element = {<ViewSalarySE/>}/>
         <Route exact path = '/viewsaldd' element = {<ViewSalaryDD/>}/>
@@ -112,6 +112,7 @@ function App() {
         <Route path="/supplierTransaction" element={<AllSupplierTransactions/>} exact />
         <Route path="/updatesupplierTransaction/:id" element={<UpdateSupplierTransaction/>} exact />
         <Route path="/deletesupplierTransaction/:id" element={<DeleteSupplierTransaction/>} exact />
+        <Route exact path = '/inventoryReport' element = {<InventoryReport/>}/>
       
         <Route path="/supplierTransactionReport" element={<SupplierTransactionReport/>} exact />
         <Route path="/supplierReport" element={<SupplierReport/>} exact />
@@ -137,9 +138,18 @@ function App() {
       <Route path="/orderReport" element={<OrderReport/>} exact />
 
       <Route path="/coupon" element={<AllCoupons />} exact />
-            <Route path="/addcoupon" element={<AddCoupon />} exact />
+      <Route path="/addcoupon" element={<AddCoupon />} exact />
 
-        
+      <Route exact path="/financeTrans" element={<AllFinanceTransactions />}  />
+      <Route exact path="/financeTransUpdate/:id" element={<UpdateFinanceTransactions />}  />
+      <Route exact path="/addTransactions" element={<AddTransactions />}  />
+      <Route exact path="/bills" element={<Bills />}  />
+      <Route exact path="/addBills" element={<AddBills />}  />
+      <Route exact path="/updateBills/:id" element={<UpdateBills />}  />
+      <Route exact path="/analytics" element={<Analytics />}  />
+      <Route exact path="/financeOverview" element={<FinanceOverview />}  />
+
+
 
 
 

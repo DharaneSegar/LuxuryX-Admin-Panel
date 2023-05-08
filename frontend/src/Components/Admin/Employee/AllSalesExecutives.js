@@ -9,12 +9,17 @@ import { NavLink } from "react-router-dom";
 
 export default function AllSalesExecutive() {
   const [image, setImage] = useState("");
+  const [Id,setId] = useState("")
+  const [sid,setSid]  =useState("");
 
   function GET(id) {
     axios
       .get(`http://localhost:8070/salesexecutive/getSid/${id}`)
       .then((res) => {
         setImage(res.data.se.image);
+        setId(res.data.se._id);
+        setSid(res.data.se.sid);
+
       })
       .catch((err) => {
         alert(err.message);
@@ -92,7 +97,7 @@ export default function AllSalesExecutive() {
                 <th scope="col">Email</th>
                 <th scope="col">Address</th>
                 <th scope="col">Phone</th>
-                <th scope="col">Age</th>
+                <th scope="col">DOB</th>
                 <th scope="col">Qualification</th>
                 <th scope="col">Basic Salary</th>
                 <th scope="col">Gender</th>
@@ -106,56 +111,42 @@ export default function AllSalesExecutive() {
                     s.sid.toLowerCase().includes(query) ||
                     s.fullname.toLowerCase().includes(query)
                 )
-                .map((salesexecutive) => (
+                .map((s) => (
                   <tr>
-                    <th scope="row">{salesexecutive.sid}</th>
-                    <td>{salesexecutive.fullname}</td>
-                    <td>{salesexecutive.email}</td>
-                    <td>{salesexecutive.address}</td>
-                    <td>{salesexecutive.phone}</td>
-                    <td>{salesexecutive.age}</td>
-                    <td>{salesexecutive.qualification}</td>
-                    <td>{salesexecutive.basicsalary}</td>
-                    <td>{salesexecutive.gender}</td>
+                    <th scope="row">{s.sid}</th>
+                    <td>{s.fullname}</td>
+                    <td>{s.email}</td>
+                    <td>{s.address}</td>
+                    <td>{s.phone}</td>
+                    <td>{s.dob.toString().slice(0,10)}</td>
+                    <td>{s.qualification}</td>
+                    <td>{s.basicsalary}</td>
+                    <td>{s.gender}</td>
                     <td className="d-flex justify-content-between">
-                      <NavLink to={`/updatese/${salesexecutive.sid}`}>
+                      <NavLink to={`/updatese/${s.sid}`}>
                         <button className="btn btn-secondary">
                           <CreateIcon />
                         </button>
                       </NavLink>
                       <button
                         className="btn"
-                        onClick={(e) => GET(salesexecutive.sid)}
+                        onClick={(e) => GET(s.sid)}
                         data-toggle="modal"
                         data-target="#myModal"
                       >
                         <RemoveRedEyeIcon />
                       </button>
+                      
                       <button
                         className="btn btn-danger"
-                        onClick={() => {
-                          axios.delete(
-                            `http://localhost:8070/salesexecutive/deletese/${salesexecutive._id}`
-                          );
-                          axios
-                            .delete(
-                              `http://localhost:8070/t/delete/${salesexecutive.sid}`
-                            )
-                            .then((res) => {
-                              if (res.data === "success") {
-                                alert("Sales Executive deleted successfully");
-                                window.location.replace("/allse");
-                              } else if (res.data === "error") {
-                                alert("Error in deleting sales executive");
-                              }
-                            })
-                            .catch((err) => {
-                              alert(err);
-                            });
-                        }}
+                        onClick={(e) => GET(s.sid)}
+                        data-toggle="modal"
+                        data-target="#delemp"
+                        
                       >
                         <DeleteOutlineIcon />
                       </button>
+                      
                     </td>
                   </tr>
                 ))}
@@ -174,6 +165,64 @@ export default function AllSalesExecutive() {
           </div>
         </div>
       </div>
+
+      <div className="modal1" id="delemp">
+        <div className="modal-dialog">
+          <div className="modal-content">
+            
+
+            <div className="modal-body">
+                <br></br>
+                <h5>Are you sure you want to delete this employee? </h5>
+              
+<br></br>
+            
+<button
+                        className="btn btn-danger"
+                        type="submit"
+                style={{ marginLeft: "130px" }}
+                        onClick={() => {
+                          axios.delete(
+                            `http://localhost:8070/salesexecutive/deletese/${Id}`
+                          );
+                          axios
+                            .delete(
+                              `http://localhost:8070/t/delete/${sid}`
+                            )
+                            .then((res) => {
+                              if (res.data === "success") {
+                                
+                                window.location.replace("/allse");
+                              } else if (res.data === "error") {
+                                alert("Error in deleting sales executive");
+                              }
+                            })
+                            .catch((err) => {
+                              alert(err);
+                            });
+                        }}
+                      >
+                Yes
+              </button>
+              
+              <a
+                className="btn btn-primary "
+                type="submit"
+                style={{ marginLeft: "100px" }}
+                href="/allse"
+                
+                
+              >
+                No
+              </a>
+              
+              <br />
+              </div>
+              <br></br>
+            
+          </div>
+        </div>
+        </div>
     </div>
   );
 }

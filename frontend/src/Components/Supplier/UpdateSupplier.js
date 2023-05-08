@@ -56,10 +56,13 @@ export default function UpdateSupplier() {
 
             <div className="containerf">
                 <AdminSideBar></AdminSideBar>
-            <div className="container" style={{marginTop:"100px"}}>
+            <div className="container" style={{marginTop:"100px",marginLeft:"520px", marginRight:"500px"}}>
             
             <form onSubmit={updateData}>
                         <h3>Update Supplier Details</h3>
+                        <br></br>
+                        <br>
+                        </br>
 
                         <div className="form-group">
                             <label for="Name">Supplier Name</label>
@@ -106,8 +109,7 @@ export default function UpdateSupplier() {
 
                         <button type="submit" class="btn btn-primary" style={{marginTop:"10px"}}>Update <i class="fa fa-check"></i></button>
 
-                        <a href="/supplier" type="button" class="btn btn-secondary" style={{ marginTop:"20px", marginLeft: "740px" }}>back <i class="fa fa-reply"></i></a>
-                 
+                        
                     </form>
 
         </div>

@@ -162,7 +162,7 @@ function AdminSideBar() {
                       View Supplier Transactions
                     </a>
 
-                    <a className="nav-link" style={{color:"white"}}href="">
+                    <a className="nav-link" style={{color:"white"}}href="/inventoryReport">
                       Inventory Report
                     </a>
 
@@ -303,17 +303,17 @@ function AdminSideBar() {
                   data-bs-parent="#sidenavAccordion"
                 >
                   <nav class="sb-sidenav-menu-nested nav accordion">
-                    <a class="nav-link" style={{color:"white"}}href="">
-                      Profit
+                    <a class="nav-link" style={{color:"white"}} href = "http://localhost:3000/financeOverview">
+                      Overview
                     </a>
-                    <a className="nav-link" style={{color:"white"}}href="">
-                      Income
+                    <a className="nav-link" style={{color:"white"}}href="http://localhost:3000/financeTrans">
+                      Transaction
                     </a>
-                    <a class="nav-link" style={{color:"white"}}href="">
-                      Transfer
+                    <a class="nav-link" style={{color:"white"}}href="http://localhost:3000/bills">
+                      Bills
                     </a>
-                    <a className="nav-link" style={{color:"white"}}href="">
-                      Spend
+                    <a className="nav-link" style={{color:"white"}}href="http://localhost:3000/analytics">
+                      Analytics
                     </a>
 
                     <div

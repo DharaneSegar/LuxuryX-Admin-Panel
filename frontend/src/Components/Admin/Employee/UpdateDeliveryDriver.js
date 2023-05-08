@@ -10,7 +10,7 @@ export default function UpdateDeliveryDriver() {
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
-  const [age, setAge] = useState("");
+  const [dob, setDob] = useState("");
   const [licenseno, setLicenseNo] = useState("");
   const [vehicleno, setVehicleNo] = useState("");
   const [nic, setNic] = useState("");
@@ -29,7 +29,7 @@ export default function UpdateDeliveryDriver() {
           setEmail(res.data.dd.email);
           setAddress(res.data.dd.address);
           setPhone(res.data.dd.phone);
-          setAge(res.data.dd.age);
+          setDob(res.data.dd.dob);
           setLicenseNo(res.data.dd.licenseno);
           setVehicleNo(res.data.dd.vehicleno);
           setNic(res.data.dd.nic);
@@ -46,18 +46,26 @@ export default function UpdateDeliveryDriver() {
   async function updateData(e) {
     e.preventDefault();
 
+    var d1 = new Date(dob); 
+    var d2 = new Date(); 
+    var diff = d2.getTime() - d1.getTime(); 
+    var daydiff = (diff / 31536000000).toFixed(0); 
+
     const newDeliveryDriver = {fullname,
       email,
       address,
       phone,
-      age,
+      dob,
       licenseno,
       vehicleno,
       nic,
       basicsalary,
     };
 
-    await axios
+    if(daydiff < 21){
+      alert("Employee's age should be greater than 21 ");
+    }else{
+      await axios
       .put(
         `http://localhost:8070/deliverydriver/update/${Id}`,
         newDeliveryDriver
@@ -74,6 +82,10 @@ export default function UpdateDeliveryDriver() {
       .catch((msg) => {
         alert(msg);
       });
+
+    }
+
+    
   }
   return (
     <div>
@@ -182,17 +194,17 @@ export default function UpdateDeliveryDriver() {
                         </div>
 
                         <div className="form-floating mb-3">
-                          <label>Age :</label>
+                          <label>Date of Birth :</label>
                           <br />
                           <br />
                           <input
                             className="form-control"
-                            type="number"
+                            type="date"
                             name="age"
                             placeholder="Type age"
-                            value={age}
+                            value={dob}
                             onChange={(e) => {
-                              setAge(e.target.value);
+                              setDob(e.target.value);
                             }}
                             required
                           />

@@ -10,6 +10,18 @@ function ApplyForLeaveSE() {
   const [enddate, setEndDate] = useState("");
   const [reason, setReason] = useState("");
 
+  function demo(){
+    setReason("Sick")
+    setStartDate("2023-05-28")
+    setEndDate("2023-05-07")
+  }
+
+  function demo1(){
+    setReason("Sick")
+    setStartDate("2023-05-05")
+    setEndDate("2023-05-07")
+  }
+
   var user = JSON.parse(localStorage.getItem("SEInfo"));
 
   const eid = user.sid;
@@ -51,6 +63,7 @@ function ApplyForLeaveSE() {
         .then((res) => {
           if (res.data === "Success") {
             alert("Leave application submitted successfully");
+            window.location.replace("./sehome")
           } else if (res.data === "Invalid") {
             alert("Invalid Id");
           } else if (res.data === "No id") {
@@ -78,6 +91,20 @@ function ApplyForLeaveSE() {
                 <br />
                 <br />
                 <br />
+
+                <input
+                            type="submit"
+                            className="btn btn-primary"
+                            onClick={demo}
+                            value="demo1"
+                          ></input>
+
+<input
+                            type="submit"
+                            className="btn btn-primary"
+                            onClick={demo1}
+                            value="demo2"
+                          ></input>
                 <div className="card shadow-lg border-0 rounded-lg mt-5">
                   <div className="card-header">
                     <h3 className="text-center font-weight-light my-4">
@@ -121,6 +148,7 @@ function ApplyForLeaveSE() {
                           onChange={(e) => {
                             setReason(e.target.value);
                           }}
+                          value = {reason}
                         />
                         {/* <textarea className="form-control"  id="reason" style={"resize: none"} name="reason" rows={"5"} cols={"60"}/> */}
                       </div>
@@ -139,6 +167,7 @@ function ApplyForLeaveSE() {
                           onChange={(e) => {
                             setStartDate(e.target.value);
                           }}
+                          value= {startdate}
                         />
                       </div>
 
@@ -154,6 +183,7 @@ function ApplyForLeaveSE() {
                           onChange={(e) => {
                             setEndDate(e.target.value);
                           }}
+                          value={enddate}
                         />
                       </div>
 

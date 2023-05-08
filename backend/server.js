@@ -81,5 +81,10 @@ const orderRouter = require("./routes/Order.js");
 app.use("/order", orderRouter);
 
 const couponRouter = require("./routes/Coupon.js");
-
 app.use("/coupon", couponRouter);
+
+const financeTransaction = require("./routes/financeTransaction.js");
+app.use("/financeTransaction",financeTransaction);
+
+const bills = require("./routes/bills.js");
+app.use("/bills",bills);

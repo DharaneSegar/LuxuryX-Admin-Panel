@@ -12,7 +12,7 @@ function AddDeliveryDriver() {
   const [repassword, setRePassword] = useState("");
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
-  const [age, setAge] = useState("");
+  const [dob, setDob] = useState("");
   const [licenseno, setLicenseNo] = useState("");
   const [vehicleno, setVehicleNo] = useState("");
   const [nic, setNic] = useState("");
@@ -41,6 +41,12 @@ function AddDeliveryDriver() {
     em = em.trim();
     input = input.trim();
 
+    var d1 = new Date(dob); 
+    var d2 = new Date(); 
+    var diff = d2.getTime() - d1.getTime(); 
+    var daydiff = (diff / 31536000000).toFixed(0); 
+    console.log(daydiff)
+
     if (input.length < 8) {
       alert("Password should consist atleast 8 chracters");
     } else if (d.startsWith("D") === false) {
@@ -53,7 +59,9 @@ function AddDeliveryDriver() {
       );
     } else if (!em.match(/^[a-z0-9._%+-]+@[a-z0-9-]+(?:\.[a-z0-9-]+)*$/)) {
       alert("Email invalid");
-    } else if (
+    } else if(daydiff < 21){
+      alert("Employee's age should be greater than 21 ");
+    }else if (
       !did ||
       !fullname ||
       !email ||
@@ -61,7 +69,7 @@ function AddDeliveryDriver() {
       !repassword ||
       !address ||
       !phone ||
-      !age ||
+      !dob ||
       !licenseno ||
       !vehicleno ||
       !nic ||
@@ -79,7 +87,7 @@ function AddDeliveryDriver() {
           password,
           address,
           phone,
-          age,
+          dob,
           licenseno,
           vehicleno,
           nic,
@@ -249,16 +257,16 @@ function AddDeliveryDriver() {
                         </div>
 
                         <div className="form-floating mb-3">
-                          <label>Age :</label>
+                          <label>Date of Birth :</label>
                           <br />
                           <br />
                           <input
                             className="form-control"
-                            type="number"
+                            type="date"
                             name="age"
                             placeholder="Type age"
                             onChange={(e) => {
-                              setAge(e.target.value);
+                              setDob(e.target.value);
                             }}
                             required
                           />

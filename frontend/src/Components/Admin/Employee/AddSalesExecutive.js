@@ -12,7 +12,7 @@ function AddSalesExecutive() {
   const [repassword, setRePassword] = useState("");
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
-  const [age, setAge] = useState("");
+  const [dob, setDob] = useState("");
   const [qualification, setQualification] = useState("");
   const [basicsalary, setBasicSalary] = useState("");
   const [gender, setGender] = useState("");
@@ -30,6 +30,103 @@ function AddSalesExecutive() {
     };
   }
 
+  function demo1(){
+    setSid("001")
+    setFullname("Nimal Perera")
+    setEmail("nimalp@gmail.com")
+    setPassword("asdQWE123")
+    setRePassword("asdQWE123")
+    setAddress("Colombo")
+    setPhone("0775523456")
+    setDob("1997-05-07")
+    setQualification("A/L")
+    setGender("Male")
+    setBasicSalary("15000")
+  }
+
+  function demo2(){
+    setSid("S001")
+    setFullname("Nimal Perera")
+    setEmail("nimalp@gmail.com")
+    setPassword("asdQWE123")
+    setRePassword("asdQWE123")
+    setAddress("Colombo")
+    setPhone("0775523456")
+    setDob("1997-05-07")
+    setQualification("A/L")
+    setGender("Male")
+    setBasicSalary("15000")
+  }
+
+  function demo3(){
+    setSid("S008")
+    setFullname("Nimal Perera")
+    setEmail("peterg@gmail.com")
+    setPassword("asdQWE123")
+    setRePassword("asdQWE123")
+    setAddress("Colombo")
+    setPhone("0775523456")
+    setDob("1997-05-07")
+    setQualification("A/L")
+    setGender("Male")
+    setBasicSalary("15000")
+  }
+
+  function demo4(){
+    setSid("S008")
+    setFullname("Nimal Perera")
+    setEmail("nimalpgmail.com")
+    setPassword("asdQWE123")
+    setRePassword("asdQWE123")
+    setAddress("Colombo")
+    setPhone("0775523468")
+    setDob("1997-05-07")
+    setQualification("A/L")
+    setGender("Male")
+    setBasicSalary("15000")
+  }
+
+  function demo5(){
+    setSid("S008")
+    setFullname("Nimal Perera")
+    setEmail("nimalp@gmail.com")
+    setPassword("asdQWE123")
+    setRePassword("asdQWE")
+    setAddress("Colombo")
+    setPhone("0775523468")
+    setDob("1997-05-07")
+    setQualification("A/L")
+    setGender("Male")
+    setBasicSalary("15000")
+  }
+
+  function demo6(){
+    setSid("S008")
+    setFullname("Nimal Perera")
+    setEmail("nimalp@gmail.com")
+    setPassword("asdQWE123")
+    setRePassword("asdQWE123")
+    setAddress("Colombo")
+    setPhone("0775523468")
+    setDob("2023-05-07")
+    setQualification("A/L")
+    setGender("Male")
+    setBasicSalary("15000")
+  }
+
+  function demo7(){
+    setSid("S008")
+    setFullname("Nimal Perera")
+    setEmail("nimalp@gmail.com")
+    setPassword("asdQWE123")
+    setRePassword("asdQWE123")
+    setAddress("Colombo")
+    setPhone("0775523468")
+    setDob("1997-05-07")
+    setQualification("A/L")
+    setGender("Male")
+    setBasicSalary("15000")
+  }
   async function sendData(e) {
     e.preventDefault();
 
@@ -39,6 +136,12 @@ function AddSalesExecutive() {
     var s = document.getElementById("sid").value;
     s = s.trim();
     em = em.trim();
+    var d1 = new Date(dob); 
+    var d2 = new Date(); 
+    var diff = d2.getTime() - d1.getTime(); 
+    var daydiff = (diff / 31536000000).toFixed(0); 
+    console.log(daydiff)
+
 
     if (input.length < 8) {
       alert("Password should consist atleast 8 chracters");
@@ -52,6 +155,8 @@ function AddSalesExecutive() {
       alert("sid should consist 4 characters");
     } else if (!em.match(/^[a-z0-9._%+-]+@[a-z0-9-]+(?:\.[a-z0-9-]+)*$/)) {
       alert("Email invalid");
+    }else if(daydiff < 21){
+      alert("Employee's age should be greater than 21 ");
     } else if (
       !sid ||
       !fullname ||
@@ -60,7 +165,7 @@ function AddSalesExecutive() {
       !repassword ||
       !address ||
       !phone ||
-      !age ||
+      !dob ||
       !qualification ||
       !basicsalary ||
       !gender
@@ -77,7 +182,7 @@ function AddSalesExecutive() {
           address,
           phone,
           password,
-          age,
+          dob,
           qualification,
           basicsalary,
           gender,
@@ -115,10 +220,61 @@ function AddSalesExecutive() {
             <div className="container1">
               <div className="row justify-content-center">
                 <div className="col-lg-5">
+                  
                   <br />
                   <br />
                   <br />
+                  <br/>
+                  <input
+                            type="submit"
+                            className="btn btn-primary"
+                            onClick={demo1}
+                            value="1"
+                          ></input>
+
+<input
+                            type="submit"
+                            className="btn btn-primary"
+                            onClick={demo2}
+                            value="2"
+                          ></input>
+
+<input
+                            type="submit"
+                            className="btn btn-primary"
+                            onClick={demo3}
+                            value="3"
+                          ></input>
+
+<input
+                            type="submit"
+                            className="btn btn-primary"
+                            onClick={demo4}
+                            value="4"
+                          ></input>
+
+<input
+                            type="submit"
+                            className="btn btn-primary"
+                            onClick={demo5}
+                            value="5"
+                          ></input>
+
+<input
+                            type="submit"
+                            className="btn btn-primary"
+                            onClick={demo6}
+                            value="6"
+                          ></input>
+
+<input
+                            type="submit"
+                            className="btn btn-primary"
+                            onClick={demo7}
+                            value="7"
+                          ></input>
                   <div className="card shadow-lg border-0 rounded-lg mt-5">
+                    
                     <div className="card-header">
                       <h3 className="text-center font-weight-light my-4">
                         Add Sales Executive
@@ -141,6 +297,7 @@ function AddSalesExecutive() {
                             onChange={(e) => {
                               setSid(e.target.value);
                             }}
+                            value={sid}
                           />
                         </div>
                         <div className="form-floating mb-3">
@@ -155,6 +312,7 @@ function AddSalesExecutive() {
                             onChange={(e) => {
                               setFullname(e.target.value);
                             }}
+                            value={fullname}
                             required
                             
                           />
@@ -173,6 +331,7 @@ function AddSalesExecutive() {
                             onChange={(e) => {
                               setEmail(e.target.value);
                             }}
+                            value={email}
                             required
                           />
                         </div>
@@ -191,6 +350,7 @@ function AddSalesExecutive() {
                             onChange={(e) => {
                               setPassword(e.target.value);
                             }}
+                            value = {password}
                             required
                           />
                         </div>
@@ -208,6 +368,7 @@ function AddSalesExecutive() {
                             onChange={(e) => {
                               setRePassword(e.target.value);
                             }}
+                            value = {repassword}
                             required
                           />
                         </div>
@@ -225,6 +386,7 @@ function AddSalesExecutive() {
                               setAddress(e.target.value);
                             }}
                             required
+                            value = {address}
                           />
                         </div>
 
@@ -242,23 +404,25 @@ function AddSalesExecutive() {
                             onChange={(e) => {
                               setPhone(e.target.value);
                             }}
+                            value = {phone}
                             required
                           ></input>
                         </div>
 
                         <div className="form-floating mb-3">
-                          <label>Age :</label>
+                          <label>Date of Birth :</label>
                           <br />
                           <br />
                           <input
                             className="form-control"
-                            type="number"
-                            name="age"
+                            type="date"
+                            id="dob"
                             placeholder="Type age"
                             onChange={(e) => {
-                              setAge(e.target.value);
+                              setDob(e.target.value);
                             }}
                             required
+                            value={dob}
                           />
                         </div>
 
@@ -275,6 +439,7 @@ function AddSalesExecutive() {
                               setQualification(e.target.value);
                             }}
                             required
+                            value = {qualification}
                           />
                         </div>
 
@@ -290,6 +455,7 @@ function AddSalesExecutive() {
                             onChange={(e) => {
                               setBasicSalary(e.target.value);
                             }}
+                            value = {basicsalary}
                             required
                           />
                         </div>
@@ -317,6 +483,7 @@ function AddSalesExecutive() {
                               setGender(e.target.value);
                             }}
                             required
+                            
                           ></input>
                           <label htmlFor="f"> &nbsp;&nbsp;Female</label>
                           <br />

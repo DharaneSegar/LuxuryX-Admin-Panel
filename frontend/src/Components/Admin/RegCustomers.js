@@ -86,7 +86,7 @@ function RegCustomers() {
                   <th>Email</th>
                   <th>Address</th>
                   <th>Contact</th>
-                  <th>Secret Key</th>
+                  
                 </tr>
               </thead>
 
@@ -98,7 +98,7 @@ function RegCustomers() {
                     <td>{uData.email}</td>
                     <td>{uData.address}</td>
                     <td>{uData.contact}</td>
-                    <td>{uData.question}</td>
+                    
                   </tr>
                 ))}
               </tbody>

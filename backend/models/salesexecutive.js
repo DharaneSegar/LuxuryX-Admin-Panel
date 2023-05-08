@@ -33,8 +33,8 @@ const SalesExecutiveSchema = new Schema({
         
     },
     
-    age:{
-        type:Number,
+    dob:{
+        type:Date,
         required: true,
         
     },

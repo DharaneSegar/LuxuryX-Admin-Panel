@@ -8,12 +8,16 @@ import Footer from "../../Common/Footer";
 
 export default function AllDeliveryDriver() {
   const [image, setImage] = useState("");
+  const [Id,setId] = useState("")
+  const [did,setDid]  =useState("");
 
   function GET(id) {
     axios
       .get(`http://localhost:8070/deliverydriver/getDid/${id}`)
       .then((res) => {
         setImage(res.data.dd.image);
+        setId(res.data.dd._id);
+        setDid(res.data.dd.did);
       })
       .catch((err) => {
         alert(err.message);
@@ -49,11 +53,11 @@ export default function AllDeliveryDriver() {
       <AdminDashBoard></AdminDashBoard>
       <div className="mt-5">
         <div className="container">
-          <div className="add_btn mt-2 mb-2">
+          <div className="add_btn mt-2 mb-2" style = {{marginRight: "50px"}}>
             <br />
             <br />
             
-            <div className="row justify-content-center"><h2 style={{ marginLeft: "200px" }}>Delivery Driver List</h2></div>
+            <div className="row justify-content-center" ><h2 style={{ marginLeft: "200px" }}>Delivery Driver List</h2></div>
             <br />
             <div>
               <input
@@ -85,7 +89,7 @@ export default function AllDeliveryDriver() {
 
           <br />
 
-          <table className="table" style={{ marginLeft: "50px" }}>
+          <table className="table" style={{ marginLeft: "100px",marginRight: "500px" }}>
             <thead>
               <tr className="table-dark">
                 <th scope="col">id</th>
@@ -94,7 +98,7 @@ export default function AllDeliveryDriver() {
                 
                 <th scope="col">Address</th>
                 <th scope="col">Phone</th>
-                <th scope="col">Age</th>
+                <th scope="col">DOB</th>
                 <th scope="col">License No</th>
                 <th scope="col">Vehicle No</th>
                 <th scope="col">NIC</th>
@@ -117,7 +121,7 @@ export default function AllDeliveryDriver() {
                     
                     <td>{deliverydriver.address}</td>
                     <td>{deliverydriver.phone}</td>
-                    <td>{deliverydriver.age}</td>
+                    <td>{deliverydriver.dob.toString().slice(0,10)}</td>
                     <td>{deliverydriver.licenseno}</td>
                     <td>{deliverydriver.vehicleno}</td>
                     <td>{deliverydriver.nic}</td>
@@ -141,29 +145,13 @@ export default function AllDeliveryDriver() {
                       >
                         <RemoveRedEyeIcon />
                       </button>
-                      <br/>
+                      
                       <button
-                        className="btn btn-danger"
-                        onClick={() => {
-                          axios.delete(
-                            `http://localhost:8070/deliverydriver/deletedd/${deliverydriver._id}`
-                          );
-                          axios
-                            .delete(
-                              `http://localhost:8070/t/delete/${deliverydriver.did}`
-                            )
-                            .then((res) => {
-                              if (res.data === "success") {
-                                alert("Delivery Driver deleted successfully");
-                                window.location.replace("/alldd");
-                              } else if (res.data === "error") {
-                                alert("Error in deleting Delivery Driver");
-                              }
-                            })
-                            .catch((err) => {
-                              alert(err);
-                            });
-                        }}
+                      className="btn btn-danger"
+                      onClick={(e) => GET(deliverydriver.did)}
+                      data-toggle="modal"
+                      data-target="#delemp"
+                       
                       >
                         <DeleteOutlineIcon />
                       </button>
@@ -184,6 +172,65 @@ export default function AllDeliveryDriver() {
           </div>
         </div>
       </div>
+      <div className="modal1" id="delemp">
+        <div className="modal-dialog">
+          <div className="modal-content">
+            
+
+            <div className="modal-body">
+                <br></br>
+                <h5>Are you sure you want to delete this employee? </h5>
+              
+<br></br>
+            
+<button
+                        className="btn btn-danger"
+                        type="submit"
+                style={{ marginLeft: "130px" }}
+                        onClick={() => {
+                          axios.delete(
+                            `http://localhost:8070/deliverydriver/deletedd/${Id}`
+                          );
+                          axios
+                            .delete(
+                              `http://localhost:8070/t/delete/${did}`
+                            )
+                            .then((res) => {
+                              if (res.data === "success") {
+                                alert("Delivery Driver deleted successfully");
+                                window.location.replace("/alldd");
+                              } else if (res.data === "error") {
+                                alert("Error in deleting Delivery Driver");
+                              }
+                            })
+                            .catch((err) => {
+                              alert(err);
+                            });
+                        }}
+                      >
+                Yes
+              </button>
+              
+              <a
+                className="btn btn-primary "
+                type="submit"
+                style={{ marginLeft: "100px" }}
+                href="/alldd"
+                
+                
+              >
+                No
+              </a>
+              
+              <br />
+              </div>
+              <br></br>
+            
+          </div>
+        </div>
+        </div>
+
+
     </div>
   );
 }

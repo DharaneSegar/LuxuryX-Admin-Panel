@@ -34,8 +34,8 @@ const DeliveryDriverSchema = new Schema({
         
     },
     
-    age:{
-        type:Number,
+    dob:{
+        type:Date,
         required: true,
         
     },
@@ -63,7 +63,7 @@ const DeliveryDriverSchema = new Schema({
     },
     image:{
         type:String,
-        required:true
+        
     }
    
 

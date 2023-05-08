@@ -13,7 +13,7 @@ router.post("/addse", async (req, res) => {
   const password = req.body.password;
   const address = req.body.address;
   const phone = Number(req.body.phone);
-  const age = Number(req.body.age);
+  const dob = req.body.dob;
   const qualification = req.body.qualification;
   const basicsalary = Number(req.body.basicsalary);
   const gender = req.body.gender;
@@ -70,7 +70,7 @@ router.post("/addse", async (req, res) => {
           password:hashedpassword,
           address,
           phone,
-          age,
+          dob,
           qualification,
           basicsalary,
           gender,
@@ -144,7 +144,7 @@ router.route("/update/:id").put(async (req, res) => {
       email,
       address,
       phone,
-      age,
+      dob,
       qualification,
       basicsalary,
       gender,
@@ -157,7 +157,7 @@ router.route("/update/:id").put(async (req, res) => {
       email,
       address,
       phone,
-      age,
+      dob,
       qualification,
       basicsalary,
       gender,

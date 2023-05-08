@@ -2,6 +2,7 @@ const router = require("express").Router();
 const Admin = require('../models/admin');
 const SE =  require('../models/salesexecutive');
 const DD = require('../models/deliverydriver');
+const bcrypt = require("bcrypt")
 
 router.post("/log",async(req,res)=>{
     const{email,password} = req.body;
@@ -23,7 +24,7 @@ router.post("/log",async(req,res)=>{
             }
                 
         }else if((check2) && accType === "Sales Executive"){
-            const p2 = await SE.findOne({password:password})
+            const p2 = await bcrypt.compare(password,check2.password)
             if(p2){
                 res.json({type:"se",check2});
             }else{
@@ -32,7 +33,7 @@ router.post("/log",async(req,res)=>{
 
                 
         }else if((check3) && accType === "Delivery Driver"){
-            const p3 = await DD.findOne({password:password})
+            const p3 = await bcrypt.compare(password,check3.password)
             if(p3){
                 res.json({type:"dd",check3});
             }else{

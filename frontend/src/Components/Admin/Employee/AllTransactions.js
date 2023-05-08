@@ -9,6 +9,21 @@ import { NavLink, Link } from "react-router-dom";
 export default function AllSalary() {
   const [transactions, setTransaction] = useState([]);
   const [query, setQuery] = useState("");
+  const [Id,setId] = useState("")
+
+  function GET(id) {
+    axios
+      .get(`http://localhost:8070/salary/getTid/${id}`)
+      .then((res) => {
+        
+        setId(res.data.s._id);
+        
+
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+  }
 
   useEffect(() => {
     function get() {
@@ -111,6 +126,8 @@ export default function AllSalary() {
                       <td>{t.otrate}</td>
                       <td>{t.netsalary}</td>
                       <td>{t.paydate}</td>
+                      
+                      
                       <td className="d-flex justify-content-between">
                         <NavLink to={`/updatet/${t.Id}`}>
                           <button className="btn btn-secondary">
@@ -118,24 +135,11 @@ export default function AllSalary() {
                           </button>
                         </NavLink>
                         <button
+                        onClick={(e) => GET(t.Id)}
                           className="btn btn-danger"
-                          onClick={() => {
-                            axios
-                              .delete(
-                                `http://localhost:8070/salary/deletet/${t._id}`
-                              )
-                              .then((res) => {
-                                if (res.data === "success") {
-                                  alert("Transaction deleted successfully");
-                                  window.location.replace("/allsalary");
-                                } else if (res.data === "error") {
-                                  alert("Error in deleting transaction");
-                                }
-                              })
-                              .catch((err) => {
-                                alert(err);
-                              });
-                          }}
+                          data-toggle="modal"
+                        data-target="#deltra"
+                          
                         >
                           <DeleteOutlineIcon />
                         </button>
@@ -148,6 +152,63 @@ export default function AllSalary() {
         </div>
       </div>
       <Footer></Footer>
+
+      <div className="modal1" id="deltra">
+        <div className="modal-dialog">
+          <div className="modal-content">
+            
+
+            <div className="modal-body">
+                <br></br>
+                <h5>Are you sure you want to delete this transaction? </h5>
+              
+<br></br>
+
+<button
+                        className="btn btn-danger"
+                        type="submit"
+                style={{ marginLeft: "130px" }}
+                onClick={() => {
+                  axios
+                    .delete(
+                      `http://localhost:8070/salary/deletet/${Id}`
+                    )
+                    .then((res) => {
+                      if (res.data === "success") {
+                        alert("Transaction deleted successfully");
+                        window.location.replace("/allsalary");
+                      } else if (res.data === "error") {
+                        alert("Error in deleting transaction");
+                      }
+                    })
+                    .catch((err) => {
+                      alert(err);
+                    });
+                }}
+                      >
+                Yes
+              </button>
+                
+              
+              <a
+                className="btn btn-primary "
+                type="submit"
+                style={{ marginLeft: "100px" }}
+                href="/allsalary"
+                
+                
+              >
+                No
+              </a>
+              
+              <br />
+              </div>
+              <br></br>
+            
+          </div>
+        </div>
+        </div>
+    
     </>
   );
 }
