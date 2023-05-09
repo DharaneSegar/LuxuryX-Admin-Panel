@@ -225,54 +225,54 @@ function AddSalesExecutive() {
                   <br />
                   <br />
                   <br/>
-                  {/*<input
+                  <input
                             type="submit"
                             className="btn btn-primary"
                             onClick={demo1}
                             value="1"
                           ></input>
 
-<input
+<input style={{marginLeft:"48px"}}
                             type="submit"
                             className="btn btn-primary"
                             onClick={demo2}
                             value="2"
                           ></input>
 
-<input
+<input style={{marginLeft:"48px"}}
                             type="submit"
                             className="btn btn-primary"
                             onClick={demo3}
                             value="3"
                           ></input>
 
-<input
+<input style={{marginLeft:"48px"}}
                             type="submit"
                             className="btn btn-primary"
                             onClick={demo4}
                             value="4"
                           ></input>
 
-<input
+<input style={{marginLeft:"48px"}}
                             type="submit"
                             className="btn btn-primary"
                             onClick={demo5}
                             value="5"
                           ></input>
 
-<input
+<input style={{marginLeft:"48px"}}
                             type="submit"
                             className="btn btn-primary"
                             onClick={demo6}
                             value="6"
                           ></input>
 
-<input
+<input style={{marginLeft:"48px"}}
                             type="submit"
                             className="btn btn-primary"
                             onClick={demo7}
                             value="7"
-  ></input>*/}
+  ></input>
                   <div className="card shadow-lg border-0 rounded-lg mt-5">
                     
                     <div className="card-header">

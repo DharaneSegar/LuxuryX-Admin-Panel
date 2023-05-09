@@ -51,6 +51,7 @@ function ApplyForLeaveDD() {
         .then((res) => {
           if (res.data === "Success") {
             alert("Leave application submitted successfully");
+            window.location.replace("./ddhome")
           } else if (res.data === "Invalid") {
             alert("Invalid Id");
           } else if (res.data === "No id") {

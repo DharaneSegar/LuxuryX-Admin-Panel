@@ -92,19 +92,19 @@ function ApplyForLeaveSE() {
                 <br />
                 <br />
 
-                {/*<input
+                <input style={{marginLeft:"150px"}}
                             type="submit"
                             className="btn btn-primary"
                             onClick={demo}
                             value="demo1"
                           ></input>
 
-<input
+<input style={{marginLeft:"75px"}}
                             type="submit"
                             className="btn btn-primary"
                             onClick={demo1}
                             value="demo2"
-  ></input>*/}
+  ></input>
                 <div className="card shadow-lg border-0 rounded-lg mt-5">
                   <div className="card-header">
                     <h3 className="text-center font-weight-light my-4">

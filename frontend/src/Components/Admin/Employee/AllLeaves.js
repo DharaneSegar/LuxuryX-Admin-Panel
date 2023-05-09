@@ -73,7 +73,7 @@ export default function AllLeave() {
                   type="text"
                   id="searchDelivery"
                   style={{ marginLeft: "300px" }}
-                  placeholder="Type Leave Id here"
+                  placeholder="Search here"
                   onChange={(e) => setQuery(e.target.value)}
                 />
 
@@ -120,8 +120,7 @@ export default function AllLeave() {
                 l.startdate.slice(5,7).includes(query)||
                 l.startdate.slice(0,7).includes(query)||
                 l.startdate.includes(query)
-                 )
-
+                )
                 .map((l) => (
                     <tr>
                       <th scope="row">{l.Id}</th>

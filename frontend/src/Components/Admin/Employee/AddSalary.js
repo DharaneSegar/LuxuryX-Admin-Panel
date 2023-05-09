@@ -90,12 +90,12 @@ export default function AddSalary() {
                 <br />
                 <br />
 
-                {/*<input
+                <input
                             type="submit"
                             className="btn btn-primary"
                             onClick={demo}
                             value="demo"
-  ></input>*/}
+  ></input>
 
                 <form className="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                   <div className="input-group">
