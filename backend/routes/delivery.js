@@ -111,5 +111,17 @@ router.route("/get/:id").get(async (req, res) => {
 
 })
 
+router.route("/getDeliDid/:id").get((req, res) => {
+    let id = req.params.id;
+  
+    Delivery.find({ did: `${id}` })
+      .then((e) => {
+        res.json(e);//send response
+      })
+      .catch((err) => {
+        console.log(err);//display error
+      });
+  });
+
 
 module.exports = router;

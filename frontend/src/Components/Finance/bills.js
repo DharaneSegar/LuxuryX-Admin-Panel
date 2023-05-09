@@ -196,7 +196,7 @@ export default function AllSuppliers() {
                                             <button className="btn btn-primary" style={{ marginRight: "5px" }} onClick={()=>{
                                                 setBillId(val._id)
                                             }}>Paid</button>
-                                            <button className="btn btn-primary" onClick={()=>{
+                                            <button className="btn btn-secondary" onClick={()=>{
                                                 window.location.replace(`http://localhost:3000/updateBills/${val._id}`)
                                             }}><CreateIcon /></button>
                                        

@@ -41,7 +41,7 @@ export default function AllCoupons() {
                     <br/><br/>
                     <h3>List of Coupons</h3>
 
-                    <div style={{ marginRight: "5px", marginLeft: "auto", marginBottom: "5px", width: "30%" }}>
+                    <div style={{ marginRight: "5px", marginLeft: "100px", marginBottom: "5px", width: "30%" }}>
                         <input type="text" id="search" placeholder="Enter Item Code..." onChange={(e) => { setEid(e.target.value) }} />
                     </div>
 
@@ -50,6 +50,7 @@ export default function AllCoupons() {
                             window.location.replace(`http://localhost:3000/search/searchcoupon/${eid}`);
                         }}>search</button>
                     </div>
+                    <br/>
 
 
                     <table className="table">

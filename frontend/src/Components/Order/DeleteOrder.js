@@ -55,7 +55,7 @@ export default function DeleteOrder() {
         <div className="containerf">
             <AdminSideBar></AdminSideBar>
 
-            <div className="container" style={{marginTop:"100px"}} >
+            <div className="container" style={{marginTop:"100px",marginLeft:"350px"}} >
         <div className="container">
             <h1>Delete Order</h1>
             <form onSubmit={deleteData}>

@@ -77,13 +77,13 @@ const updateInProcess = (e) => {
         <td><center>{status}</center></td>
                                    
         <td>
-        <button type="button" className='btn btn-primary' onClick={updateInProcess}>In-progress</button>
+        <button type="button" className='btn btn-danger' onClick={updateInProcess}>progress</button>
         </td>
         <td>
             <button type="button" className='btn btn-primary' onClick={updateDispatched}>Dispatched</button>
         </td>
         <td>
-            <button type="button" className='btn btn-primary' onClick={updateDelivered}>Delivered</button>
+            <button type="button" className='btn btn-secondary' onClick={updateDelivered}>Delivered</button>
         </td>
         </tr>
     </> 

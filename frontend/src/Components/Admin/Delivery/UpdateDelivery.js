@@ -33,32 +33,47 @@ const UpdateDelivery = (props) => {
     const update = (e) => {
         e.preventDefault() //Like preventing page to refresh
 
-        const Deliveries = {
-            deliveryid,
-            orderid,
-            trackingid,
-            did,
-            deliveryaddress,
-            deliveryfee,
+        if (!deliveryid || !orderid || !trackingid || !did || !deliveryaddress || !deliveryfee) {
+            alert("Fields can't be empty");
         }
+        else
+            if (deliveryid.length !== 3)
+                alert("Delivery id should be at least 3 numbers ")
+            else
+                if (orderid.length !== 3)
+                    alert("Order id should be at least 3 numbers ")
+                else
+                    if (trackingid.length !== 3)
+                        alert("Tracking id should be at least 3 numbers ")
+                    else
+                        if ((did.startsWith("D") === false) && (did.length !== 4))
+                            alert("Invalid Delivery driver id ")
+                        else {
+                            const Deliveries = {
+                                deliveryid,
+                                orderid,
+                                trackingid,
+                                did,
+                                deliveryaddress,
+                                deliveryfee,
+                            }
 
-        if (deliveryid === "" || orderid === "" || trackingid === "" || did === "" || deliveryaddress === "" || deliveryfee === "") {
-            //So if either any of this is empty the function will alert and return back
-            alert("All the fields are mandatory")
-            return
-        }
+                            if (deliveryid === "" || orderid === "" || trackingid === "" || did === "" || deliveryaddress === "" || deliveryfee === "") {
+                                //So if either any of this is empty the function will alert and return back
+                                alert("All the fields are mandatory")
+                                return 
+                            }
 
 
-        axios.put(`http://localhost:8070/delivery/update/${id}`, Deliveries).then(() => {
-            console.log("Delivery updated successfully");
-            alert("Delivery Updated Successfully")
-            window.location.replace('/DeliveryList')
-        })
-            .catch((error) => {
-                console.log(error.response.data)
-            })
-
-
+                            axios.put(`http://localhost:8070/delivery/update/${id}`, Deliveries).then(() => {
+                                console.log("Delivery updated successfully");
+                                alert("Delivery Updated Successfully")
+                                window.location.replace('/DeliveryList')
+                            })
+                                .catch((error) => {
+                                    console.log(error.response.data)
+                                })
+                        }
 
     }
 
@@ -83,19 +98,19 @@ const UpdateDelivery = (props) => {
                                                 <label>Delivery Id :</label><br/><br/>
                                                 <input className="form-control"  type="number" name = "did" id="deliveryid" placeholder="Type delivery id" aria-required ="true" value={deliveryid} 
                                                 onChange={(e)=>{setdeliveryid(e.target
-                                                    .value);}} required/>
+                                                    .value);}} required readOnly />
                                     
                                             </div>
                                             <div className="form-floating mb-3">
                                                 <label>Order Id :</label><br/><br/>
                                                 <input className="form-control"  type="number" name = "oid" id="orderid" placeholder="Type order id" value={orderid} 
-                                                onChange={(e)=> {setorderid(e.target.value);}} required/>
+                                                onChange={(e)=> {setorderid(e.target.value);}} required readOnly />
                                             </div>
 
                                             <div className="form-floating mb-3">
                                                 <label>Tracking Id :</label><br/><br/>
                                                 <input className="form-control"  type="number" name = "tid" id="trackingid" placeholder="Type tracking id" value={trackingid}
-                                                 onChange={(e)=> {settrackingid(e.target.value);}} required/>
+                                                 onChange={(e)=> {settrackingid(e.target.value);}} required readOnly />
                                             </div>
 
                                             <div className="form-floating mb-3">

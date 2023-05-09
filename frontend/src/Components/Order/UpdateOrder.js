@@ -56,7 +56,7 @@ function UpdateOrder() {
 
             <div className="containerf">
                 <AdminSideBar></AdminSideBar>
-                <div className="container" style={{marginTop:"100px"}}>
+                <div className="container" style={{marginTop:"100px",marginLeft:"350px"}}>
                     <h1>Update Order</h1>
                     <form onSubmit={updateData}>
                         <div className="form-group">

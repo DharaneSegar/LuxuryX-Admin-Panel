@@ -12,10 +12,12 @@ export default function DeliveryDriverView() {
   const [Keyword, setKeyword] = useState('');
   const componentPDF = useRef();
 
+  var user = JSON.parse(localStorage.getItem("DDInfo"));
+
 
   useEffect(() => {
     function getDeliveries() {
-      axios.get("http://localhost:8070/delivery/get").then((res) => {
+      axios.get(`http://localhost:8070/delivery/getDeliDid/${user.did}`).then((res) => {
         console.log(res.data);
         setDeliveries(res.data);
       }).catch((err) => {
@@ -25,17 +27,17 @@ export default function DeliveryDriverView() {
     getDeliveries();
   }, [])
 
-
   //Search functions 
   const filteredDeliveries = Deliveries.filter((delivery) => {
     const Deliveryid = delivery.deliveryid.toLowerCase()
     const Orderid = delivery.orderid.toLowerCase()
     const Trackingid = delivery.trackingid.toLowerCase()
     const Deliveryaddress = delivery.deliveryaddress.toLowerCase()
+    const DeliveryDriverid = delivery.did.toLowerCase()
     // const Deliveryfee = delivery.deliveryfee.toLowerCase()
     const keyword = Keyword.toLowerCase()
-
-    return Deliveryid.includes(keyword) || Orderid.includes(keyword) || Trackingid.includes(keyword) || Deliveryaddress.includes(keyword) //|| Deliveryfee.includes(keyword)
+    
+    return (Deliveryid.includes(keyword) || Orderid.includes(keyword) || Trackingid.includes(keyword) || Deliveryaddress.includes(keyword)) ||  DeliveryDriverid.includes(keyword) //|| Deliveryfee.includes(keyword)
   })
 
 
@@ -109,4 +111,3 @@ export default function DeliveryDriverView() {
   )
 
 }
-

@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
@@ -7,6 +6,7 @@ import Header from "../Admin/Header";
 import AdminSideBar from "../Admin/AdminSidebar";
 import CreateIcon from '@mui/icons-material/Create';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import Footer from "../Common/Footer";
 
 
@@ -58,7 +58,7 @@ export default function AllOrder() {
             <div className="containerf">
                 <AdminSideBar></AdminSideBar>
 
-                <div className="container" style={{marginTop:"100px"}}>
+                <div className="container" style={{ marginTop: "100px" }}>
                     <h3>All Orders</h3>
 
                     <div style={{ textAlign: "right" }}>
@@ -67,7 +67,7 @@ export default function AllOrder() {
                             className="search-product-box"
                             placeholder="search Order"
                             onChange={searchHandle}
-                            
+
                         />
                     </div>
 
@@ -77,7 +77,7 @@ export default function AllOrder() {
 
 
 
-                        <button style={{ marginBottom: "10px", marginRight:"350px",marginLeft:"150px" }} className="btn btn-primary" onClick={() => {
+                        <button style={{ marginBottom: "10px", marginRight: "350px", marginLeft: "150px" }} className="btn btn-primary" onClick={() => {
                             window.location.replace(`http://localhost:3000/orderReport`);
                         }}>Generate Orders Report</button>
 
@@ -126,6 +126,11 @@ export default function AllOrder() {
 
                                                     window.location.replace(`http://localhost:3000/deleteorder/${order._id}`);
                                                 }}><DeleteOutlineIcon /></button>
+                                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                                <button className="btn btn-primary" onClick={() => {
+
+                                                    window.location.replace(`http://localhost:3000/addd/${order.OrderNo}`);
+                                                }}><LocalShippingIcon /></button>
                                             </td>
 
                                         </tr>

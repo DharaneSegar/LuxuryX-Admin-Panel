@@ -225,7 +225,7 @@ function AddSalesExecutive() {
                   <br />
                   <br />
                   <br/>
-                  <input
+                  {/*<input
                             type="submit"
                             className="btn btn-primary"
                             onClick={demo1}
@@ -272,7 +272,7 @@ function AddSalesExecutive() {
                             className="btn btn-primary"
                             onClick={demo7}
                             value="7"
-                          ></input>
+  ></input>*/}
                   <div className="card shadow-lg border-0 rounded-lg mt-5">
                     
                     <div className="card-header">

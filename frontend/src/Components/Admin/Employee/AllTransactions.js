@@ -114,7 +114,8 @@ export default function AllSalary() {
                     (t) =>
                       t.paydate.slice(5, 7).includes(query) ||
                       t.paydate.slice(0, 7).includes(query) ||
-                      t.paydate.includes(query)
+                      t.paydate.includes(query)||
+                      t.eid.toLowerCase().includes(query)
                   )
                   .map((t) => (
                     <tr>

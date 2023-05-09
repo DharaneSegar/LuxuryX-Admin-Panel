@@ -59,6 +59,7 @@ function ViewSalarySE() {
             <table className="table">
               <thead>
                 <tr className="table-dark">
+                <th scope = "col">Id</th>
                   <th scope="col">OT Hrs</th>
                   <th scope="col">OT Rate</th>
                   <th scope="col">Net Salary</th>
@@ -70,6 +71,7 @@ function ViewSalarySE() {
                 .map((e) => (
                   <tbody>
                     <tr>
+                    <td>{e.Id}</td>
                       <td>{e.othrs}</td>
                       <td>{e.otrate}</td>
                       <td>{e.netsalary}</td>

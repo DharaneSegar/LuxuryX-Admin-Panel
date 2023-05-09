@@ -4568,6 +4568,7 @@ textarea.form-control-lg {
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
+  width
 }
 .card > hr {
   margin-right: 0;
@@ -11908,6 +11909,7 @@ body {
 
 #logo{
   width:125%;
+  margin-left: 60px;
   align-content: center;
   align-self: center;
  }

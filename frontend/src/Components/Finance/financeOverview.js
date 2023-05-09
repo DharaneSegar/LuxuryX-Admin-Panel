@@ -361,7 +361,7 @@ if (currentMonth === "12") {
     <div>
       <Header></Header>
 
-      <div className="container" style={{ MarginLeft: "10%" }}>
+      <div className="container" style={{ marginLeft: "300px" }}>
         <AdminSideBar></AdminSideBar>
 
         <div className="marginLeft">
@@ -371,6 +371,7 @@ if (currentMonth === "12") {
 
           <div className="budgetBack" id='budgetBack'>
             <div className="addBudget" id='addBudget'>
+              <br/><br/><br/><br/>
             <button id='close' onClick={budgetClose}>X</button>
             <h5>Current Budget : {budget}</h5>
                       <input

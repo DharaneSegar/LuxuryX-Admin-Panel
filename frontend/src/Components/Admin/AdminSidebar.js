@@ -202,9 +202,6 @@ function AdminSideBar() {
                     id="sidenavAccordionPages"
                   >
                     
-                    <a className="nav-link" style={{color:"white"}}href="/addd">
-                      Add Delivery
-                    </a>
 
                     <a className="nav-link" style={{color:"white"}}href="/DeliveryList">
                       View Delivery
