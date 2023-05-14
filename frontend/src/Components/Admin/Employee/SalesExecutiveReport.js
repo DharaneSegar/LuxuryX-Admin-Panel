@@ -52,10 +52,10 @@ export default function SalesExecutiveReport() {
                     <th scope="col">id</th>
                     <th scope="col">Fullname</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Password</th>
+                    
                     <th scope="col">Address</th>
                     <th scope="col">Phone</th>
-                    <th scope="col">Age</th>
+                    <th scope="col">DOB</th>
                     <th scope="col">Qualification</th>
                     <th scope="col">Basic Salary</th>
                     <th scope="col">Gender</th>
@@ -67,10 +67,10 @@ export default function SalesExecutiveReport() {
                       <th scope="row">{salesexecutive.sid}</th>
                       <td>{salesexecutive.fullname}</td>
                       <td>{salesexecutive.email}</td>
-                      <td>{salesexecutive.password}</td>
+                      
                       <td>{salesexecutive.address}</td>
                       <td>{salesexecutive.phone}</td>
-                      <td>{salesexecutive.age}</td>
+                      <td>{salesexecutive.dob.toString().slice(0,10)}</td>
                       <td>{salesexecutive.qualification}</td>
                       <td>{salesexecutive.basicsalary}</td>
                       <td>{salesexecutive.gender}</td>

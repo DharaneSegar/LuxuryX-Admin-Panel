@@ -151,6 +151,7 @@ export default function UpdateSalesExecutive() {
                               onChange={(e) => {
                                 setEmail(e.target.value);
                               }}
+                              readOnly
                               required
                             />
                           </div>

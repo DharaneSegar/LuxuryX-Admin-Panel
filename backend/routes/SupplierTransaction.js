@@ -78,17 +78,15 @@ router.route("/deletesupplierTransaction/:id").delete(async(req,res) => {
     
 })
 
-//get details of single transaction by invoice no
-router.route("/getsupplierTransaction/:InvoiceNo").get((req,res)=>{
-    let InvoiceNoS = req.params.InvoiceNo;
+router.route("/getsupplierTransaction/:id").get(async (req, res) => {
+    let userId = req.params.id;
 
-    SupplierTransaction.find({"InvoiceNo" : InvoiceNoS})
-    .then((SupplierTransaction)=>{
-        res.status(200).send({status:"Supplier Transaction fetched",SupplierTransaction})
-    }).catch((err)=>{
-        console.log(err);
-        res.status(500).send({status:"Error with Supplier", error : err.message});
-    })
+    const user = await SupplierTransaction.findById(userId).then((supplierTransaction) => {
+        res.status(200).send({ status: "Supplier Transaction fetched", supplierTransaction })
+    }).catch((err) => {
+        console.log(err.message);
+        res.status(500).send({ status: "Error with get Supplier", error: err.message })
+    })
 })
 
 

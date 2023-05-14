@@ -117,7 +117,7 @@ function AddSalesExecutive() {
   function demo7(){
     setSid("S008")
     setFullname("Nimal Perera")
-    setEmail("nimalp@gmail.com")
+    setEmail("dharanes8@gmail.com")
     setPassword("asdQWE123")
     setRePassword("asdQWE123")
     setAddress("Colombo")
@@ -202,12 +202,12 @@ function AddSalesExecutive() {
           alert(err);
         });
 
-      await axios
+      /*await axios
         .post("http://localhost:8070/t/det", { eid, email, basicsalary })
         .then((res) => {})
         .catch((err) => {
           alert(err);
-        });
+        });*/
     }
   }
 
@@ -225,7 +225,7 @@ function AddSalesExecutive() {
                   <br />
                   <br />
                   <br/>
-                  <input
+                  <input style={{marginLeft:"48px"}}
                             type="submit"
                             className="btn btn-primary"
                             onClick={demo1}
@@ -249,29 +249,22 @@ function AddSalesExecutive() {
 <input style={{marginLeft:"48px"}}
                             type="submit"
                             className="btn btn-primary"
-                            onClick={demo4}
+                            onClick={demo5}
                             value="4"
                           ></input>
 
 <input style={{marginLeft:"48px"}}
                             type="submit"
                             className="btn btn-primary"
-                            onClick={demo5}
+                            onClick={demo6}
                             value="5"
                           ></input>
 
 <input style={{marginLeft:"48px"}}
                             type="submit"
                             className="btn btn-primary"
-                            onClick={demo6}
-                            value="6"
-                          ></input>
-
-<input style={{marginLeft:"48px"}}
-                            type="submit"
-                            className="btn btn-primary"
                             onClick={demo7}
-                            value="7"
+                            value="6"
   ></input>
                   <div className="card shadow-lg border-0 rounded-lg mt-5">
                     

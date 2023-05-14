@@ -299,7 +299,7 @@ useEffect(() => {
                             placeholder="Search Transaction"
                             onChange={searchHandle}
                         />
-                        <button style={{ marginBottom: "10px", marginLeft: "150px" }} className="btn btn-primary" onClick={generatePDF}>Generate Supplier Report</button>
+                        <button style={{ marginBottom: "10px", marginLeft: "150px" }} className="btn btn-primary" onClick={generatePDF}>Generate Transaction Report</button>
                         <button style={{ marginBottom: "10px", marginLeft: "500px" }} className="btn btn-primary" onClick={() => {
                             window.location.replace(`http://localhost:3000/addTransactions`);
                         }}>Add Transaction</button>

@@ -54,6 +54,21 @@ function Login() {
     }
   }
 
+  function demo1(){
+    setEmail("kk@gmail.com")
+    setPassword("asdQWE123")
+  }
+
+  function demo2(){
+    setEmail("dharanes8@gmail.com")
+    setPassword("asdQWE123")
+  }
+
+  function demo3(){
+    setEmail("danielc@gmail.com")
+    setPassword("asdQWE123")
+  }
+
   return (
     <div>
       <div id="layoutAuthentication1">
@@ -67,22 +82,44 @@ function Login() {
                   <br />
                   <div className="card shadow-lg border-0 rounded-lg mt-5">
                     <div className="card-header">
+                    
                       <h3 className="text-center font-weight-light my-4">
                         Login
                       </h3>
                     </div>
                     <div className="card-body">
                       <form>
+                      <input style={{marginLeft:"150px"}}
+                            type="submit"
+                            className="btn btn-primary"
+                            onClick={demo1}
+                            value="A"
+                          ></input>
+                          <input style={{marginLeft:"100px"}}
+                            type="submit"
+                            className="btn btn-primary"
+                            onClick={demo2}
+                            value="S"
+                          ></input>
+
+<input style={{marginLeft:"100px"}}
+                            type="submit"
+                            className="btn btn-primary"
+                            onClick={demo3}
+                            value="D"
+                          ></input>
                         <div className="form-floating mb-3">
                           <label>Email :</label>
                           <br />
                           <br />
                           <input
                             className="form-control"
+                            value = {email}
                             type="text"
                             placeholder="Type your user name"
                             onChange={(e) => {
                               setEmail(e.target.value);
+                              
                             }}
                           />
                         </div>
@@ -94,9 +131,11 @@ function Login() {
                             className="form-control"
                             type="password"
                             placeholder="Type your password"
+                            value = {password}
                             onChange={(e) => {
                               setPassword(e.target.value);
                             }}
+                            
                           />
                         </div>
 

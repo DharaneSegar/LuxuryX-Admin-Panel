@@ -70,8 +70,8 @@ export default function LeaveReport() {
                       <td>{l.fullname}</td>
                       <td>{l.title}</td>
                       <td>{l.days}</td>
-                      <td>{l.startdate}</td>
-                      <td>{l.enddate}</td>
+                      <td>{l.startdate.toString().slice(0,10)}</td>
+                      <td>{l.enddate.toString().slice(0,10)}</td>
                       <td>{l.reason}</td>
                       <td>{l.status}</td>
                     </tr>

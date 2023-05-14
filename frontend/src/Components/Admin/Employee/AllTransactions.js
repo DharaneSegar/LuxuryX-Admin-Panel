@@ -176,7 +176,7 @@ export default function AllSalary() {
                     )
                     .then((res) => {
                       if (res.data === "success") {
-                        alert("Transaction deleted successfully");
+                        
                         window.location.replace("/allsalary");
                       } else if (res.data === "error") {
                         alert("Error in deleting transaction");

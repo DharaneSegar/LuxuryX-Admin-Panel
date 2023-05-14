@@ -48,7 +48,7 @@ export default function AllLeave() {
     await axios
       .put(`http://localhost:8070/leave/update/${Id}`, newStatus)
       .then(() => {
-        alert("Leave Application status updated");
+        
         window.location.replace("/allleave");
       })
       .catch((err) => {
