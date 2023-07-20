@@ -63,7 +63,7 @@ export default function AllOrder() {
 
                     <div style={{ textAlign: "right" }}>
                         <input
-                            type=""
+                            
                             className="search-product-box"
                             placeholder="search Order"
                             onChange={searchHandle}
